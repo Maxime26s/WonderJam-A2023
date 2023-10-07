@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+public class BallController : Singleton
 {
 
     public List<BaseEffect> effects;
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddEffect(BaseEffect e)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        effects.Add(e);
     }
 
     void Tick()

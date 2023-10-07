@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RhythmController : MonoBehaviour
+public class RythmController : MonoBehaviour
 {
     // Singleton instance
-    public static RhythmController Instance { get; private set; }
+    public static RythmController Instance { get; private set; }
 
     public float startingBPM;
 

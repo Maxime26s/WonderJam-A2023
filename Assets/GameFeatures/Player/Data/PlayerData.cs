@@ -7,17 +7,20 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     int _playerId;
     [SerializeField]
-    int _baseMaxHealth = 100;
+    float _baseMaxHealth = 100;
     [SerializeField]
-    int _currentMaxHealth;
+    float _currentMaxHealth;
     [SerializeField]
-    int _currentHealth;
+    float _currentHealth;
+    [SerializeField]
+    List<BaseCard> _hand;
     bool _isAlive = true;
 
     public int PlayerId { get { return _playerId; } set { _playerId = value; } }
-    public int MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
-    public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+    public float MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
+    public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
+    public List<BaseCard> hand { get { return _hand; } set { _hand = value; } }
 
     void OnGameStart()
     {
