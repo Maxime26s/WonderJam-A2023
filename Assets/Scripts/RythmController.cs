@@ -8,9 +8,10 @@ public class RhythmController : MonoBehaviour
     public static RhythmController Instance { get; private set; }
 
     public float startingBPM;
+    public float currentBPM;
+    public float beatInterval;
+    public float lastBeatTime;
 
-    private float currentBPM;
-    private float beatInterval;
     private AudioSource audioSource;
     private Coroutine beatCoroutine;
     private bool shouldChangeSpeed = false;
@@ -33,12 +34,14 @@ public class RhythmController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        audioSource = GetComponent<AudioSource>();
+        InitRhythm();
     }
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        InitRhythm();
+
     }
 
     private void InitRhythm()
@@ -74,6 +77,7 @@ public class RhythmController : MonoBehaviour
 
         // You can still have other logic here if needed
         Debug.Log("Beat at BPM: " + currentBPM);
+        lastBeatTime = Time.time;
     }
 
     // External function to modify speed
