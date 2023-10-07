@@ -48,12 +48,12 @@ public class PlayerController : MonoBehaviour
         return PlayerData.CurrentHealth > 0;
     }
 
-    public List<Card> GetHand()
+    public PlayerCards GetCards()
     {
-        return PlayerData.hand;
+        return PlayerData.cards;
     }
-    public Deck GetDeck()
+    public Card[] GetHand()
     {
-        return PlayerData.deck;
+        return PlayerData.cards.GetHand();
     }
 }

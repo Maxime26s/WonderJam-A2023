@@ -20,8 +20,7 @@ public class PlayerData : MonoBehaviour
     public float MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
-    public List<Card> hand { get { return _hand; } set { _hand = value; } }
-    public Deck deck;
+    public PlayerCards cards;
 
     void OnGameStart()
     {
@@ -30,6 +29,7 @@ public class PlayerData : MonoBehaviour
 
     public void ResetData()
     {
+        cards = new PlayerCards();
         _isAlive = true;
 
         _currentMaxHealth = _baseMaxHealth;

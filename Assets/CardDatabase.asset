@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23c225d79f629b44db1747bcde8e758c, type: 3}
-  m_Name: Card Database
+  m_Name: CardDatabase
   m_EditorClassIdentifier: 
-  cards:
+  _cards:
   - {fileID: 11400000, guid: 2d944ab1194df404ab4c43d08af1231c, type: 2}
   - {fileID: 11400000, guid: a273f0f51b68ae24187a808ca581a963, type: 2}
   - {fileID: 11400000, guid: 982cb9b8fc32af945adaf878367f5252, type: 2}

@@ -36,7 +36,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerManagerData.ResetData();
         for(int i = 0; i < PlayerManagerData.TotalNbPlayer; i++)
         {
-            SpawnPlayer(i);
+            //SpawnPlayer(i);
         }
     }
 
@@ -44,15 +44,13 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (_playerPrefab != null)
         {
-            print("1");
             GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().GetPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
-            print("2");
+            
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
             playerController.PlayerData.PlayerId = playerId;
-            print("3");
+
             PlayerManagerData.PlayersList.Add(playerController);
-            print("4");
         }
     }
 
@@ -89,7 +87,9 @@ public class PlayerManager : Singleton<PlayerManager>
                 }
                 break;
         }
+    }
+    public void MoveAllPlayerNextTurn()
+    {
 
-        //todo move people on the field after we shuffle to reflect the turn order
     }
 }

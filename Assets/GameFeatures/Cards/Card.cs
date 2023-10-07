@@ -16,12 +16,14 @@ public class Card : ScriptableObject
     [SerializeField] CardType _cardType;
 
     [SerializeField] string _cardName;
+    [SerializeField] Sprite _cardImage;
     [SerializeField] string _description;
 
     [SerializeField] private List<BaseEffect> cardEffects;
-    public string cardName { get => _cardName; set => _cardName = value; }
-    public CardType cardType { get => _cardType; set => _cardType = value; }
-    public string description { get => _description; set => _description = value; }
+    public CardType CardType { get => _cardType; set => _cardType = value; }
+    public string CardName { get => _cardName; set => _cardName = value; }
+    public Sprite CardImage { get => _cardImage; set => _cardImage = value; }
+    public string Description { get => _description; set => _description = value; }
 
     public void PlayCard()
     {
