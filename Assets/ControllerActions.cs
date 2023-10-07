@@ -71,6 +71,15 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                     ""processors"": ""AxisDeadzone"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""2d5b1c0a-97d8-4623-927b-aa902eed76e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -164,8 +173,8 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""68791f56-0380-4af6-bc30-8ed7518a8273"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""id"": ""98e06be4-679c-4d7a-9110-4f52622478bc"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -175,8 +184,8 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0d59423d-0d6d-463b-873a-c064f54fd132"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""id"": ""bd2b698b-145e-48ae-9bcc-0262c768869a"",
+                    ""path"": ""<Gamepad>/dpad/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -186,23 +195,23 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""390adf09-6f24-4ca9-b2bd-95d37e239b1b"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""id"": ""49ab241a-190a-4e35-b52d-4c46e12dc352"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Scroll"",
+                    ""action"": ""Return"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d59e864e-3b1c-4546-912a-8566fa84dd31"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""id"": ""1badb8d6-8db0-41a9-919a-5e81f843c040"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Scroll"",
+                    ""action"": ""Return"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -251,6 +260,7 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
         m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
         m_Gameplay_SkipTurn = m_Gameplay.FindAction("SkipTurn", throwIfNotFound: true);
         m_Gameplay_Scroll = m_Gameplay.FindAction("Scroll", throwIfNotFound: true);
+        m_Gameplay_Return = m_Gameplay.FindAction("Return", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +327,7 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Reload;
     private readonly InputAction m_Gameplay_SkipTurn;
     private readonly InputAction m_Gameplay_Scroll;
+    private readonly InputAction m_Gameplay_Return;
     public struct GameplayActions
     {
         private @ControllerActions m_Wrapper;
@@ -326,6 +337,7 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
         public InputAction @SkipTurn => m_Wrapper.m_Gameplay_SkipTurn;
         public InputAction @Scroll => m_Wrapper.m_Gameplay_Scroll;
+        public InputAction @Return => m_Wrapper.m_Gameplay_Return;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +362,9 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -369,6 +384,9 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -393,5 +411,6 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnSkipTurn(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
     }
 }

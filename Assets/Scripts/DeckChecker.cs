@@ -1,39 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DeckChecker : MonoBehaviour
 {
-    private PlayerInput playerInput;
+	private ControllerActions controllerActions;
 
-    private void Awake()
+	private void Awake()
+	{
+		controllerActions = new ControllerActions();
+		controllerActions.Gameplay.Return.performed += OnReturn;
+	}
+
+	public void ButtonBack()
     {
-        playerInput = GetComponent<PlayerInput>();
+        SceneLoader.Instance.LoadLevel("MainMenu");
     }
 
-    private void OnEnable()
+	private void OnEnable()
     {
-        playerInput.actions["Scroll"].Enable();
+        controllerActions.Enable();
     }
 
     private void OnDisable()
     {
-        playerInput.actions["Scroll"].Disable();
+        controllerActions.Disable();
     }
 
-    private void Update()
-    {
-        float scrollUpValue = playerInput.actions["ScrollUp"].ReadValue<float>();
-        float scrollDownValue = playerInput.actions["ScrollDown"].ReadValue<float>();
+	public void OnReturn(InputAction.CallbackContext context)
+	{
+		ButtonBack();
+	}
 
-        if (scrollUpValue > 0.5f)
-        {
-            // Scroll up logic
-            Debug.Log("Scroll Up");
-        }
-        else if (scrollDownValue > 0.5f)
-        {
-            // Scroll down logic
-            Debug.Log("Scroll Down");
-        }
-    }
+	private void OnDestroy()
+	{
+		controllerActions.Gameplay.Return.performed -= OnReturn;
+	}
 }
