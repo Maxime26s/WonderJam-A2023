@@ -15,7 +15,7 @@ public class Beat : MonoBehaviour
     {
         this.positionFunction = positionFunction;
         startTime = BeatController.Instance.lastBeatTime;
-        centerX = positionFunction(BeatController.Instance.beatInterval).x;
+        centerX = positionFunction(BeatController.Instance.track.GetBeatInterval()).x;
         diffX = Mathf.Abs(centerX - positionFunction(0).x) * 2;
         gameObject.SetActive(true);
     }
@@ -23,7 +23,7 @@ public class Beat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        double timeDiff = AudioSettings.dspTime - BeatController.Instance.offset - startTime;
+        double timeDiff = AudioSettings.dspTime - BeatController.Instance.track.GetOffset() - startTime;
 
         Vector2 position = positionFunction(timeDiff);
         transform.position = position;
