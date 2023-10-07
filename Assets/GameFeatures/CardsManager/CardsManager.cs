@@ -13,12 +13,7 @@ public class CardsManager : Singleton<CardsManager>
     public CardDatabase CardDatabase => _cardDatabase;
 
     private void Start()
-    {
-        if (BeatController.Instance != null)
-        {
-            BeatController.Instance.FixedOnBeatEvent += Tick;
-            BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
-        }
+    { 
         UpdateCurrentPlayer();
     }
 
@@ -47,13 +42,13 @@ public class CardsManager : Singleton<CardsManager>
         //RenderCards();
     }
 
-    public void Tick()
-    {
-        PlayerCards cards = player.GetCards();
-        cards.PlayCard();
-        PlayCard();
-        //RenderCards();
-    }
+    //public void Tick()
+    //{
+    //    PlayerCards cards = player.GetCards();
+    //    cards.PlayCard();
+    //    PlayCard();
+    //    //RenderCards();
+    //}
 
     public void MoveSelection(bool isMovingLeft)
     {
