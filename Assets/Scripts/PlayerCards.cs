@@ -36,7 +36,7 @@ public class PlayerCards
     }
 
     /// <summary>
-    /// Sets a card to a blank card. Blank cards are not yet created.
+    /// Sets a card to a blank card. Blank cards are not yet created, so it just sets it to null for now.
     /// </summary>
     /// <returns>The card removed from hand.</returns>
     public Card PlayCard()
@@ -48,7 +48,16 @@ public class PlayerCards
 
     public void Shuffle()
     {
-        //Shuffle :)
+        int n = deck.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n - 1);
+            Card value = deck[k];
+            deck[k] = deck[n];
+            deck[n] = value;
+        }
+
     }
 
     public void MoveSelectionLeft()
