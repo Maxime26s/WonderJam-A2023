@@ -24,7 +24,7 @@ public class CardSelection : MonoBehaviour
 
     void OnHit(object sender, HitEventArgs args)
     {
-        if (args.Context.action.name == "Select")
+        if (args.Context.action.name == "Use")
         {
             Use(args);
         }
