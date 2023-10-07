@@ -76,7 +76,7 @@ public class PlayerManagerData : MonoBehaviour
         }
 
         Debug.Log("Couldn't get the next alive player (you probably won???)");
-        return GetPlayer(PlayerTurnOrderList[i]);
+        return GetPlayer(PlayerTurnOrderList[playerIndex]);
     }
 
     public PlayerController GetNextPlayer()

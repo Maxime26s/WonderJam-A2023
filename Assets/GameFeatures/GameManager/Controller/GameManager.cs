@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField]
-    GameState _gameState = GameState.None;
+    GameState _gameState = GameState.Idle;
     public GameState GameState { get => _gameState; set => _gameState = value; }
 
 
@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
         _waitBetweenEachRound = new WaitForSeconds(_timeBetweenEachTurn);
     }
 
+    //Bind this on the start game after player selection
     public IEnumerator StartGame()
     {
         GameState = GameState.GameBegin;
@@ -39,6 +40,7 @@ public class GameManager : Singleton<GameManager>
         StartNextRound();
     }
 
+    //Bind this on running out of actions and skipping turn
     public void TurnOver()
     {
         StartCoroutine(ChangeTurn());
