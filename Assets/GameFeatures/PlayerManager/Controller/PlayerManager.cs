@@ -36,7 +36,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerManagerData.ResetData();
         for(int i = 0; i < PlayerManagerData.TotalNbPlayer; i++)
         {
-            //SpawnPlayer(i);
+            SpawnPlayer(i);
         }
     }
 

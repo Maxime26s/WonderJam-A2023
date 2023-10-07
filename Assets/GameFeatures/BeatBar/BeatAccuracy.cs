@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,7 @@ public class BeatAccuracy : MonoBehaviour
     private float thresholdTriggerMove = 0.7f;
     private float thresholdResetMove = 0.3f;
 
-    public delegate void HitAction();
-    public event HitAction OnHitEvent;
+    public event EventHandler<InputAction.CallbackContext> OnHitEvent;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class BeatAccuracy : MonoBehaviour
 
     private void OnSelectPerformed(InputAction.CallbackContext context)
     {
-        OnHitEvent?.Invoke();
+        OnHitEvent?.Invoke(this, context);
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
@@ -53,7 +53,7 @@ public class BeatAccuracy : MonoBehaviour
         {
             canSelect = false;
 
-            OnHitEvent?.Invoke();
+            OnHitEvent?.Invoke(this, context);
         }
 
         if (!canSelect && Mathf.Abs(moveValue) < thresholdResetMove) // Reset detection when joystick is near neutral
