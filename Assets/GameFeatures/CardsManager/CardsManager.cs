@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CardsManager : Singleton<CardsManager>
 {
-    [SerializeField]
-    public GameObject cardsHolder;
     PlayerController player;
 
     [SerializeField] private CardDatabase _cardDatabase = null;
