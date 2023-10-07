@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TickHealingCard : BaseCard
+public class TickHealingCard : Card
 {
     [SerializeField]
     float healingValue;
@@ -12,11 +12,13 @@ public class TickHealingCard : BaseCard
 
     public TickHealing prefab;
 
-    public override void PlayCard()
+    public void PlayCard()
     {
+        /*
         TickHealing tickHealing = Instantiate(prefab);
         tickHealing.healing = healingValue;
         tickHealing.tickDuration = tickDuration;
         Ball.Instance.AddEffect(tickHealing);
+        */
     }
 }

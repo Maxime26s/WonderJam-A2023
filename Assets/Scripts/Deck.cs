@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
-    List<BaseCard> composition;
-    List<BaseCard> currentCards;
+    List<Card> composition;
+    List<Card> currentCards;
 
     Deck()
     {
-        composition = new List<BaseCard>();
+        composition = new List<Card>();
         currentCards = composition;
     }
 
-    public BaseCard DrawCard()
+    public Card DrawCard()
     {
         int index = Random.Range(0, currentCards.Count);
-        BaseCard drawnCard = currentCards[index];
+        Card drawnCard = currentCards[index];
         currentCards.RemoveAt(index);
 
         if (currentCards.Count == 0)
