@@ -2,22 +2,54 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     PlayerData _playerData;
     public PlayerData PlayerData { get { return _playerData; } }
 
-
     [SerializeField]
     Animator _animator;
     public Animator Animator { get => _animator; set => _animator = value; }
 
+    private ControllerActions controllerActions;
 
-    public void ReceiveEffect()
+    private void Awake()
     {
+        controllerActions = new ControllerActions();
 
+        controllerActions.Gameplay.SkipTurn.performed += OnSkipPerformed;
+    }
+
+    private void OnDestroy()
+    {
+        controllerActions.Gameplay.SkipTurn.performed -= OnSkipPerformed;
+    }
+
+    private void OnEnable()
+    {
+        controllerActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controllerActions.Disable();
+    }
+
+    private void OnSkipPerformed(InputAction.CallbackContext context)
+    {
+        if(GameManager.Instance.GameState == GameState.Playing)
+        {
+            //TODO
+            //gotta also check that the player id is the one that pushed the button
+
+
+            if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
+            {
+                GameManager.Instance.TurnOver();
+            }
+        }
     }
 
     public void ReceiveHealing(float healing)
