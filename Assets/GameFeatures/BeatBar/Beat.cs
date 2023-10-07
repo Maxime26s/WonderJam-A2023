@@ -23,7 +23,7 @@ public class Beat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        double timeDiff = AudioSettings.dspTime - startTime;
+        double timeDiff = AudioSettings.dspTime - BeatController.Instance.offset - startTime;
 
         Vector2 position = positionFunction(timeDiff);
         transform.position = position;

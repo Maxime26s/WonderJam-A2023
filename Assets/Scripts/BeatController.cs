@@ -49,7 +49,12 @@ public class BeatController : MonoBehaviour
         startingBPM = startingBPM * initialSpeed;
         audioLeadInTime = audioLeadInTime / initialSpeed;
         InitRhythm();
-        StartPlaying();
+        IEnumerator DelayStart()
+        {
+            yield return new WaitForSeconds(0.5f); // Wait for half a second
+            StartPlaying();
+        }
+        StartCoroutine(DelayStart());
     }
 
     private void Update()
