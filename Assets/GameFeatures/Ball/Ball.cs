@@ -44,6 +44,8 @@ public class Ball : Singleton<Ball>
     void Tick()
     {
         actionPoints--;
+        print("actionPoints");
+        print(actionPoints);
 
         if (actionPoints <= 0) 
         {

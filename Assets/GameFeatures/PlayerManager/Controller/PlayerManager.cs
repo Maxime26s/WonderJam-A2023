@@ -106,9 +106,9 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             PlayerController player = PlayerManagerData.GetPlayer(PlayerManagerData.PlayerTurnOrderList[i]);
 
-             player.Animator.SetTrigger("Move");
+            player.Animator.SetTrigger("Move");
 
-            Transform endPosition = BattleGroundManager.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[i + 1 % PlayerManagerData.PlayerTurnOrderList.Count]);
+            Transform endPosition = BattleGroundManager.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
 
             StartCoroutine(MoveToPositionCoroutine(endPosition, player));
         }

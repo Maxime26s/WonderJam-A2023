@@ -14,7 +14,6 @@ public class TickHealing : TickBasedEffect
         TickDuration--;
         PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(Healing);
 
-        Debug.Log(TickDuration);
         if (TickDuration <= 0 )
         {
             isOver = true;
