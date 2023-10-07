@@ -25,6 +25,7 @@ public class BeatController : MonoBehaviour
     // Event to subscribe to
     public delegate void BeatAction();
     public event BeatAction OnBeatEvent;
+    public event BeatAction OnHalfBeatEvent;
 
     // Event to subscribe to
     public event BeatAction FixedOnBeatEvent;
@@ -48,6 +49,7 @@ public class BeatController : MonoBehaviour
     private void Start()
     {
         startingBPM = startingBPM * initialSpeed;
+        audioLeadInTime = audioLeadInTime / initialSpeed;
         InitRhythm();
         IEnumerator DelayStart()
         {
@@ -59,20 +61,23 @@ public class BeatController : MonoBehaviour
 
     private void Update()
     {
-        if (audioSource.isPlaying && AudioSettings.dspTime >= nextBeatTime)
+        if (audioSource.isPlaying)
         {
-            OnBeat();
-
-            if (shouldChangeSpeed)
+            if (AudioSettings.dspTime >= nextBeatTime - beatInterval/2)
             {
-                shouldChangeSpeed = false;
-                audioSource.pitch = newSpeed;
-                currentBPM = startingBPM * audioSource.pitch;
-                beatInterval = 60.0f / currentBPM;
-            }
+                OnBeat();
 
-            // Calculate the next beat time.
-            nextBeatTime += beatInterval;
+                if (shouldChangeSpeed)
+                {
+                    shouldChangeSpeed = false;
+                    audioSource.pitch = newSpeed;
+                    currentBPM = startingBPM * audioSource.pitch;
+                    beatInterval = 60.0f / currentBPM;
+                }
+
+                // Calculate the next beat time.
+                nextBeatTime += beatInterval;
+            }
         }
     }
 
@@ -89,6 +94,16 @@ public class BeatController : MonoBehaviour
         double scheduledStartTime = AudioSettings.dspTime + audioLeadInTime;
         audioSource.PlayScheduled(scheduledStartTime);
         nextBeatTime = scheduledStartTime;
+    }
+
+
+    private void OnHalfBeat()
+    {
+        // You can still have other logic here if needed
+        print("Half Beat! " + AudioSettings.dspTime);
+
+        // Invoke the event
+        OnHalfBeatEvent?.Invoke();
     }
 
     private void OnBeat()

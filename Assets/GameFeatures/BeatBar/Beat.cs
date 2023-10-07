@@ -15,8 +15,8 @@ public class Beat : MonoBehaviour
     {
         this.positionFunction = positionFunction;
         startTime = BeatController.Instance.lastBeatTime;
-        centerX = positionFunction(BeatController.Instance.beatInterval/2).x;
-        diffX = Mathf.Abs(centerX - positionFunction(0).x);
+        centerX = positionFunction(BeatController.Instance.beatInterval).x;
+        diffX = Mathf.Abs(centerX - positionFunction(0).x) * 2;
         gameObject.SetActive(true);
     }
 
@@ -29,7 +29,7 @@ public class Beat : MonoBehaviour
         transform.position = position;
         transform.localScale = Vector3.one * Mathf.Clamp01(1.5f - Mathf.Clamp01(Mathf.Abs(centerX - position.x) / diffX));
 
-        if (position.x >= centerX + diffX)
+        if (position.x >= centerX + diffX/2)
         {
             Destroy(gameObject);
         }
