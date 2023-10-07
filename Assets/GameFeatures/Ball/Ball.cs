@@ -8,9 +8,9 @@ public class Ball : Singleton<Ball>
     public List<BaseEffect> BaseEffectsForTesting;
     public List<BaseEffect> effects;
     [SerializeField]
-    public int baseActionPoints = 16;
+    public int baseActionPoints = 4;
     [SerializeField]
-    public int actionPoints = 16;
+    public int actionPoints = 4;
 
     [SerializeField]
     public GameObject ActionBoard;
@@ -44,11 +44,12 @@ public class Ball : Singleton<Ball>
     void Tick()
     {
         actionPoints--;
+        print("actionPoints");
+        print(actionPoints);
 
         if (actionPoints <= 0) 
         {
-            // TODO:
-            // PlayerManager.Instance.NextPlayer()
+            GameManager.Instance.TurnOver();
             actionPoints = baseActionPoints;
         }
 

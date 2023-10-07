@@ -2315,6 +2315,14 @@ PrefabInstance:
       propertyPath: ActionBoard
       value: 
       objectReference: {fileID: 1621120033}
+    - target: {fileID: 8673183751693030047, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
+      propertyPath: actionPoints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673183751693030047, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
+      propertyPath: baseActionPoints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 343932465142831199, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
