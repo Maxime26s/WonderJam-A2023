@@ -42,7 +42,7 @@ public class PlayerCards
     public Card PlayCard()
     {
         Card selectedCard = hand[selectedIndex];
-        hand[selectedIndex] = new Card();
+        hand[selectedIndex] = null;
         return selectedCard;
     }
 
@@ -72,10 +72,25 @@ public class PlayerCards
     {
         selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1)) % 5;
     }
-    //Currently creates duplicates of cards currently in hand, need to fix
+
     public void ResetDeck()
     {
-        deck = deckList;
+        bool foundInHand = false;
+        deck = new List<Card>();
+        foreach (Card deckListCard in deckList)
+        {
+            foreach (Card handCard in hand)
+            {
+                if (deckListCard == handCard)
+                {
+                    foundInHand = true;
+                }
+            }
+            if (!foundInHand)
+                deck.Add(deckListCard);
+            foundInHand = false;
+        }
+
         Shuffle();
     }
     public Card[] GetHand()
