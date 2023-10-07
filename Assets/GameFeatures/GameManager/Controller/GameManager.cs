@@ -93,6 +93,8 @@ public class GameManager : Singleton<GameManager>
 
         countDownText.gameObject.SetActive(false);
         GameState = GameState.Playing;
+        //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
+        StartTics();
     }
 
     void StartTics()
