@@ -30,7 +30,7 @@ public class Ball : Singleton<Ball>
         effects.Add(e);
     }
 
-    void RenderActionPoint()
+    public void RenderActionPoint()
     {
         Transform grid = ActionBoard.transform.GetChild(1);
         int i = 0;
@@ -46,8 +46,6 @@ public class Ball : Singleton<Ball>
         if (GameManager.Instance.GameState == GameState.Playing)
         {
             actionPoints--;
-            print("actionPoints");
-            print(actionPoints);
 
             if (actionPoints <= 0)
             {

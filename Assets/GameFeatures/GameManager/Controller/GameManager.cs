@@ -47,9 +47,12 @@ public class GameManager : Singleton<GameManager>
         yield return _waitBeforeStartGame;
 
         StartTics();
+        
+        yield return WaitForTick(3);
 
         StartCoroutine(StartNextRound());
 
+        Ball.Instance.RenderActionPoint();
     }
 
     public void StartGameNOW()
@@ -74,17 +77,13 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator StartNextRound()
     {
-        countDownText.gameObject.SetActive(true);
-
         int tick0 = tickCount;
 
-        print(tick0);
         while (tickCount < tick0 + 3)  // Wait until tickCounter increments by 3 from its initial value
         {
-            print(tickCount);
-            print(3 - (tickCount - tick0));
             countDownText.text = (3 - (tickCount - tick0)).ToString();  // Update the TextMeshPro UI Text
-
+            countDownText.gameObject.SetActive(true);
+            
             // Yield for a short duration before checking again
             // This can be set to a smaller value if you expect rapid firing of the external event
             yield return new WaitForSeconds(0.1f);
@@ -113,6 +112,16 @@ public class GameManager : Singleton<GameManager>
     void CountTick()
     {
         tickCount++;
+    }
+
+    public IEnumerator WaitForTick(int nTicks)
+    {
+        int tick0 = tickCount;
+
+        while (tickCount < tick0 + nTicks)  // Wait until tickCounter increments by n from its initial value
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
 public enum GameState { Idle, GameBegin, Playing, ChangingTurn, PlayerDeath, GameEnd}

@@ -114,6 +114,7 @@ public class PlayerManager : Singleton<PlayerManager>
         }
 
         yield return _waitForSecondsMoveToNewPosition;
+        yield return GameManager.Instance.WaitForTick(1);
 
         PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
     }
