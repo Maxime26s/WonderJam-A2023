@@ -34,6 +34,19 @@ public class BeatBar : MonoBehaviour
         beatAccuracy.OnHitEvent += OnHit;
     }
 
+    private void OnDestroy()
+    {
+        while (beats.Count != 0)
+        {
+            if (beats[0] != null)
+                Destroy(beats[0]);
+            beats.RemoveAt(0);
+        }
+
+        BeatController.Instance.OnBeatEvent -= OnBeat;
+        beatAccuracy.OnHitEvent -= OnHit;
+    }
+
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
     {
         float A = Mathf.Abs(center.y - start.y);

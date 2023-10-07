@@ -12,6 +12,10 @@ public class PopupController : MonoBehaviour
     {
         beatBar.OnHitEvent += ShowPopup;
     }
+    private void OnDestroy()
+    {
+        beatBar.OnHitEvent -= ShowPopup;
+    }
 
     public void ShowPopup(object src, HitEventArgs args)
     {

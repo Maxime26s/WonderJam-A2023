@@ -23,6 +23,13 @@ public class BeatAccuracy : MonoBehaviour
         controllerActions.Gameplay.Move.canceled += OnMovePerformed;
     }
 
+    private void OnDestroy()
+    {
+        controllerActions.Gameplay.Select.performed -= OnSelectPerformed;
+        controllerActions.Gameplay.Move.performed -= OnMovePerformed;
+        controllerActions.Gameplay.Move.canceled -= OnMovePerformed;
+    }
+
     private void OnEnable()
     {
         controllerActions.Enable();

@@ -16,7 +16,6 @@ public class BeatController : MonoBehaviour
     public float initialSpeed = 1.0f;
 
     private AudioSource audioSource;
-    private Coroutine beatCoroutine;
     private bool shouldChangeSpeed = false;
     private float newSpeed = 1.0f;
 
@@ -25,7 +24,6 @@ public class BeatController : MonoBehaviour
     // Event to subscribe to
     public delegate void BeatAction();
     public event BeatAction OnBeatEvent;
-    public event BeatAction OnHalfBeatEvent;
 
     // Event to subscribe to
     public event BeatAction FixedOnBeatEvent;
@@ -51,19 +49,14 @@ public class BeatController : MonoBehaviour
         startingBPM = startingBPM * initialSpeed;
         audioLeadInTime = audioLeadInTime / initialSpeed;
         InitRhythm();
-        IEnumerator DelayStart()
-        {
-            yield return new WaitForSeconds(0.5f); // Wait for half a second
-            StartPlaying();
-        }
-        StartCoroutine(DelayStart());
+        StartPlaying();
     }
 
     private void Update()
     {
         if (audioSource.isPlaying)
         {
-            if (AudioSettings.dspTime >= nextBeatTime - beatInterval/2)
+            if (AudioSettings.dspTime >= nextBeatTime - beatInterval / 2)
             {
                 OnBeat();
 
@@ -96,16 +89,6 @@ public class BeatController : MonoBehaviour
         nextBeatTime = scheduledStartTime;
     }
 
-
-    private void OnHalfBeat()
-    {
-        // You can still have other logic here if needed
-        print("Half Beat! " + AudioSettings.dspTime);
-
-        // Invoke the event
-        OnHalfBeatEvent?.Invoke();
-    }
-
     private void OnBeat()
     {
         // You can still have other logic here if needed
@@ -129,12 +112,9 @@ public class BeatController : MonoBehaviour
     // Reset the coroutine
     public void Restart()
     {
-        if (beatCoroutine != null)
-        {
-            audioSource.Stop();
-            InitRhythm();
-            StartPlaying();
-        }
+        audioSource.Stop();
+        InitRhythm();
+        StartPlaying();
     }
 
     // Change audio
@@ -144,11 +124,6 @@ public class BeatController : MonoBehaviour
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
-        }
-
-        if (beatCoroutine != null)
-        {
-            StopCoroutine(beatCoroutine);
         }
 
         // Set the new audio clip
