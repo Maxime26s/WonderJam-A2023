@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,5 +51,9 @@ public class PlayerController : MonoBehaviour
     public List<BaseCard> GetHand()
     {
         return PlayerData.hand;
+    }
+    public Deck GetDeck()
+    {
+        return PlayerData.deck;
     }
 }

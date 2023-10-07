@@ -21,6 +21,7 @@ public class PlayerData : MonoBehaviour
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
     public List<BaseCard> hand { get { return _hand; } set { _hand = value; } }
+    public Deck deck;
 
     void OnGameStart()
     {

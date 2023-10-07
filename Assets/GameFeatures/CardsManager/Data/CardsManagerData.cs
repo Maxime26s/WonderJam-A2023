@@ -14,17 +14,17 @@ public class CardsManagerData : MonoBehaviour
 
     public void UpdateCurrentPlayer()
     {
-        PlayerManager pm = (PlayerManager)Singleton.Instance;
-        player = pm.PlayerManagerData.GetCurrentPlayer();
     }
 
     public void RemoveCard(int index, bool drawNewCard=true)
     {
         player.GetHand().RemoveAt(index);
         if (drawNewCard)
-        {
-            // TODO:
-            //player.DrawCard();
-        }
+            DrawCard();
+    }
+
+    internal void DrawCard()
+    {
+        player.GetHand().Add(player.GetDeck().DrawCard());
     }
 }
