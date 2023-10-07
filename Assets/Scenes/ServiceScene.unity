@@ -524,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totalNbPlayer: 4
+  _playersToSpawn: 
 --- !u!1 &1156214339
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +872,10 @@ PrefabInstance:
     - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
       propertyPath: initialSpeed
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
+      propertyPath: shouldStartOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2931995443048160767, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
       propertyPath: Loop
