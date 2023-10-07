@@ -18,8 +18,7 @@ public class BeatBar : MonoBehaviour
 
     public List<GameObject> beats = new List<GameObject>();
 
-    private Vector2 startPos;
-    private Vector2 centerPos;
+    private float startCenterDistance;
 
     private SineFunction sineFunction;
 
@@ -27,9 +26,9 @@ public class BeatBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = spawnTransform.position;
-        centerPos = centerTransform.position;
-        sineFunction = ExtractSineFunction(startPos, centerPos);
+        startCenterDistance = Mathf.Abs(centerTransform.position.x - spawnTransform.position.x);
+
+        sineFunction = ExtractSineFunction(spawnTransform.position, centerTransform.position);
 
         BeatController.Instance.OnBeatEvent += OnBeat;
         beatAccuracy.OnHitEvent += OnHit;
@@ -46,6 +45,20 @@ public class BeatBar : MonoBehaviour
 
         BeatController.Instance.OnBeatEvent -= OnBeat;
         beatAccuracy.OnHitEvent -= OnHit;
+    }
+
+    void Update()
+    {
+        if (beats.Count == 0)
+        {
+            return;
+        }
+
+        if (beats[0]?.transform.position.x - centerTransform.position.x >= startCenterDistance / 3.0f)
+        {
+            beats.RemoveAt(0);
+            OnHitEvent?.Invoke(this, new HitEventArgs(new InputAction.CallbackContext(), HitResult.Miss));
+        }
     }
 
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
@@ -78,7 +91,7 @@ public class BeatBar : MonoBehaviour
             return;
         }
 
-        var go = Instantiate(beatPrefab, spawnTransform.position, Quaternion.identity, null);
+        var go = Instantiate(beatPrefab, spawnTransform.position, Quaternion.identity, transform);
         go.GetComponent<Beat>().Init(sineFunction);
 
         beats.Add(go);
@@ -86,20 +99,10 @@ public class BeatBar : MonoBehaviour
 
     private void OnHit(object sender, InputAction.CallbackContext context)
     {
-        float startCenterDistance = Mathf.Abs(centerPos.x - startPos.x);
-
-        if (beats.Count > 1)
-        {
-            while (beats.Count != 0 && (beats[0] == null || beats[0].transform.position.x - centerPos.x >= startCenterDistance / 3.0f))
-            {
-                beats.RemoveAt(0);
-            }
-        }
-
         if (beats.Count == 0)
             return;
 
-        float distance = Mathf.Abs(beats[0].transform.position.x - centerPos.x);
+        float distance = Mathf.Abs(beats[0].transform.position.x - centerTransform.position.x);
 
         if (distance > startCenterDistance / 2.0f)
         {

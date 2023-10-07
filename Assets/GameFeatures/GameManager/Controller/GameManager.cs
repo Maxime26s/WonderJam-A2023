@@ -40,13 +40,24 @@ public class GameManager : Singleton<GameManager>
         StartNextRound();
     }
 
+    public void StartGameNOW()
+    {
+        GameState = GameState.GameBegin;
+
+        _playerManager.Init();
+
+        //yield return _waitBeforeStartGame;
+
+        StartCoroutine(StartNextRound());
+    }
+
     //Bind this on running out of actions and skipping turn
     public void TurnOver()
     {
         StartCoroutine(ChangeTurn());
     }
 
-    public IEnumerator ChangeTurn()
+    IEnumerator ChangeTurn()
     {
         GameState = GameState.ChangingTurn;
 
@@ -55,7 +66,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(StartNextRound());
     }
 
-    public IEnumerator StartNextRound()
+    IEnumerator StartNextRound()
     {
         yield return _waitBetweenEachRound;
 
@@ -64,7 +75,7 @@ public class GameManager : Singleton<GameManager>
         StartTics();
     }
 
-    public void StartTics()
+    void StartTics()
     {
         _beatController.StartPlaying();
     }

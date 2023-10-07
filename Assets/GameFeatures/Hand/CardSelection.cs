@@ -24,8 +24,12 @@ public class CardSelection : MonoBehaviour
 
     void OnHit(object sender, HitEventArgs args)
     {
+        // TODO: LOSE ACTION POINTS
+
         if (args.Result == HitResult.Miss)
+        {
             return;
+        }
 
         if (args.Context.action.name == "Use")
         {
@@ -44,7 +48,7 @@ public class CardSelection : MonoBehaviour
     void Move(HitEventArgs args)
     {
         //cards[currentIndex].Unselect();
-        cards[currentIndex].SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+        // TODO: PLAY CARD UNHOVER ANIMATION
 
         if (args.Context.ReadValue<float>() > 0)
         {
@@ -64,21 +68,21 @@ public class CardSelection : MonoBehaviour
         }
 
         //cards[currentIndex].Select();
-        cards[currentIndex].SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
+        // TODO: PLAY CARD HOVER ANIMATION
 
     }
 
     void Use(HitEventArgs args)
     {
         //cards[currentIndex].PlayCard(args.Result);
-        Destroy(cards[currentIndex]); // TO CHANGE FOR: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
+        // TODO: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
     }
     
     void Reload(HitEventArgs args)
     {
         for(int i = 0; i < cards.Count; i++)
         {
-            // TO ADD: 1. REROLL ALL CARDS
+            // TODO: REROLL ALL CARDS
         }
     }
 }

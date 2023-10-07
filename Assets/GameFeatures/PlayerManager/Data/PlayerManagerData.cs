@@ -70,7 +70,7 @@ public class PlayerManagerData : MonoBehaviour
 
         for (int i = 1; i < PlayerTurnOrderList.Count; i++)
         {
-            player = GetPlayer(PlayerTurnOrderList[playerIndex + 1 % PlayerTurnOrderList.Count]);
+            player = GetPlayer(PlayerTurnOrderList[(playerIndex + 1) % PlayerTurnOrderList.Count]);
 
             if (player.PlayerData.IsAlive)
             {
@@ -88,7 +88,7 @@ public class PlayerManagerData : MonoBehaviour
         {
             if (PlayerTurnOrderList[i] == _currentPlayerId)
             {
-                return GetPlayer(PlayerTurnOrderList[i + 1 % PlayerTurnOrderList.Count]);
+                return GetPlayer(PlayerTurnOrderList[(i + 1) % PlayerTurnOrderList.Count]);
             }
         }
 
