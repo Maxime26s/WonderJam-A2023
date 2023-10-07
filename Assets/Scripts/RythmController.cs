@@ -13,6 +13,8 @@ public class RhythmController : MonoBehaviour
     private float beatInterval;
     private AudioSource audioSource;
     private Coroutine beatCoroutine;
+    private bool shouldChangeSpeed = false;
+    private float newSpeed = 1.0f;
 
     // Event to subscribe to
     public delegate void BeatAction();
@@ -43,6 +45,7 @@ public class RhythmController : MonoBehaviour
     {
         currentBPM = startingBPM;
         audioSource.pitch = 1.0f;
+        audioSource.time = 0.0f;
         audioSource.Play();
         beatInterval = 60.0f / currentBPM;
         beatCoroutine = StartCoroutine(BeatTick());
@@ -54,6 +57,13 @@ public class RhythmController : MonoBehaviour
         {
             yield return new WaitForSeconds(beatInterval);
             OnBeat();
+            if (shouldChangeSpeed)
+            {
+                shouldChangeSpeed = false;
+                audioSource.pitch = newSpeed;
+                currentBPM = startingBPM * audioSource.pitch;
+                beatInterval = 60.0f / currentBPM;
+            }
         }
     }
 
@@ -69,17 +79,17 @@ public class RhythmController : MonoBehaviour
     // External function to modify speed
     public void SetSpeed(float speedCoefficient)
     {
-        audioSource.pitch = speedCoefficient;
-        currentBPM = startingBPM * audioSource.pitch;
-        beatInterval = 60.0f / currentBPM;
+        newSpeed = speedCoefficient;
+        shouldChangeSpeed = true;
     }
 
     // Reset the coroutine
-    public void ResetRhythm()
+    public void Restart()
     {
         if (beatCoroutine != null)
         {
             StopCoroutine(beatCoroutine);
+            audioSource.Stop();
             InitRhythm();
         }
     }
