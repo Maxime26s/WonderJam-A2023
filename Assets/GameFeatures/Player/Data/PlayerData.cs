@@ -24,7 +24,7 @@ public class PlayerData : MonoBehaviour
 
     private void Awake()
     {
-        cards = new PlayerCards();
+        
     }
 
     void OnGameStart()

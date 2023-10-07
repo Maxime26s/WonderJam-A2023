@@ -46,9 +46,9 @@ public class GameManager : Singleton<GameManager>
 
         yield return _waitBeforeStartGame;
 
-        StartTics();
+        //StartTics();
         
-        yield return WaitForTick(3);
+        //yield return WaitForTick(3);
 
         StartCoroutine(StartNextRound());
 
@@ -79,6 +79,8 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator StartNextRound()
     {
+        StartTics();
+        yield return WaitForTick(3);
         int tick0 = tickCount;
 
         while (tickCount < tick0 + 3)  // Wait until tickCounter increments by 3 from its initial value
@@ -94,7 +96,6 @@ public class GameManager : Singleton<GameManager>
         countDownText.gameObject.SetActive(false);
         GameState = GameState.Playing;
         //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
-        StartTics();
     }
 
     void StartTics()

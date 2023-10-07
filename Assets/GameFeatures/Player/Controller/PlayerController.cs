@@ -20,8 +20,6 @@ public class PlayerController : MonoBehaviour
         controllerActions = new ControllerActions();
 
         controllerActions.Gameplay.SkipTurn.performed += OnSkipPerformed;
-
-        Mulligan();
     }
 
     private void OnDestroy()
