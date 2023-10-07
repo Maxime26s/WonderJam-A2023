@@ -9,6 +9,8 @@ public class CardsManager : Singleton<CardsManager>
     PlayerController player;
 
 
+    [SerializeField] private CardDatabase _cardDatabase = null;
+
     private void Start()
     {
         BeatController.Instance.FixedOnBeatEvent += Tick;

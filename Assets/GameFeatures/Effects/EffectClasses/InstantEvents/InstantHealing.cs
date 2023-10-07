@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Instant Healing", menuName = "Effect/Instant Healing"]
+[CreateAssetMenu(fileName = "Instant Healing", menuName = "Effect/Instant Healing")]
 public class InstantHealing : InstantEffect
 {
     [SerializeField] float _healing;
