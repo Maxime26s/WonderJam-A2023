@@ -40,6 +40,17 @@ public class GameManager : Singleton<GameManager>
         StartNextRound();
     }
 
+    public void StartGameNOW()
+    {
+        GameState = GameState.GameBegin;
+
+        _playerManager.Init();
+
+        //yield return _waitBeforeStartGame;
+
+        StartCoroutine(StartNextRound());
+    }
+
     //Bind this on running out of actions and skipping turn
     public void TurnOver()
     {
