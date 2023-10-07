@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseEffect
+public abstract class BaseEffect : ScriptableObject
 {
-    [SerializeField]
-    bool _isOver = false;
+    [SerializeField] bool _isOver = false;
 
     public bool isOver { get => _isOver; set => _isOver = value; }
 

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class TickHealing : TickBasedEffect
 {
-    [SerializeField]
-    float _healing;
+    [SerializeField] private float _healing;
 
-    public float healing { get => _healing; set => _healing = value; }
+    public float Healing { get => _healing; set => _healing = value; }
 
     public override void Tick() 
     {
-        tickDuration--;
-        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
+        TickDuration--;
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(_healing);
 
-        if (tickDuration <= 0 )
+        if (TickDuration <= 0 )
         {
             isOver = true;
         }

@@ -11,10 +11,10 @@ public class TickDamage : TickBasedEffect
 
     public override void Tick()
     {
-        tickDuration--;
+        TickDuration--;
         PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
 
-        if (tickDuration <= 0)
+        if (TickDuration <= 0)
         {
             isOver = true;
         }

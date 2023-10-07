@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class TickBasedEffect : BaseEffect
 {
-    [SerializeField]
-    int _tickDuration;
+    [SerializeField] int _tickDuration;
 
-    public int tickDuration { get => _tickDuration; set => _tickDuration = value; }
+    public int TickDuration { get => _tickDuration; set => _tickDuration = value; }
 }
