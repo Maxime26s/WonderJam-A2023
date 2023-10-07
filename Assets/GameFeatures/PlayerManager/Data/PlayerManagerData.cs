@@ -12,9 +12,12 @@ public class PlayerManagerData : MonoBehaviour
     int _currentPlayerId;
     List<int> _playerTurnOrderList = new List<int>();
     PlayerTurnOrderEnum _playerTurnOrder;
+	[SerializeField]
+	List<int> _playersToSpawn = new List<int>();
 
     public List<PlayerController> PlayersList { get => _playersList; set => _playersList = value; }
     public List<int> PlayerTurnOrderList { get => _playerTurnOrderList; set => _playerTurnOrderList = value; }
+	public List<int> PlayersToSpawn { get => _playersToSpawn; set => _playersToSpawn = value; }
     public PlayerTurnOrderEnum PlayerTurnOrder { get => _playerTurnOrder; set => _playerTurnOrder = value; }
 
     public void ResetData()
