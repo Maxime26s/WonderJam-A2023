@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsHolder: {fileID: 0}
+  _cardDatabase: {fileID: 11400000, guid: 32c6f00c434211b479b4bc8d1d27cea5, type: 2}
 --- !u!4 &1341831685
 Transform:
   m_ObjectHideFlags: 0
@@ -870,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6809ccf6b381a41a0e86251c17a828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentBattleGround: {fileID: 1578780826}
+  _currentBattleGround: {fileID: 0}
 --- !u!4 &1475696952
 Transform:
   m_ObjectHideFlags: 0
