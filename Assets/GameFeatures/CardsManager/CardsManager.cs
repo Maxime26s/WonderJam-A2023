@@ -49,9 +49,11 @@ public class CardsManager : Singleton<CardsManager>
 
     public void Tick()
     {
-        PlayerCards cards = player.GetCards();
-        cards.PlayCard();
-        PlayCard();
+        if (player)
+        {
+            PlayerCards cards = player.GetCards();
+            cards.PlayCard();
+        }
         //RenderCards();
     }
 
