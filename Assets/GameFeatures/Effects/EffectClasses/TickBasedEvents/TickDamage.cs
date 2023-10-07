@@ -34,8 +34,7 @@ public class TickDamage : TickBasedEffect
     public override void Tick()
     {
         tickDuration--;
-        PlayerManager pm = (PlayerManager)Singleton.Instance;
-        pm.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
 
         if (tickDuration <= 0)
         {

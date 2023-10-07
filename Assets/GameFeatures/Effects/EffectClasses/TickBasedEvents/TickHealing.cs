@@ -35,8 +35,7 @@ public class TickHealing : TickBasedEffect
     public override void Tick() 
     {
         tickDuration--;
-        PlayerManager pm = (PlayerManager) Singleton.Instance;
-        pm.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
 
         if (tickDuration <= 0 )
         {

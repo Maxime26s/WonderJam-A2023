@@ -37,8 +37,7 @@ public class InstantDamage : InstantEvent
 
         if (tickCountdown <= 0)
         {
-            PlayerManager pm = (PlayerManager)Singleton.Instance;
-            pm.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
             isOver = true;
         }
     }

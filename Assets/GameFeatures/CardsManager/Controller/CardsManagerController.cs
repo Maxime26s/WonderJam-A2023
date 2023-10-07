@@ -11,6 +11,12 @@ public class CardsManagerController : Singleton<CardsManagerController>
 
     public CardsManagerData cardsManagerData { get { return _cardsManagerData; } }
 
+    private void Start()
+    {
+        RythmController.Instance.FixedOnBeatEvent += Tick;
+        RythmController.Instance.OnBeatEvent += UpdatePlayer;
+    }
+
     private void RenderCards()
     {
         List<BaseCard> cards = cardsManagerData.player.GetHand();

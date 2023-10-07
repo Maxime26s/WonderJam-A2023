@@ -20,6 +20,9 @@ public class RythmController : MonoBehaviour
     public delegate void BeatAction();
     public event BeatAction OnBeatEvent;
 
+    // Event to subscribe to
+    public event BeatAction FixedOnBeatEvent;
+
     private void Awake()
     {
         // Singleton setup
@@ -69,6 +72,8 @@ public class RythmController : MonoBehaviour
 
     private void OnBeat()
     {
+        // Invoke the event
+        FixedOnBeatEvent?.Invoke();
         // Invoke the event
         OnBeatEvent?.Invoke();
 
