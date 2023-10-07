@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BeatBar : MonoBehaviour
 {
@@ -83,7 +84,7 @@ public class BeatBar : MonoBehaviour
         beats.Add(go);
     }
 
-    private void OnHit()
+    private void OnHit(object sender, InputAction.CallbackContext context)
     {
         float startCenterDistance = Mathf.Abs(centerPos.x - startPos.x);
 
@@ -110,22 +111,22 @@ public class BeatBar : MonoBehaviour
         if (score > 0.975f)
         {
             print("Perfect!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Perfect));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Perfect));
         }
         else if (score > 0.925f)
         {
             print("Good!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Good));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Good));
         }
         else if (score > 0.85f)
         {
             print("Bad!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Bad));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Bad));
         }
         else
         {
             print("Miss!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Miss));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Miss));
         }
 
         Destroy(beats[0]);
@@ -146,9 +147,11 @@ public enum HitResult
 public class HitEventArgs : EventArgs
 {
     public HitResult Result { get; }
+    public InputAction.CallbackContext Context { get; }
 
-    public HitEventArgs(HitResult result)
+    public HitEventArgs(InputAction.CallbackContext context, HitResult result)
     {
+        Context = context;
         Result = result;
     }
 }
