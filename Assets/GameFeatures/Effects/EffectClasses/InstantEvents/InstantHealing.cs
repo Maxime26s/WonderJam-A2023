@@ -2,34 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantHealing : InstantEvent
+[CreateAssetMenu(fileName = "Instant Healing", menuName = "Effect/Instant Healing")]
+public class InstantHealing : InstantEffect
 {
-    [SerializeField]
-    float _healing;
-
+    [SerializeField] float _healing;
     public float healing { get => _healing; set => _healing = value; }
-
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-    }
 
     public override void Tick()
     {

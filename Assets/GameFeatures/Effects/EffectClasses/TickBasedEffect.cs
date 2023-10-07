@@ -4,20 +4,7 @@ using UnityEngine;
 
 public abstract class TickBasedEffect : BaseEffect
 {
-    [SerializeField]
-    int _tickDuration;
+    [SerializeField] int _tickDuration;
 
-    public int tickDuration { get => _tickDuration; set => _tickDuration = value; }
-
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
+    public int TickDuration { get => _tickDuration; set => _tickDuration = value; }
 }

@@ -13,14 +13,14 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     float _currentHealth;
     [SerializeField]
-    List<BaseCard> _hand;
+    List<Card> _hand;
     bool _isAlive = true;
 
     public int PlayerId { get { return _playerId; } set { _playerId = value; } }
     public float MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
-    public List<BaseCard> hand { get { return _hand; } set { _hand = value; } }
+    public List<Card> hand { get { return _hand; } set { _hand = value; } }
     public Deck deck;
 
     void OnGameStart()

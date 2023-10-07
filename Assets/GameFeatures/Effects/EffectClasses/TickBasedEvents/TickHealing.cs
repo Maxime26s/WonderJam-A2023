@@ -4,40 +4,16 @@ using UnityEngine;
 
 public class TickHealing : TickBasedEffect
 {
-    [SerializeField]
-    float _healing;
+    [SerializeField] private float _healing;
 
-    public float healing { get => _healing; set => _healing = value; }
-
-
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-    }
+    public float Healing { get => _healing; set => _healing = value; }
 
     public override void Tick() 
     {
-        tickDuration--;
-        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
+        TickDuration--;
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(_healing);
 
-        if (tickDuration <= 0 )
+        if (TickDuration <= 0 )
         {
             isOver = true;
         }

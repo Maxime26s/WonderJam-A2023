@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : Singleton<BallController>
+public class Ball : Singleton<Ball>
 {
 
     public List<BaseEffect> effects;
+
+    private void Start()
+    {
+        BeatController.Instance.OnBeatEvent += Tick;
+    }
 
     public void AddEffect(BaseEffect e)
     {
@@ -24,7 +29,7 @@ public class BallController : Singleton<BallController>
         {
             if (e.isOver)
             {
-                Destroy(e);
+                effects.Remove(e);
                 return true;
             }
             return false;
