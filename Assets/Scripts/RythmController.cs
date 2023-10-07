@@ -39,16 +39,6 @@ public class RhythmController : MonoBehaviour
         InitRhythm();
     }
 
-    private void Update()
-    {
-        IEnumerator enumerator()
-        {
-            yield return new WaitForSeconds(5);
-            SetSpeed(2);
-        }
-        StartCoroutine(enumerator());
-    }
-
     private void InitRhythm()
     {
         currentBPM = startingBPM;
