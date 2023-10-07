@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CardsManager : Singleton<CardsManager>
 {
+    [SerializeField]
+    public GameObject cardsHolder;
     int selectedCard = -1;
     PlayerController player;
 
@@ -15,6 +17,7 @@ public class CardsManager : Singleton<CardsManager>
     {
         BeatController.Instance.FixedOnBeatEvent += Tick;
         BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
+        UpdateCurrentPlayer();
     }
 
     private void RenderCards()
@@ -22,12 +25,18 @@ public class CardsManager : Singleton<CardsManager>
         List<Card> cards = player.GetHand();
         // TODO: place cards sur le jeu genre
         // Cards Placeholder, juste changer les infos avec celles de la carte
+        //for (int i = 0; i < cardsHolder.transform.childCount; i++)
+        //{
+        //    Transform child = cardsHolder.transform.GetChild(i);
+        //    cards[i].gameObject.SetActive(true);
+        //    cards[i].gameObject.transform.position  = child.position;
+        //}
     }
 
     void UpdateCurrentPlayer()
     {
         player = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        RenderCards();
+        //RenderCards();
     }
 
     public void Tick()
@@ -39,7 +48,7 @@ public class CardsManager : Singleton<CardsManager>
             RemoveCard(selectedCard);
         }
         selectedCard = -1;
-        RenderCards();
+        //RenderCards();
     }
 
     public void RemoveCard(int index, bool drawNewCard = true)
