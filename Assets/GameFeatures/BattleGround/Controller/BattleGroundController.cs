@@ -18,10 +18,9 @@ public class BattleGroundController : MonoBehaviour
     GameObject _playersParent;
     public GameObject PlayersParent { get => _playersParent; set => _playersParent = value; }
 
-
     public void Awake()
     {
-        BattleGroundManager bgManager = (BattleGroundManager)BattleGroundManager.Instance;
+        BattleGroundManager bgManager = BattleGroundManager.Instance;
 
         bgManager.SetCurrentBattleground(this);
     }

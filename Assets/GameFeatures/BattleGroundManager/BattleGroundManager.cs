@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleGroundManager : Singleton
+public class BattleGroundManager : Singleton<BattleGroundManager>
 {
     BattleGroundController _currentBattleGround;
 

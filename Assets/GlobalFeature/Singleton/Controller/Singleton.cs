@@ -2,18 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public static Singleton Instance { get; private set; }
+    private static T _instance;
 
-    private void Awake()
+    public static T Instance
     {
-        if(Instance != null && Instance != this)
+        get
         {
-            Destroy(this);
-            return;
-        }
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<T>();
 
-        Instance = this;
+                if (_instance == null)
+                {
+                    GameObject singletonObject = new GameObject(typeof(T).Name);
+                    _instance = singletonObject.AddComponent<T>();
+                }
+            }
+
+            return _instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this as T;
+        }
     }
 }

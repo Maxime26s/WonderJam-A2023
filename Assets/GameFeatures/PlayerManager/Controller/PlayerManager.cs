@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : Singleton
+public class PlayerManager : Singleton<PlayerManager>
 {
     [SerializeField]
     PlayerManagerData _playerManagerData;
