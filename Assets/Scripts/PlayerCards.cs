@@ -94,6 +94,18 @@ public class PlayerCards
 
         Shuffle();
     }
+
+    public void Mulligan()
+    {
+        int indexBackup = selectedIndex;
+        for (int index = 0; index < 5; index++)
+        {
+            selectedIndex = index;
+            DrawCard();
+        }
+        selectedIndex = indexBackup;
+    }
+
     public Card[] GetHand()
     {
         return hand;

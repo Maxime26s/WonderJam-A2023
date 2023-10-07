@@ -7,8 +7,11 @@ public class CardSelection : Singleton<CardSelection>
 {
     public BeatBar beatBar;
 
-    public List<Card> displayedCards;
+    public List<CardInHandUI> displayedCards;
     private PlayerController currentPlayer;
+
+    [SerializeField]
+    private Card blankCard;
 
     [SerializeField]
     private GameObject cardInHandTemplate;
@@ -52,8 +55,8 @@ public class CardSelection : Singleton<CardSelection>
     void Move(HitEventArgs args)
     {
         //cards[currentIndex].Unselect();
-        displayedCards[currentIndex].SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
-        
+        displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+
         int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
         // TODO: PLAY CARD UNHOVER ANIMATION
 
@@ -61,7 +64,7 @@ public class CardSelection : Singleton<CardSelection>
         currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
         //cards[currentIndex].Select();
-        displayedCards[currentIndex].SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
+        displayedCards[currentIndex].gameObject.SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
         // TODO: PLAY CARD HOVER ANIMATION
 
     }
@@ -69,27 +72,18 @@ public class CardSelection : Singleton<CardSelection>
     void Use(HitEventArgs args)
     {
         currentPlayer.GetCards().PlayCard();
-        Destroy(displayedCards[currentIndex]); // TO CHANGE FOR: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
+        displayedCards[currentIndex].SetupCardUI(blankCard);
+
+        // TO CHANGE FOR: PLAY CARD ANIMATION
     }
-    
+
     void Reload(HitEventArgs args)
     {
-        for(int i = 0; i < displayedCards.Count; i++)
+        currentPlayer.Mulligan();
+        foreach (CardInHandUI card in displayedCards)
         {
-            foreach (Card card in displayedCards[i])
-                Destroy(card);
-
-            foreach (Card card in currentPlayer.GetHand())
-                displayedCards.Add();
-            // TO ADD: 1. REROLL ALL CARDS
-        }
-    }
-
-    public void RefreshDisplay(PlayerController player)
-    {
-        foreach(Card card in player.GetHand())
-        {
-            //displayedCards.Add(c);
+            int index = 0;
+            card.SetupCardUI(currentPlayer.GetHand()[index++]);
         }
     }
 }

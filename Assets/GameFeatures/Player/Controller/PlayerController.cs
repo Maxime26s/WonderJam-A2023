@@ -94,4 +94,9 @@ public class PlayerController : MonoBehaviour
     {
         return PlayerData.cards.GetHand();
     }
+
+    public void Mulligan()
+    {
+        PlayerData.cards.Mulligan();
+    }
 }
