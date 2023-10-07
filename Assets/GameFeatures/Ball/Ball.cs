@@ -29,7 +29,7 @@ public class Ball : Singleton<Ball>
         {
             if (e.isOver)
             {
-                Destroy(e);
+                effects.Remove(e);
                 return true;
             }
             return false;

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         return PlayerData.CurrentHealth > 0;
     }
 
-    public List<BaseCard> GetHand()
+    public List<Card> GetHand()
     {
         return PlayerData.hand;
     }

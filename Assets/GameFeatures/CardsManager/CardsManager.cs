@@ -20,7 +20,7 @@ public class CardsManager : Singleton<CardsManager>
 
     private void RenderCards()
     {
-        List<BaseCard> cards = player.GetHand();
+        List<Card> cards = player.GetHand();
         // TODO: place cards sur le jeu genre
         // Cards Placeholder, juste changer les infos avec celles de la carte
         //for (int i = 0; i < cardsHolder.transform.childCount; i++)
@@ -41,7 +41,7 @@ public class CardsManager : Singleton<CardsManager>
     {
         if (selectedCard != -1)
         {
-            List<BaseCard> cards = player.GetHand();
+            List<Card> cards = player.GetHand();
             cards[selectedCard].PlayCard();
             RemoveCard(selectedCard);
         }
