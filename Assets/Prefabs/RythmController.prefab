@@ -45,14 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55012a322695ad944890c155ffb58633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBPM: 120
-  currentBPM: 0
-  beatInterval: 0
   lastBeatTime: 0
-  offset: 0.05
-  audioLeadInTime: -0.104
-  initialSpeed: 0.5
-  shouldStartOnAwake: 1
+  track: {fileID: 11400000, guid: 69bb0dedb7515504ea1f7c30ec579001, type: 2}
+  shouldStartOnAwake: 0
 --- !u!82 &2931995443048160767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63,7 +58,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: da6a9e94f1e60ad46b0e9e58af7f7406, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CardSelection : MonoBehaviour
+public class CardSelection : Singleton<CardSelection>
 {
     public BeatBar beatBar;
 
-    public List<GameObject> cards;
+    public List<CardInHandUI> displayedCards;
+
+    [SerializeField]
+    private PlayerController currentPlayer;
+
+    [SerializeField]
+    private Card blankCard;
+
+    [SerializeField]
+    private GameObject cardInHandTemplate;
     public int currentIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = cards.Count / 2;
+        currentIndex = displayedCards.Count / 2;
         beatBar.OnHitEvent += OnHit;
+        RefreshDisplay();
     }
 
     private void OnDestroy()
@@ -43,46 +53,49 @@ public class CardSelection : MonoBehaviour
         {
             Reload(args);
         }
+
+        RefreshDisplay();
     }
 
     void Move(HitEventArgs args)
     {
         //cards[currentIndex].Unselect();
+        displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+
+        int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
         // TODO: PLAY CARD UNHOVER ANIMATION
 
-        if (args.Context.ReadValue<float>() > 0)
-        {
-            currentIndex++;
-            if (currentIndex >= cards.Count)
-            {
-                currentIndex = 0;
-            }
-        }
-        else
-        {
-            currentIndex--;
-            if (currentIndex < 0)
-            {
-                currentIndex = cards.Count - 1;
-            }
-        }
+        currentIndex = (currentIndex + value) % (displayedCards.Count + 1);
+        currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
         //cards[currentIndex].Select();
+        displayedCards[currentIndex].gameObject.SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
         // TODO: PLAY CARD HOVER ANIMATION
-
     }
 
     void Use(HitEventArgs args)
     {
-        //cards[currentIndex].PlayCard(args.Result);
-        // TODO: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
+        currentPlayer.GetCards().PlayCard();
+        displayedCards[currentIndex].SetupCardUI(blankCard);
+
+        // TO CHANGE FOR: PLAY CARD ANIMATION
     }
-    
+
     void Reload(HitEventArgs args)
     {
-        for(int i = 0; i < cards.Count; i++)
+        currentPlayer.Mulligan();
+        foreach (CardInHandUI card in displayedCards)
         {
-            // TODO: REROLL ALL CARDS
+            int index = 0;
+            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+        }
+    }
+    void RefreshDisplay()
+    {
+        foreach (CardInHandUI card in displayedCards)
+        {
+            int index = 0;
+            card.SetupCardUI(currentPlayer.GetHand()[index++]);
         }
     }
 }

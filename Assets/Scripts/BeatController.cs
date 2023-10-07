@@ -7,19 +7,15 @@ public class BeatController : MonoBehaviour
     // Singleton instance
     public static BeatController Instance { get; private set; }
 
-    public float startingBPM;
-    public float currentBPM;
-    public double beatInterval;
     public double lastBeatTime;
-    public double offset;
-    public double audioLeadInTime = 0.0d;
-    public float initialSpeed = 1.0f;
+
+    public MusicData track;
+    public double newSpeed = 1.0d;
 
     public bool shouldStartOnAwake = false;
 
     private AudioSource audioSource;
     private bool shouldChangeSpeed = false;
-    private float newSpeed = 1.0f;
 
     private double nextBeatTime;
 
@@ -28,7 +24,7 @@ public class BeatController : MonoBehaviour
     public event BeatAction OnBeatEvent;
 
     // Event to subscribe to
-    public event BeatAction FixedOnBeatEvent;
+    public event BeatAction EarlyOnBeatEvent;
 
     private void Awake()
     {
@@ -43,10 +39,10 @@ public class BeatController : MonoBehaviour
             return;
         }
 
+        track.Speed = newSpeed;
+
         audioSource = GetComponent<AudioSource>();
-        startingBPM *= initialSpeed;
-        audioLeadInTime /= initialSpeed;
-        InitRhythm();
+        SetupAudioSource();
     }
 
     private void Start()
@@ -66,35 +62,33 @@ public class BeatController : MonoBehaviour
     {
         if (audioSource.isPlaying)
         {
-            if (AudioSettings.dspTime >= nextBeatTime - beatInterval / 2)
+            if (AudioSettings.dspTime >= nextBeatTime - track.GetBeatInterval() / 2)
             {
                 OnBeat();
 
                 if (shouldChangeSpeed)
                 {
                     shouldChangeSpeed = false;
-                    audioSource.pitch = newSpeed;
-                    currentBPM = startingBPM * audioSource.pitch;
-                    beatInterval = 60.0f / currentBPM;
+                    track.Speed = newSpeed;
+                    audioSource.pitch = (float)track.Speed;
                 }
 
                 // Calculate the next beat time.
-                nextBeatTime += beatInterval;
+                nextBeatTime += track.GetBeatInterval();
             }
         }
     }
 
-    public void InitRhythm()
+    public void SetupAudioSource()
     {
-        currentBPM = startingBPM;
-        audioSource.pitch = initialSpeed;
+        audioSource.clip = track.clip;
+        audioSource.pitch = (float)track.Speed;
         audioSource.time = 0.0f;
-        beatInterval = 60.0f / currentBPM;
     }
 
     public void StartPlaying()
     {
-        double scheduledStartTime = AudioSettings.dspTime + audioLeadInTime;
+        double scheduledStartTime = AudioSettings.dspTime + track.GetAudioLeadInTime();
         audioSource.PlayScheduled(scheduledStartTime);
         nextBeatTime = scheduledStartTime;
     }
@@ -107,32 +101,32 @@ public class BeatController : MonoBehaviour
     private void OnBeat()
     {
         // You can still have other logic here if needed
-        lastBeatTime = AudioSettings.dspTime + offset;
+        lastBeatTime = AudioSettings.dspTime + track.GetOffset();
         print("Beat! " + AudioSettings.dspTime);
 
         // Invoke the event
-        FixedOnBeatEvent?.Invoke();
+        EarlyOnBeatEvent?.Invoke();
         // Invoke the event
         OnBeatEvent?.Invoke();
 
     }
 
     // External function to modify speed
-    public void SetSpeed(float speedCoefficient)
+    public void SetSpeed(double newSpeed)
     {
-        newSpeed = speedCoefficient;
+        this.newSpeed = newSpeed;
         shouldChangeSpeed = true;
     }
 
     // Reset the coroutine
-    public void ResetData()
+    public void ResetAudioSource()
     {
         audioSource.Stop();
-        InitRhythm();
+        SetupAudioSource();
     }
 
     // Change audio
-    public void ChangeAudio(AudioClip clip, int newStartingBPM)
+    public void ChangeTrack(MusicData newTrack)
     {
         // Stop the currently playing audio and the associated coroutine
         if (audioSource.isPlaying)
@@ -141,12 +135,9 @@ public class BeatController : MonoBehaviour
         }
 
         // Set the new audio clip
-        audioSource.clip = clip;
-
-        startingBPM = newStartingBPM;
+        track = newTrack;
 
         // Restart the rhythm
-        InitRhythm();
-        StartPlaying();
+        ResetAudioSource();
     }
 }

@@ -22,6 +22,11 @@ public class PlayerData : MonoBehaviour
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
     public PlayerCards cards;
 
+    private void Awake()
+    {
+        
+    }
+
     void OnGameStart()
     {
         ResetData();
