@@ -49,16 +49,21 @@ public class BeatBar : MonoBehaviour
 
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
     {
-        float A = Mathf.Abs(center.y - start.y);
-        double P = 4 * BeatController.Instance.beatInterval;
-        double f = 1 / P;
+        int sign = (int)Mathf.Sign(center.y - start.y);
+        float A = sign * Mathf.Abs(center.y - start.y);
+        double P = 4.0d * BeatController.Instance.beatInterval;
+        double f = 1.0d / P;
+
+        print(BeatController.Instance.beatInterval);
+        print(P);
+        print(f);
 
         return (t) =>
         {
             Vector2 position = Vector2.zero;
 
             position.x = Mathf.Lerp(start.x, start.x + 2 * (center.x - start.x), (float)(t / (BeatController.Instance.beatInterval * 2)));
-            position.y = -A * Mathf.Sin(2 * Mathf.PI * (float)(f * t));
+            position.y = A * Mathf.Sin(2 * Mathf.PI * (float)(f * t)) + start.y;
 
             return position;
         };
@@ -66,7 +71,7 @@ public class BeatBar : MonoBehaviour
 
     private void OnBeat()
     {
-        if(beatToSkip > 0)
+        if (beatToSkip > 0)
         {
             beatToSkip--;
             return;
