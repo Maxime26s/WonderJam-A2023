@@ -11,6 +11,11 @@ public class PlayerManager : Singleton<PlayerManager>
     [SerializeField]
     GameObject _playerPrefab;
 
+    float _timeToMoveToNewPosition = 2f;
+
+    WaitForSeconds _waitForSecondsMoveToNewPosition;
+
+
     #region
     BattleGroundManager _battleGroundManager;
     BattleGroundManager BattleGroundManager 
@@ -28,7 +33,14 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void Start()
     {
-        //SpawnAllPlayers();
+        _waitForSecondsMoveToNewPosition = new WaitForSeconds(_timeToMoveToNewPosition);
+    }
+
+    public void Init()
+    {
+        SpawnAllPlayers();
+        DetermineTurnOrder();
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.PlayerTurnOrderList[0]);
     }
 
     public void SpawnAllPlayers()
@@ -44,7 +56,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (_playerPrefab != null)
         {
-            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().GetPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
             
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
@@ -88,8 +100,39 @@ public class PlayerManager : Singleton<PlayerManager>
                 break;
         }
     }
-    public void MoveAllPlayerNextTurn()
+    public IEnumerator MoveAllPlayerNextPosition()
     {
+        for(int i=0; i< PlayerManagerData.PlayerTurnOrderList.Count; i++)
+        {
+            PlayerController player = PlayerManagerData.GetPlayer(PlayerManagerData.PlayerTurnOrderList[i]);
 
+            player.Animator.SetTrigger("Move");
+
+            Transform endPosition = BattleGroundManager.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[i + 1 % PlayerManagerData.PlayerTurnOrderList.Count]);
+
+            StartCoroutine(MoveToPositionCoroutine(endPosition, player));
+        }
+
+        yield return _waitForSecondsMoveToNewPosition;
+
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
+    }
+
+    public IEnumerator MoveToPositionCoroutine(Transform endPosition, PlayerController player)
+    {
+        float timer = 0f;
+
+        while (timer < _timeToMoveToNewPosition)
+        {
+            timer += Time.deltaTime;
+
+            float t = timer / _timeToMoveToNewPosition;
+            t = t * t * (3f - 2f * t);
+            transform.position = Vector3.Lerp(player.transform.position, endPosition.position, t);
+
+            yield return null;
+        }
+
+        player.transform.position = endPosition.position;
     }
 }
