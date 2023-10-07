@@ -42,13 +42,15 @@ public class CardsManager : Singleton<CardsManager>
         //RenderCards();
     }
 
-    //public void Tick()
-    //{
-    //    PlayerCards cards = player.GetCards();
-    //    cards.PlayCard();
-    //    PlayCard();
-    //    //RenderCards();
-    //}
+    public void Tick()
+    {
+        if (player)
+        {
+            PlayerCards cards = player.GetCards();
+            cards.PlayCard();
+        }
+        //RenderCards();
+    }
 
     public void MoveSelection(bool isMovingLeft)
     {
