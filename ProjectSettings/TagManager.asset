@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 192346907
+    locked: 0
+  - name: Players
+    uniqueID: 2047251041
+    locked: 0
+  - name: Cards
+    uniqueID: 2813416147
+    locked: 0
+  - name: UI
+    uniqueID: 249319739
+    locked: 0
+  - name: OnTop
+    uniqueID: 2541337
+    locked: 0

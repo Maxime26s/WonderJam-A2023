@@ -46,7 +46,7 @@ public class SceneLoader : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Can't quit :)");
+        Application.Quit();
     }
 
     public bool ToggleMute()
