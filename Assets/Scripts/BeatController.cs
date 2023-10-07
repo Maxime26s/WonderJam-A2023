@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RythmController : MonoBehaviour
+public class BeatController : MonoBehaviour
 {
     // Singleton instance
-    public static RythmController Instance { get; private set; }
+    public static BeatController Instance { get; private set; }
 
     public float startingBPM;
+    public float currentBPM;
+    public double beatInterval;
+    public double lastBeatTime;
+    public double offset;
+    public double audioLeadInTime = 0.0d;
+    public float initialSpeed = 1.0f;
 
-    private float currentBPM;
-    private float beatInterval;
     private AudioSource audioSource;
     private Coroutine beatCoroutine;
     private bool shouldChangeSpeed = false;
     private float newSpeed = 1.0f;
+
+    private double nextBeatTime;
 
     // Event to subscribe to
     public delegate void BeatAction();
@@ -29,37 +35,34 @@ public class RythmController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
             return;
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        startingBPM = startingBPM * initialSpeed;
         InitRhythm();
-    }
-
-    private void InitRhythm()
-    {
-        currentBPM = startingBPM;
-        audioSource.pitch = 1.0f;
-        audioSource.time = 0.0f;
-        audioSource.Play();
-        beatInterval = 60.0f / currentBPM;
-        beatCoroutine = StartCoroutine(BeatTick());
-    }
-
-    private IEnumerator BeatTick()
-    {
-        while (true)
+        IEnumerator DelayStart()
         {
-            yield return new WaitForSeconds(beatInterval);
+            yield return new WaitForSeconds(0.5f); // Wait for half a second
+            StartPlaying();
+        }
+        StartCoroutine(DelayStart());
+    }
+
+    private void Update()
+    {
+        if (audioSource.isPlaying && AudioSettings.dspTime >= nextBeatTime)
+        {
             OnBeat();
+
             if (shouldChangeSpeed)
             {
                 shouldChangeSpeed = false;
@@ -67,18 +70,38 @@ public class RythmController : MonoBehaviour
                 currentBPM = startingBPM * audioSource.pitch;
                 beatInterval = 60.0f / currentBPM;
             }
+
+            // Calculate the next beat time.
+            nextBeatTime += beatInterval;
         }
+    }
+
+    private void InitRhythm()
+    {
+        currentBPM = startingBPM;
+        audioSource.pitch = initialSpeed;
+        audioSource.time = 0.0f;
+        beatInterval = 60.0f / currentBPM;
+    }
+
+    private void StartPlaying()
+    {
+        double scheduledStartTime = AudioSettings.dspTime + audioLeadInTime;
+        audioSource.PlayScheduled(scheduledStartTime);
+        nextBeatTime = scheduledStartTime;
     }
 
     private void OnBeat()
     {
+        // You can still have other logic here if needed
+        lastBeatTime = AudioSettings.dspTime + offset;
+        print("Beat! " + AudioSettings.dspTime);
+
         // Invoke the event
         FixedOnBeatEvent?.Invoke();
         // Invoke the event
         OnBeatEvent?.Invoke();
 
-        // You can still have other logic here if needed
-        Debug.Log("Beat at BPM: " + currentBPM);
     }
 
     // External function to modify speed
@@ -93,9 +116,9 @@ public class RythmController : MonoBehaviour
     {
         if (beatCoroutine != null)
         {
-            StopCoroutine(beatCoroutine);
             audioSource.Stop();
             InitRhythm();
+            StartPlaying();
         }
     }
 
@@ -120,5 +143,6 @@ public class RythmController : MonoBehaviour
 
         // Restart the rhythm
         InitRhythm();
+        StartPlaying();
     }
 }

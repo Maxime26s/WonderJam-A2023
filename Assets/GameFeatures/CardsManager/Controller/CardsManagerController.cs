@@ -13,8 +13,8 @@ public class CardsManagerController : Singleton<CardsManagerController>
 
     private void Start()
     {
-        RythmController.Instance.FixedOnBeatEvent += Tick;
-        RythmController.Instance.OnBeatEvent += UpdatePlayer;
+        BeatController.Instance.FixedOnBeatEvent += Tick;
+        BeatController.Instance.OnBeatEvent += UpdatePlayer;
     }
 
     private void RenderCards()

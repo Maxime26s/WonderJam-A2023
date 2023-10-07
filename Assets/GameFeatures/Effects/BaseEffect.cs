@@ -17,12 +17,12 @@ public abstract class BaseEffect : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        RythmController.Instance.OnBeatEvent += Tick;
+        BeatController.Instance.OnBeatEvent += Tick;
     }
 
     protected virtual void OnDisable()
     {
-        RythmController.Instance.OnBeatEvent -= Tick;
+        BeatController.Instance.OnBeatEvent -= Tick;
     }
 
     // Update is called once per frame
