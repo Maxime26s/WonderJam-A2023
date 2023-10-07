@@ -21,7 +21,7 @@ public class Beat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         double timeDiff = AudioSettings.dspTime - startTime;
 
@@ -29,7 +29,7 @@ public class Beat : MonoBehaviour
         transform.position = position;
         transform.localScale = Vector3.one * Mathf.Clamp01(1.5f - Mathf.Clamp01(Mathf.Abs(centerX - position.x) / diffX));
 
-        if (position.x >= centerX + diffX/2)
+        if (position.x >= centerX + diffX / 2)
         {
             Destroy(gameObject);
         }
