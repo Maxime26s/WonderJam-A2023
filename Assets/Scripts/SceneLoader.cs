@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public bool actionPending = false;
+    public bool isMuted = false;
 
     private static SceneLoader instance;
 
@@ -39,8 +40,8 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
-        if (TryMakeAction())
-            SceneManager.LoadScene(levelName);
+        //if (TryMakeAction())
+        SceneManager.LoadScene(levelName);
     }
 
     public void QuitGame()
@@ -48,17 +49,18 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("Can't quit :)");
     }
 
-    public void ToggleMute()
+    public bool ToggleMute()
     {
-        Debug.Log("This doesn't work :)");
+        isMuted = !isMuted;
+        return isMuted;
     }
 
     private bool TryMakeAction()
     {
-        if (!actionPending)
-            actionPending = true;
-        else
+        if (actionPending)
             return false;
+
+        actionPending = true;
         return true;
     }
 }

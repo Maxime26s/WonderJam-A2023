@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuScript : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     private void Awake()
     {
@@ -12,21 +12,16 @@ public class MainMenuScript : MonoBehaviour
 
     public void ButtonStart()
     {
-        SceneLoader.Instance.LoadLevel("0");
+        SceneLoader.Instance.LoadLevel("MainMenu");
     }
 
     public void ButtonOptions()
     {
-        SceneLoader.Instance.LoadLevel("0");
+        SceneLoader.Instance.LoadLevel("Options");
     }
 
     public void ButtonExit()
     {
         SceneLoader.Instance.QuitGame();
-    }
-
-    public void ToggleMute()
-    {
-        SceneLoader.Instance.ToggleMute();
     }
 }
