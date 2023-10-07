@@ -36,19 +36,28 @@ public class PlayerCards
     }
 
     /// <summary>
-    /// Sets a card to a blank card. Blank cards are not yet created.
+    /// Sets a card to a blank card. Blank cards are not yet created, so it just sets it to null for now.
     /// </summary>
     /// <returns>The card removed from hand.</returns>
     public Card PlayCard()
     {
         Card selectedCard = hand[selectedIndex];
-        hand[selectedIndex] = new Card();
+        hand[selectedIndex] = null;
         return selectedCard;
     }
 
     public void Shuffle()
     {
-        //Shuffle :)
+        int n = deck.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n - 1);
+            Card value = deck[k];
+            deck[k] = deck[n];
+            deck[n] = value;
+        }
+
     }
 
     public void MoveSelectionLeft()
@@ -63,10 +72,25 @@ public class PlayerCards
     {
         selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1)) % 5;
     }
-    //Currently creates duplicates of cards currently in hand, need to fix
+
     public void ResetDeck()
     {
-        deck = deckList;
+        bool foundInHand = false;
+        deck = new List<Card>();
+        foreach (Card deckListCard in deckList)
+        {
+            foreach (Card handCard in hand)
+            {
+                if (deckListCard == handCard)
+                {
+                    foundInHand = true;
+                }
+            }
+            if (!foundInHand)
+                deck.Add(deckListCard);
+            foundInHand = false;
+        }
+
         Shuffle();
     }
     public Card[] GetHand()

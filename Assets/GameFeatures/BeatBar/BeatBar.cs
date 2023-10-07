@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BeatBar : MonoBehaviour
 {
@@ -49,16 +50,21 @@ public class BeatBar : MonoBehaviour
 
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
     {
-        float A = Mathf.Abs(center.y - start.y);
-        double P = 4 * BeatController.Instance.beatInterval;
-        double f = 1 / P;
+        int sign = (int)Mathf.Sign(center.y - start.y);
+        float A = sign * Mathf.Abs(center.y - start.y);
+        double P = 4.0d * BeatController.Instance.beatInterval;
+        double f = 1.0d / P;
+
+        print(BeatController.Instance.beatInterval);
+        print(P);
+        print(f);
 
         return (t) =>
         {
             Vector2 position = Vector2.zero;
 
             position.x = Mathf.Lerp(start.x, start.x + 2 * (center.x - start.x), (float)(t / (BeatController.Instance.beatInterval * 2)));
-            position.y = -A * Mathf.Sin(2 * Mathf.PI * (float)(f * t));
+            position.y = A * Mathf.Sin(2 * Mathf.PI * (float)(f * t)) + start.y;
 
             return position;
         };
@@ -66,7 +72,7 @@ public class BeatBar : MonoBehaviour
 
     private void OnBeat()
     {
-        if(beatToSkip > 0)
+        if (beatToSkip > 0)
         {
             beatToSkip--;
             return;
@@ -78,7 +84,7 @@ public class BeatBar : MonoBehaviour
         beats.Add(go);
     }
 
-    private void OnHit()
+    private void OnHit(object sender, InputAction.CallbackContext context)
     {
         float startCenterDistance = Mathf.Abs(centerPos.x - startPos.x);
 
@@ -105,22 +111,22 @@ public class BeatBar : MonoBehaviour
         if (score > 0.975f)
         {
             print("Perfect!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Perfect));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Perfect));
         }
         else if (score > 0.925f)
         {
             print("Good!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Good));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Good));
         }
         else if (score > 0.85f)
         {
             print("Bad!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Bad));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Bad));
         }
         else
         {
             print("Miss!");
-            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Miss));
+            OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Miss));
         }
 
         Destroy(beats[0]);
@@ -141,9 +147,11 @@ public enum HitResult
 public class HitEventArgs : EventArgs
 {
     public HitResult Result { get; }
+    public InputAction.CallbackContext Context { get; }
 
-    public HitEventArgs(HitResult result)
+    public HitEventArgs(InputAction.CallbackContext context, HitResult result)
     {
+        Context = context;
         Result = result;
     }
 }
