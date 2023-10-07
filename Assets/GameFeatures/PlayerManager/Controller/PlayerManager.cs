@@ -89,7 +89,9 @@ public class PlayerManager : Singleton<PlayerManager>
                 }
                 break;
         }
+    }
+    public void MoveAllPlayerNextTurn()
+    {
 
-        //todo move people on the field after we shuffle to reflect the turn order
     }
 }

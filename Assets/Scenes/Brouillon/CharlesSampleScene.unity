@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsHolder: {fileID: 0}
+  _cardDatabase: {fileID: 0}
 --- !u!4 &1341831685
 Transform:
   m_ObjectHideFlags: 0
