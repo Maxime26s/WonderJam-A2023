@@ -167,7 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d45898c4557cab4c983ee9fe7c87f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameState: 0
   _playerManager: {fileID: 844748785}
+  _beatController: {fileID: 1493505859}
 --- !u!1 &339128922
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +523,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
+--- !u!114 &1493505859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
+  m_PrefabInstance: {fileID: 1493505858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55012a322695ad944890c155ffb58633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1497976566
 GameObject:
   m_ObjectHideFlags: 0
