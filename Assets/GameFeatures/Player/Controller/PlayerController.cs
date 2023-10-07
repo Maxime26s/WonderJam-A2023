@@ -7,8 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     PlayerData _playerData;
-
     public PlayerData PlayerData { get { return _playerData; } }
+
+
+    [SerializeField]
+    Animator _animator;
+    public Animator Animator { get => _animator; set => _animator = value; }
+
 
     public void ReceiveEffect()
     {
