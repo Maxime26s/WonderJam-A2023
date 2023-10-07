@@ -4,11 +4,27 @@ using UnityEngine;
 
 public class PlayerManager : Singleton
 {
-    PlayerManagerData _playerManagerData = new PlayerManagerData();
+    [SerializeField]
+    PlayerManagerData _playerManagerData;
     public PlayerManagerData PlayerManagerData { get { if (_playerManagerData == null) {  } return _playerManagerData; } }
 
     [SerializeField]
     GameObject _playerPrefab;
+
+    #region
+    BattleGroundManager _battleGroundManager;
+    BattleGroundManager BattleGroundManager 
+    { 
+        get
+        {
+            if(_battleGroundManager == null)
+            {
+                _battleGroundManager = (BattleGroundManager)BattleGroundManager.Instance;
+            }
+            return _battleGroundManager;
+        } 
+    }
+    #endregion
 
     public void SpawnAllPlayers()
     {
@@ -23,7 +39,7 @@ public class PlayerManager : Singleton
     {
         if(_playerPrefab != null)
         {
-            GameObject newPlayer = Instantiate(_playerPrefab);
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().PlayersParent.transform);
 
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
