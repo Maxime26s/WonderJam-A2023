@@ -18,14 +18,16 @@ public class BeatAccuracy : MonoBehaviour
     {
         controllerActions = new ControllerActions();
 
-        controllerActions.Gameplay.Use.performed += OnSelectPerformed;
+        controllerActions.Gameplay.Use.performed += OnButtonPerformed;
+        controllerActions.Gameplay.Reload.performed += OnButtonPerformed;
         controllerActions.Gameplay.Move.performed += OnMovePerformed;
         controllerActions.Gameplay.Move.canceled += OnMovePerformed;
     }
 
     private void OnDestroy()
     {
-        controllerActions.Gameplay.Use.performed -= OnSelectPerformed;
+        controllerActions.Gameplay.Use.performed -= OnButtonPerformed;
+        controllerActions.Gameplay.Reload.performed -= OnButtonPerformed;
         controllerActions.Gameplay.Move.performed -= OnMovePerformed;
         controllerActions.Gameplay.Move.canceled -= OnMovePerformed;
     }
@@ -40,7 +42,7 @@ public class BeatAccuracy : MonoBehaviour
         controllerActions.Disable();
     }
 
-    private void OnSelectPerformed(InputAction.CallbackContext context)
+    private void OnButtonPerformed(InputAction.CallbackContext context)
     {
         OnHitEvent?.Invoke(this, context);
     }
