@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(ChangeTurn());
     }
 
-    public IEnumerator ChangeTurn()
+    IEnumerator ChangeTurn()
     {
         GameState = GameState.ChangingTurn;
 
@@ -66,7 +66,7 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(StartNextRound());
     }
 
-    public IEnumerator StartNextRound()
+    IEnumerator StartNextRound()
     {
         yield return _waitBetweenEachRound;
 
@@ -75,7 +75,7 @@ public class GameManager : Singleton<GameManager>
         StartTics();
     }
 
-    public void StartTics()
+    void StartTics()
     {
         _beatController.StartPlaying();
     }
