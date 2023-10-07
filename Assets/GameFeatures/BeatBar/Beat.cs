@@ -9,13 +9,13 @@ public class Beat : MonoBehaviour
     public SineFunction positionFunction;
 
     private float centerX;
-    private float diffX;
+    public float diffX;
 
     public void Init(SineFunction positionFunction)
     {
         this.positionFunction = positionFunction;
         startTime = Time.time;
-        centerX = positionFunction(RhythmController.Instance.beatInterval).x;
+        centerX = positionFunction(BeatController.Instance.beatInterval).x;
         diffX = Mathf.Abs(positionFunction(0).x - centerX);
         gameObject.SetActive(true);
     }
@@ -29,7 +29,7 @@ public class Beat : MonoBehaviour
 
         if(position.x > 10)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

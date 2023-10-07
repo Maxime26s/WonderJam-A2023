@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RhythmController : MonoBehaviour
+public class BeatController : MonoBehaviour
 {
     // Singleton instance
-    public static RhythmController Instance { get; private set; }
+    public static BeatController Instance { get; private set; }
 
     public float startingBPM;
     public float currentBPM;
@@ -59,7 +59,6 @@ public class RhythmController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(beatInterval);
-            OnBeat();
             if (shouldChangeSpeed)
             {
                 shouldChangeSpeed = false;
@@ -67,17 +66,20 @@ public class RhythmController : MonoBehaviour
                 currentBPM = startingBPM * audioSource.pitch;
                 beatInterval = 60.0f / currentBPM;
             }
+
+            OnBeat();
         }
     }
 
     private void OnBeat()
     {
+        // You can still have other logic here if needed
+        //Debug.Log("Beat at BPM: " + currentBPM);
+        lastBeatTime = Time.time;
+
         // Invoke the event
         OnBeatEvent?.Invoke();
 
-        // You can still have other logic here if needed
-        Debug.Log("Beat at BPM: " + currentBPM);
-        lastBeatTime = Time.time;
     }
 
     // External function to modify speed
