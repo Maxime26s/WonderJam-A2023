@@ -26,6 +26,11 @@ public class PlayerManager : Singleton<PlayerManager>
     }
     #endregion
 
+    void Start()
+    {
+        SpawnAllPlayers();
+    }
+
     public void SpawnAllPlayers()
     {
         PlayerManagerData.ResetData();
@@ -37,15 +42,17 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SpawnPlayer(int playerId)
     {
-        if(_playerPrefab != null)
+        if (_playerPrefab != null)
         {
-            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().PlayersParent.transform);
-
+            print("1");
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.GetCurrentBattleGround().GetPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
+            print("2");
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
             playerController.PlayerData.PlayerId = playerId;
-
+            print("3");
             PlayerManagerData.PlayersList.Add(playerController);
+            print("4");
         }
     }
 

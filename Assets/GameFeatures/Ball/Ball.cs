@@ -7,6 +7,11 @@ public class Ball : Singleton<Ball>
 
     public List<BaseEffect> effects;
 
+    private void Start()
+    {
+        BeatController.Instance.OnBeatEvent += Tick;
+    }
+
     public void AddEffect(BaseEffect e)
     {
         effects.Add(e);

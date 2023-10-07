@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BattleGroundManager : Singleton<BattleGroundManager>
 {
-    BattleGroundController _currentBattleGround;
+    [SerializeField]
+    public BattleGroundController _currentBattleGround;
 
     public void SetCurrentBattleground(BattleGroundController battleGroundController)
     {
