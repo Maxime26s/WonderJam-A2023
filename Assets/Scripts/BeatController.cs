@@ -36,12 +36,11 @@ public class BeatController : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
-        InitRhythm();
     }
 
     private void Start()
     {
-
+        InitRhythm();
     }
 
     private void InitRhythm()

@@ -11,8 +11,8 @@ public class SpinningRays : MonoBehaviour
     public List<GameObject> backgroundList;
     public float foregroundSpeed = 1f;
     public float backgroundSpeed = 0.75f;
-    public float foregroundAlpha = 0.25f;
-    public float backgroundAlpha = 0.125f;
+    public float foregroundAlpha = 0.125f;
+    public float backgroundAlpha = 0.0625f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class SpinningRays : MonoBehaviour
         foreground.transform.Rotate(0, 0, -foregroundSpeed);
         background.transform.Rotate(0, 0, -backgroundSpeed);
 
-        for(int i = 0; i < foregroundList.Count; i++)
+        for (int i = 0; i < foregroundList.Count; i++)
         {
             var fgSr = foregroundList[i].GetComponent<SpriteRenderer>();
             fgSr.color = HSVToRGB(90 * i + (int)foreground.transform.rotation.eulerAngles.z, 1f, 1f, fgSr.color.a);

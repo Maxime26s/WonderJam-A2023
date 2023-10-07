@@ -515,8 +515,8 @@ MonoBehaviour:
   - {fileID: 8206396799011697398}
   foregroundSpeed: 0.2
   backgroundSpeed: 0.1
-  foregroundAlpha: 0.25
-  backgroundAlpha: 0.125
+  foregroundAlpha: 0.125
+  backgroundAlpha: 0.0625
 --- !u!1 &8206396799011697398
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatBar : MonoBehaviour
 {
+    public event EventHandler<HitEventArgs> OnHitEvent;
+
     public Transform spawnTransform;
     public Transform centerTransform;
 
@@ -81,18 +84,22 @@ public class BeatBar : MonoBehaviour
         if (score > 0.95f)
         {
             print("Perfect!");
+            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Perfect));
+        }
+        else if (score > 0.90f)
+        {
+            print("Good!");
+            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Good));
         }
         else if (score > 0.85f)
         {
-            print("Good!");
-        }
-        else if (score > 0.7f)
-        {
             print("Bad!");
+            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Bad));
         }
         else
         {
             print("Miss!");
+            OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Miss));
         }
 
         Destroy(beats[0]);
@@ -101,3 +108,21 @@ public class BeatBar : MonoBehaviour
 }
 
 public delegate Vector2 SineFunction(float x);
+
+public enum HitResult
+{
+    Miss,
+    Bad,
+    Good,
+    Perfect,
+}
+
+public class HitEventArgs : EventArgs
+{
+    public HitResult Result { get; }
+
+    public HitEventArgs(HitResult result)
+    {
+        Result = result;
+    }
+}
