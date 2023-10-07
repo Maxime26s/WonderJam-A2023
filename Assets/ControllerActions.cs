@@ -102,8 +102,8 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""68791f56-0380-4af6-bc30-8ed7518a8273"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""id"": ""98e06be4-679c-4d7a-9110-4f52622478bc"",
+                    ""path"": ""<Gamepad>/leftStick/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -113,30 +113,8 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0d59423d-0d6d-463b-873a-c064f54fd132"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""390adf09-6f24-4ca9-b2bd-95d37e239b1b"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Scroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d59e864e-3b1c-4546-912a-8566fa84dd31"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""id"": ""bd2b698b-145e-48ae-9bcc-0262c768869a"",
+                    ""path"": ""<Gamepad>/dpad/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
