@@ -45,10 +45,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SpawnAllPlayers()
     {
-        PlayerManagerData.ResetData();
-        for(int i = 0; i < PlayerManagerData.TotalNbPlayer; i++)
+        for(int i = 0; i < PlayerManagerData.PlayersToSpawn.Count; i++)
         {
-            SpawnPlayer(i);
+            SpawnPlayer(PlayerManagerData.PlayersToSpawn[i]);
         }
     }
 

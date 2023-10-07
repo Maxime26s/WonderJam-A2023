@@ -63,6 +63,8 @@ public class GameManager : Singleton<GameManager>
     //Bind this on running out of actions and skipping turn
     public void TurnOver()
     {
+        _beatController.StopPlaying();
+
         StartCoroutine(ChangeTurn());
     }
 
