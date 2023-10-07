@@ -7,7 +7,6 @@ public class CardsManager : Singleton<CardsManager>
 {
     [SerializeField]
     public GameObject cardsHolder;
-    int selectedCard = -1;
     PlayerController player;
 
     [SerializeField] private CardDatabase _cardDatabase = null;
@@ -15,8 +14,8 @@ public class CardsManager : Singleton<CardsManager>
 
     private void Start()
     {
-        if (BeatController.Instance != null) 
-        { 
+        if (BeatController.Instance != null)
+        {
             BeatController.Instance.FixedOnBeatEvent += Tick;
             BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
         }
@@ -25,7 +24,7 @@ public class CardsManager : Singleton<CardsManager>
 
     private void RenderCards()
     {
-        List<Card> cards = player.GetHand();
+        Card[] cards = player.GetHand();
         // TODO: place cards sur le jeu genre
         // Cards Placeholder, juste changer les infos avec celles de la carte
         //for (int i = 0; i < cardsHolder.transform.childCount; i++)
@@ -50,25 +49,24 @@ public class CardsManager : Singleton<CardsManager>
 
     public void Tick()
     {
-        if (selectedCard != -1)
-        {
-            List<Card> cards = player.GetHand();
-            cards[selectedCard].PlayCard();
-            RemoveCard(selectedCard);
-        }
-        selectedCard = -1;
+        PlayerCards cards = player.GetCards();
+        cards.PlayCard();
+        PlayCard();
         //RenderCards();
     }
 
-    public void RemoveCard(int index, bool drawNewCard = true)
+    public void MoveSelection(bool isMovingLeft)
     {
-        player.GetHand().RemoveAt(index);
-        if (drawNewCard)
-            DrawCard();
+        player.GetCards().MoveSelection(isMovingLeft);
+    }
+
+    public void PlayCard()
+    {
+        player.GetCards().PlayCard();
     }
 
     internal void DrawCard()
     {
-        player.GetHand().Add(player.GetDeck().DrawCard());
+        player.GetCards().DrawCard();
     }
 }
