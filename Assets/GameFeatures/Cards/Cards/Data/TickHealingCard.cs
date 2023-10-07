@@ -17,7 +17,6 @@ public class TickHealingCard : BaseCard
         TickHealing tickHealing = Instantiate(prefab);
         tickHealing.healing = healingValue;
         tickHealing.tickDuration = tickDuration;
-        BallController ballController = (BallController) Singleton.Instance;
-        ballController.AddEffect(tickHealing);
+        BallController.Instance.AddEffect(tickHealing);
     }
 }

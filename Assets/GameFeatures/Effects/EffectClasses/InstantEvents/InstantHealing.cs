@@ -37,8 +37,7 @@ public class InstantHealing : InstantEvent
         
         if (tickCountdown <= 0)
         {
-            PlayerManager pm = (PlayerManager)Singleton.Instance;
-            pm.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
             isOver = true;
         }
     }

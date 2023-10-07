@@ -14,8 +14,7 @@ public class CardsManagerData : MonoBehaviour
 
     public void UpdateCurrentPlayer()
     {
-        PlayerManager pm = (PlayerManager)Singleton.Instance;
-        player = pm.PlayerManagerData.GetCurrentPlayer();
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
     }
 
     public void RemoveCard(int index, bool drawNewCard=true)

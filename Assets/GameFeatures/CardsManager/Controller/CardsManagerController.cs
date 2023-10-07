@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardsManagerController : Singleton
+public class CardsManagerController : Singleton<CardsManagerController>
 {
     [SerializeField]
     CardsManagerData _cardsManagerData;
