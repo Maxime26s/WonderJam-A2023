@@ -74,6 +74,7 @@ public class PlayerManager : Singleton<PlayerManager>
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
             playerController.PlayerData.PlayerId = playerId;
+            playerController.Mulligan();
 
             PlayerManagerData.PlayersList.Add(playerController);
         }
@@ -127,7 +128,6 @@ public class PlayerManager : Singleton<PlayerManager>
         }
 
         yield return _waitForSecondsMoveToNewPosition;
-        yield return GameManager.Instance.WaitForTick(1);
 
         PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
     }
