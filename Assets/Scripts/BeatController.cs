@@ -15,6 +15,8 @@ public class BeatController : MonoBehaviour
     public double audioLeadInTime = 0.0d;
     public float initialSpeed = 1.0f;
 
+    public bool shouldStartOnAwake = false;
+
     private AudioSource audioSource;
     private bool shouldChangeSpeed = false;
     private float newSpeed = 1.0f;
@@ -42,13 +44,16 @@ public class BeatController : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
+        startingBPM *= initialSpeed;
+        audioLeadInTime /= initialSpeed;
+        InitRhythm();
     }
 
     private void Start()
     {
-        startingBPM = startingBPM * initialSpeed;
-        audioLeadInTime = audioLeadInTime / initialSpeed;
-        InitRhythm();
+        if (!shouldStartOnAwake)
+            return;
+
         IEnumerator DelayStart()
         {
             yield return new WaitForSeconds(0.5f); // Wait for half a second
@@ -79,7 +84,7 @@ public class BeatController : MonoBehaviour
         }
     }
 
-    private void InitRhythm()
+    public void InitRhythm()
     {
         currentBPM = startingBPM;
         audioSource.pitch = initialSpeed;
@@ -87,7 +92,7 @@ public class BeatController : MonoBehaviour
         beatInterval = 60.0f / currentBPM;
     }
 
-    private void StartPlaying()
+    public void StartPlaying()
     {
         double scheduledStartTime = AudioSettings.dspTime + audioLeadInTime;
         audioSource.PlayScheduled(scheduledStartTime);
