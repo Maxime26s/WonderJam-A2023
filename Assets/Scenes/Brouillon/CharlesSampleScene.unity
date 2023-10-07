@@ -348,7 +348,7 @@ Transform:
   - {fileID: 1341831685}
   - {fileID: 1578780827}
   - {fileID: 1322367479}
-  - {fileID: 1446603380}
+  - {fileID: 1475696952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1049033744
@@ -679,37 +679,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!1 &1475696950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1475696952}
-  - component: {fileID: 1475696951}
-  m_Layer: 0
-  m_Name: bgm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1475696951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475696950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6809ccf6b381a41a0e86251c17a828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentBattleGround: {fileID: 0}
---- !u!4 &1475696952
+--- !u!4 &1475696952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5169819205224334637, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
   m_PrefabInstance: {fileID: 321834199}
