@@ -28,7 +28,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void Start()
     {
-        SpawnAllPlayers();
+        //SpawnAllPlayers();
     }
 
     public void SpawnAllPlayers()

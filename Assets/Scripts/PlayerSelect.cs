@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DeckChecker : MonoBehaviour
+public class PlayerSelect : MonoBehaviour
 {
-	private ControllerActions controllerActions;
+    private ControllerActions controllerActions;
 
 	private void Awake()
 	{
@@ -18,6 +17,11 @@ public class DeckChecker : MonoBehaviour
     {
         SceneLoader.Instance.LoadLevel("MainMenu");
     }
+
+	private void OnDestroy()
+	{
+		controllerActions.Gameplay.Return.performed -= OnReturn;
+	}
 
 	private void OnEnable()
     {
@@ -32,10 +36,5 @@ public class DeckChecker : MonoBehaviour
 	public void OnReturn(InputAction.CallbackContext context)
 	{
 		ButtonBack();
-	}
-
-	private void OnDestroy()
-	{
-		controllerActions.Gameplay.Return.performed -= OnReturn;
 	}
 }
