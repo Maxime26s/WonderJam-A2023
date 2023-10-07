@@ -59,16 +59,19 @@ public class CardsManager : Singleton<CardsManager>
 
     public void MoveSelection(bool isMovingLeft)
     {
-        player.GetCards().MoveSelection(isMovingLeft);
+        if (player)
+            player.GetCards().MoveSelection(isMovingLeft);
     }
 
     public void PlayCard()
     {
-        player.GetCards().PlayCard();
+        if (player)
+            player.GetCards().PlayCard();
     }
 
     internal void DrawCard()
     {
-        player.GetCards().DrawCard();
+        if (player)
+            player.GetCards().DrawCard();
     }
 }
