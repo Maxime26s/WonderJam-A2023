@@ -17,7 +17,7 @@ public class PopupController : MonoBehaviour
         beatBar.OnHitEvent -= ShowPopup;
     }
 
-    public void ShowPopup(object src, HitEventArgs args)
+    public void ShowPopup(object sender, HitEventArgs args)
     {
         var go = Instantiate(textPrefab, transform);
         var text = go.GetComponent<TextMeshProUGUI>();
