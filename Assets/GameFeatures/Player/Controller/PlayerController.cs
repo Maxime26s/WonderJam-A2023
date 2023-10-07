@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void TakeDamage(int damage)
+    public void ReceiveHealing(float healing)
+    {
+        if (PlayerData.IsAlive)
+        {
+            PlayerData.CurrentHealth += healing;
+
+            CheckPlayerDies();
+        }
+        else
+        {
+            Debug.Log("This player is already dead :(");
+        }
+    }
+
+    public void TakeDamage(float damage)
     {
         if (PlayerData.IsAlive)
         {
@@ -31,5 +46,14 @@ public class PlayerController : MonoBehaviour
     public bool CheckPlayerDies()
     {
         return PlayerData.CurrentHealth > 0;
+    }
+
+    public List<BaseCard> GetHand()
+    {
+        return PlayerData.hand;
+    }
+    public Deck GetDeck()
+    {
+        return PlayerData.deck;
     }
 }

@@ -4,13 +4,25 @@ using UnityEngine;
 
 public abstract class BaseEffect : MonoBehaviour
 {
-    public bool isOver = false;
+    [SerializeField]
+    bool _isOver = false;
+
+    public bool isOver { get => _isOver; set => _isOver = value; }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        isOver = false;
-        // Subscribe to tick machin truc
+
+    }
+
+    protected virtual void OnEnable()
+    {
+        RythmController.Instance.OnBeatEvent += Tick;
+    }
+
+    protected virtual void OnDisable()
+    {
+        RythmController.Instance.OnBeatEvent -= Tick;
     }
 
     // Update is called once per frame

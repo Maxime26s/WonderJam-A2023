@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManagerData : MonoBehaviour
 {
-    int _totalNbPlayer;
+    int _totalNbPlayer = 4;
     public int TotalNbPlayer { get; set; }
 
     List<PlayerController> _playersList;
@@ -58,8 +58,6 @@ public class PlayerManagerData : MonoBehaviour
         Debug.Log("Couldn't get the next player");
         return null;
     }
-
-
 
 
     public enum PlayerTurnOrderEnum { Ascending, Descending, Random }
