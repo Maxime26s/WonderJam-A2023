@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsHolder: {fileID: 0}
-  _cardDatabase: {fileID: 11400000, guid: 32c6f00c434211b479b4bc8d1d27cea5, type: 2}
+  _cardDatabase: {fileID: 11400000, guid: 68b3b402b1927554d943f84af2f5f343, type: 2}
