@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -20,6 +22,11 @@ public class GameManager : Singleton<GameManager>
     WaitForSeconds _waitBeforeStartGame;
     WaitForSeconds _waitBetweenEachRound;
 
+    [SerializeField]
+    public TextMeshProUGUI countDownText;
+
+    int tickCount = 0;
+
     public void Awake()
     {
         ResetData();
@@ -35,20 +42,19 @@ public class GameManager : Singleton<GameManager>
 
         _playerManager.Init();
 
+        BeatController.Instance.OnBeatEvent += CountTick;
+
         yield return _waitBeforeStartGame;
 
-        StartNextRound();
+        StartTics();
+
+        StartCoroutine(StartNextRound());
+
     }
 
     public void StartGameNOW()
     {
-        GameState = GameState.GameBegin;
-
-        _playerManager.Init();
-
-        //yield return _waitBeforeStartGame;
-
-        StartCoroutine(StartNextRound());
+        StartCoroutine(StartGame());
     }
 
     //Bind this on running out of actions and skipping turn
@@ -68,11 +74,24 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator StartNextRound()
     {
-        yield return _waitBetweenEachRound;
+        countDownText.gameObject.SetActive(true);
 
+        int tick0 = tickCount;
+
+        print(tick0);
+        while (tickCount < tick0 + 3)  // Wait until tickCounter increments by 3 from its initial value
+        {
+            print(tickCount);
+            print(3 - (tickCount - tick0));
+            countDownText.text = (3 - (tickCount - tick0)).ToString();  // Update the TextMeshPro UI Text
+
+            // Yield for a short duration before checking again
+            // This can be set to a smaller value if you expect rapid firing of the external event
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        countDownText.gameObject.SetActive(false);
         GameState = GameState.Playing;
-
-        StartTics();
     }
 
     void StartTics()
@@ -89,6 +108,11 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameState.Idle;
         _playerManager.PlayerManagerData.ResetData();
+    }
+
+    void CountTick()
+    {
+        tickCount++;
     }
 }
 public enum GameState { Idle, GameBegin, Playing, ChangingTurn, PlayerDeath, GameEnd}

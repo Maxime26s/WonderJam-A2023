@@ -43,25 +43,28 @@ public class Ball : Singleton<Ball>
 
     void Tick()
     {
-        actionPoints--;
-        print("actionPoints");
-        print(actionPoints);
-
-        if (actionPoints <= 0) 
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            GameManager.Instance.TurnOver();
-            actionPoints = baseActionPoints;
+            actionPoints--;
+            print("actionPoints");
+            print(actionPoints);
+
+            if (actionPoints <= 0)
+            {
+                GameManager.Instance.TurnOver();
+                actionPoints = baseActionPoints;
+            }
+
+            RenderActionPoint();
+
+            foreach (BaseEffect e in effects)
+            {
+                e.Tick();
+            }
+
+            // Delete all effects that are over
+            effects.RemoveAll(e => e.isOver);
         }
-
-        RenderActionPoint();
-
-        foreach(BaseEffect e in effects)
-        {
-            e.Tick();
-        }
-
-        // Delete all effects that are over
-        effects.RemoveAll(e => e.isOver);
     }
 
     public void AddActionPoints(int n) => actionPoints += n;

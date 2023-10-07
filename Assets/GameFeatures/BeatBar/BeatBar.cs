@@ -55,10 +55,13 @@ public class BeatBar : MonoBehaviour
 
     void Update()
     {
-        if (beats[0]?.transform.position.x - centerPos.x >= startCenterDistance / 3.0f)
+        if(beats.Count != 0)
         {
-            beats.RemoveAt(0);
-            OnHitEvent?.Invoke(this, new HitEventArgs(new InputAction.CallbackContext(), HitResult.Miss));
+            if (beats[0]?.transform.position.x - centerPos.x >= startCenterDistance / 3.0f)
+            {
+                beats.RemoveAt(0);
+                OnHitEvent?.Invoke(this, new HitEventArgs(new InputAction.CallbackContext(), HitResult.Miss));
+            }
         }
     }
 
