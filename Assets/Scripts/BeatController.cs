@@ -59,7 +59,7 @@ public class BeatController : MonoBehaviour
             yield return new WaitForSeconds(0.5f); // Wait for half a second
             StartPlaying();
         }
-        StartCoroutine(DelayStart());
+        //StartCoroutine(DelayStart());
     }
 
     private void Update()
@@ -147,6 +147,5 @@ public class BeatController : MonoBehaviour
 
         // Restart the rhythm
         InitRhythm();
-        StartPlaying();
     }
 }

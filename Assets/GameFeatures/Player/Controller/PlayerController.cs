@@ -43,13 +43,14 @@ public class PlayerController : MonoBehaviour
     {
         if(GameManager.Instance.GameState == GameState.Playing)
         {
-            //TODO
-            //gotta also check that the player id is the one that pushed the button
-
-
-            if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
+            //This player Clicked
+            if(PlayerData.PlayerId == context.control.device.deviceId)
             {
-                GameManager.Instance.TurnOver();
+                //This is the current player
+                if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
+                {
+                    GameManager.Instance.TurnOver();
+                }
             }
         }
     }
