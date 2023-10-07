@@ -24,6 +24,11 @@ public class PlayerManagerData : MonoBehaviour
         PlayerTurnOrder = PlayerTurnOrderEnum.Ascending;
     }
 
+    public void SetCurrentPlayer(int playerId)
+    {
+        _currentPlayerId = playerId;
+    }
+
     public PlayerController GetPlayer(int id)
     {
         for (int i = 0; i < PlayersList.Count; i++)
@@ -44,6 +49,34 @@ public class PlayerManagerData : MonoBehaviour
     public int GetCurrentPlayerId()
     {
         return _currentPlayerId;
+    }
+
+    public PlayerController GetNextAlivePlayer()
+    {
+        PlayerController player = GetCurrentPlayer();
+
+        int playerIndex = 0;
+
+        for (int i = 0; i < PlayerTurnOrderList.Count; i++)
+        {
+            if (PlayerTurnOrderList[i] == _currentPlayerId)
+            {
+                playerIndex = i;
+            }
+        }
+
+        for (int i = 1; i < PlayerTurnOrderList.Count; i++)
+        {
+            player = GetPlayer(PlayerTurnOrderList[playerIndex + 1 % PlayerTurnOrderList.Count]);
+
+            if (player.PlayerData.IsAlive)
+            {
+                return player;
+            }
+        }
+
+        Debug.Log("Couldn't get the next alive player (you probably won???)");
+        return GetPlayer(PlayerTurnOrderList[playerIndex]);
     }
 
     public PlayerController GetNextPlayer()

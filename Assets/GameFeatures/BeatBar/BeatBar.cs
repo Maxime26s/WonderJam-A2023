@@ -21,6 +21,8 @@ public class BeatBar : MonoBehaviour
     private Vector2 startPos;
     private Vector2 centerPos;
 
+    private float startCenterDistance;
+
     private SineFunction sineFunction;
 
 
@@ -29,6 +31,9 @@ public class BeatBar : MonoBehaviour
     {
         startPos = spawnTransform.position;
         centerPos = centerTransform.position;
+
+        startCenterDistance = Mathf.Abs(centerPos.x - startPos.x);
+
         sineFunction = ExtractSineFunction(startPos, centerPos);
 
         BeatController.Instance.OnBeatEvent += OnBeat;
@@ -46,6 +51,15 @@ public class BeatBar : MonoBehaviour
 
         BeatController.Instance.OnBeatEvent -= OnBeat;
         beatAccuracy.OnHitEvent -= OnHit;
+    }
+
+    void Update()
+    {
+        if (beats[0]?.transform.position.x - centerPos.x >= startCenterDistance / 3.0f)
+        {
+            beats.RemoveAt(0);
+            OnHitEvent?.Invoke(this, new HitEventArgs(new InputAction.CallbackContext(), HitResult.Miss));
+        }
     }
 
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
@@ -86,16 +100,6 @@ public class BeatBar : MonoBehaviour
 
     private void OnHit(object sender, InputAction.CallbackContext context)
     {
-        float startCenterDistance = Mathf.Abs(centerPos.x - startPos.x);
-
-        if (beats.Count > 1)
-        {
-            while (beats.Count != 0 && (beats[0] == null || beats[0].transform.position.x - centerPos.x >= startCenterDistance / 3.0f))
-            {
-                beats.RemoveAt(0);
-            }
-        }
-
         if (beats.Count == 0)
             return;
 
