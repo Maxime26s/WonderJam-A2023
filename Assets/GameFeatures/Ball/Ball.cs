@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallController : Singleton<BallController>
+public class Ball : Singleton<Ball>
 {
 
     public List<BaseEffect> effects;
