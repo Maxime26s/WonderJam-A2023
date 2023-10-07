@@ -29,4 +29,9 @@ public class MusicData : ScriptableObject
     {
         return offset / Speed;
     }
+
+    public void SetBPM(int newBpm)
+    {
+        Speed = (double)newBpm / (double)bpm;
+    }
 }
