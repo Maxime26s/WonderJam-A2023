@@ -633,6 +633,18 @@ PrefabInstance:
       propertyPath: beatBar
       value: 
       objectReference: {fileID: 6107140704739935021}
+    - target: {fileID: 7356895943189113838, guid: 43373dcbbc8176c44bea4a0dca93d9f5, type: 3}
+      propertyPath: blankCard
+      value: 
+      objectReference: {fileID: 11400000, guid: bf1d0bceeb0a6364bae46c3324e3f682, type: 2}
+    - target: {fileID: 7356895943189113838, guid: 43373dcbbc8176c44bea4a0dca93d9f5, type: 3}
+      propertyPath: currentIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356895943189113838, guid: 43373dcbbc8176c44bea4a0dca93d9f5, type: 3}
+      propertyPath: cardInHandTemplate
+      value: 
+      objectReference: {fileID: 674362382893243283, guid: da3815bc9de934f429b95300b8df4c1d, type: 3}
     - target: {fileID: 7725631768133649601, guid: 43373dcbbc8176c44bea4a0dca93d9f5, type: 3}
       propertyPath: m_Name
       value: Hand

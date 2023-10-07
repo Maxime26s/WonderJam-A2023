@@ -14,8 +14,8 @@ public class PlayerCards
 
     public PlayerCards()
     {
-        deckList = new List<Card>();
-        deck = deckList;
+        deckList = new List<Card>(CardsManager.Instance.CardDatabase.Cards);
+        deck = new List<Card>(deckList);
     }
 
     /// <summary>
@@ -29,7 +29,8 @@ public class PlayerCards
         if (deck.Count == 0)
             ResetDeck();
 
-        int index = Random.Range(0, deck.Count);
+        //int index = Random.Range(0, deck.Count);
+        int index = 0;
         Card drawnCard = deck[index];
         deck.RemoveAt(index);
         hand[selectedIndex] = drawnCard;
@@ -93,6 +94,18 @@ public class PlayerCards
 
         Shuffle();
     }
+
+    public void Mulligan()
+    {
+        int indexBackup = selectedIndex;
+        for (int index = 0; index < 5; index++)
+        {
+            selectedIndex = index;
+            DrawCard();
+        }
+        selectedIndex = indexBackup;
+    }
+
     public Card[] GetHand()
     {
         return hand;

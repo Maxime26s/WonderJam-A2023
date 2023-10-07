@@ -45,11 +45,24 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void SpawnAllPlayers()
     {
-        PlayerManagerData.ResetData();
-        for(int i = 0; i < PlayerManagerData.TotalNbPlayer; i++)
+
+        if(PlayerManagerData.PlayersToSpawn != null && PlayerManagerData.PlayersToSpawn.Count > 2)
         {
-            SpawnPlayer(i);
+            for (int i = 0; i < PlayerManagerData.PlayersToSpawn.Count; i++)
+            {
+                SpawnPlayer(PlayerManagerData.PlayersToSpawn[i]);
+            }
         }
+        else
+        {
+            Debug.Log("WE ARE HACKING RN");
+            Debug.Log("Player to spawn not set");
+            for (int i = 0; i < 4; i++)
+            {
+                SpawnPlayer(i);
+            }
+        }
+
     }
 
     public void SpawnPlayer(int playerId)
@@ -114,6 +127,7 @@ public class PlayerManager : Singleton<PlayerManager>
         }
 
         yield return _waitForSecondsMoveToNewPosition;
+        yield return GameManager.Instance.WaitForTick(1);
 
         PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
     }

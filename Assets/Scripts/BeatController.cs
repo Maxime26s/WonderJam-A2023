@@ -7,21 +7,15 @@ public class BeatController : MonoBehaviour
     // Singleton instance
     public static BeatController Instance { get; private set; }
 
-    //public float startingBPM;
-    //public float currentBPM;
-    //public double beatInterval;
     public double lastBeatTime;
-    //public double offset;
-    //public double audioLeadInTime = 0.0d;
-    //public float initialSpeed = 1.0f;
 
     public MusicData track;
+    public double newSpeed = 1.0d;
 
     public bool shouldStartOnAwake = false;
 
     private AudioSource audioSource;
     private bool shouldChangeSpeed = false;
-    private double newSpeed = 1.0d;
 
     private double nextBeatTime;
 
@@ -44,6 +38,8 @@ public class BeatController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        track.Speed = newSpeed;
 
         audioSource = GetComponent<AudioSource>();
         SetupAudioSource();
@@ -143,6 +139,5 @@ public class BeatController : MonoBehaviour
 
         // Restart the rhythm
         ResetAudioSource();
-        StartPlaying();
     }
 }
