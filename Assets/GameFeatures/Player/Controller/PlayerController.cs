@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
         controllerActions = new ControllerActions();
 
         controllerActions.Gameplay.SkipTurn.performed += OnSkipPerformed;
+
+        Mulligan();
     }
 
     private void OnDestroy()
@@ -95,6 +97,9 @@ public class PlayerController : MonoBehaviour
         return PlayerData.cards.GetHand();
     }
 
+    /// <summary>
+    /// This throws away all cards in hand and draws 5 new ones.
+    /// </summary>
     public void Mulligan()
     {
         PlayerData.cards.Mulligan();

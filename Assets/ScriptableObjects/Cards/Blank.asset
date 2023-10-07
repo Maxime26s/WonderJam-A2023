@@ -15,5 +15,5 @@ MonoBehaviour:
   _cardType: 1
   _cardName: Blank Card
   _cardImage: {fileID: 21300000, guid: 17936c0d7a801a84c95e22d3898c43dd, type: 3}
-  _description: 
+  _description: Blank
   cardEffects: []

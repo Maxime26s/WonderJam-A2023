@@ -32,4 +32,9 @@ public class Card : ScriptableObject
             Ball.Instance.AddEffect(effect);
         }
     }
+
+    public Card(Card template)
+    {
+
+    }
 }

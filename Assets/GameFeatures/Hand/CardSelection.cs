@@ -8,6 +8,8 @@ public class CardSelection : Singleton<CardSelection>
     public BeatBar beatBar;
 
     public List<CardInHandUI> displayedCards;
+
+    [SerializeField]
     private PlayerController currentPlayer;
 
     [SerializeField]
@@ -22,6 +24,7 @@ public class CardSelection : Singleton<CardSelection>
     {
         currentIndex = displayedCards.Count / 2;
         beatBar.OnHitEvent += OnHit;
+        RefreshDisplay();
     }
 
     private void OnDestroy()
@@ -66,7 +69,6 @@ public class CardSelection : Singleton<CardSelection>
         //cards[currentIndex].Select();
         displayedCards[currentIndex].gameObject.SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
         // TODO: PLAY CARD HOVER ANIMATION
-
     }
 
     void Use(HitEventArgs args)
@@ -80,6 +82,14 @@ public class CardSelection : Singleton<CardSelection>
     void Reload(HitEventArgs args)
     {
         currentPlayer.Mulligan();
+        foreach (CardInHandUI card in displayedCards)
+        {
+            int index = 0;
+            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+        }
+    }
+    void RefreshDisplay()
+    {
         foreach (CardInHandUI card in displayedCards)
         {
             int index = 0;

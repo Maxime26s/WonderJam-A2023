@@ -14,8 +14,8 @@ public class PlayerCards
 
     public PlayerCards()
     {
-        deckList = CardsManager.Instance.CardDatabase.Cards;
-        deck = deckList;
+        deckList = new List<Card>(CardsManager.Instance.CardDatabase.Cards);
+        deck = new List<Card>(deckList);
     }
 
     /// <summary>
