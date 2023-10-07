@@ -99,6 +99,11 @@ public class BeatController : MonoBehaviour
         nextBeatTime = scheduledStartTime;
     }
 
+    public void StopPlaying()
+    {
+        audioSource.Stop();
+    }
+
     private void OnBeat()
     {
         // You can still have other logic here if needed
@@ -120,11 +125,10 @@ public class BeatController : MonoBehaviour
     }
 
     // Reset the coroutine
-    public void Restart()
+    public void ResetData()
     {
         audioSource.Stop();
         InitRhythm();
-        StartPlaying();
     }
 
     // Change audio
