@@ -494,14 +494,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeatBar
       objectReference: {fileID: 0}
-    - target: {fileID: 8418324327889904746, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8418324327889904746, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

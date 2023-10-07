@@ -29,7 +29,7 @@ public class Beat : MonoBehaviour
         transform.position = position;
         transform.localScale = Vector3.one * Mathf.Clamp01(1.5f - Mathf.Clamp01(Mathf.Abs(centerX - position.x) / diffX));
 
-        if (position.x > centerX + diffX)
+        if (position.x >= centerX + diffX)
         {
             Destroy(gameObject);
         }

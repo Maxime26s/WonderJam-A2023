@@ -513,8 +513,8 @@ MonoBehaviour:
   - {fileID: 2886017794061369569}
   - {fileID: 8275077821277871663}
   - {fileID: 8206396799011697398}
-  foregroundSpeed: 0.2
-  backgroundSpeed: 0.1
+  foregroundSpeed: 50
+  backgroundSpeed: 25
   foregroundAlpha: 0.125
   backgroundAlpha: 0.0625
 --- !u!1 &8206396799011697398
