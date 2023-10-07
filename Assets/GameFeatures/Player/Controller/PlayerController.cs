@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         return PlayerData.cards;
     }
+
     public Card[] GetHand()
     {
         return PlayerData.cards.GetHand();
