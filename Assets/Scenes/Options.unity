@@ -453,7 +453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -308, y: -221}
+  m_AnchoredPosition: {x: -138, y: -464}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321600021
@@ -585,8 +585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.7, y: 53}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 250, y: 250}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1490732929
 MonoBehaviour:
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa4d87c8e256dd64fb529976b407ed5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bab800b5802503f4abc0cf9d54b6d343, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -712,8 +712,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muteButton: {fileID: 1490732930}
-  mutedSprite: {fileID: 21300000, guid: dd433913aff529443854f8cda763b8aa, type: 3}
-  unmutedSprite: {fileID: 21300000, guid: aa4d87c8e256dd64fb529976b407ed5b, type: 3}
+  mutedSprite: {fileID: 21300000, guid: 0b6b9bad4ef6d5149991477867fac604, type: 3}
+  unmutedSprite: {fileID: 21300000, guid: bab800b5802503f4abc0cf9d54b6d343, type: 3}
 --- !u!4 &1737893497
 Transform:
   m_ObjectHideFlags: 0
