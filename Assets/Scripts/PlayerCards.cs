@@ -14,7 +14,7 @@ public class PlayerCards
 
     public PlayerCards()
     {
-        deckList = new List<Card>();
+        deckList = CardsManager.Instance.CardDatabase.Cards;
         deck = deckList;
     }
 
@@ -29,7 +29,8 @@ public class PlayerCards
         if (deck.Count == 0)
             ResetDeck();
 
-        int index = Random.Range(0, deck.Count);
+        //int index = Random.Range(0, deck.Count);
+        int index = 0;
         Card drawnCard = deck[index];
         deck.RemoveAt(index);
         hand[selectedIndex] = drawnCard;

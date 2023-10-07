@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CardSelection : MonoBehaviour
+public class CardSelection : Singleton<CardSelection>
 {
     public BeatBar beatBar;
 
-    public List<GameObject> cards;
+    public List<Card> displayedCards;
+    private PlayerController currentPlayer;
+
+    [SerializeField]
+    private GameObject cardInHandTemplate;
     public int currentIndex;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = cards.Count / 2;
+        currentIndex = displayedCards.Count / 2;
         beatBar.OnHitEvent += OnHit;
     }
 
@@ -44,41 +48,42 @@ public class CardSelection : MonoBehaviour
     void Move(HitEventArgs args)
     {
         //cards[currentIndex].Unselect();
-        cards[currentIndex].SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+        displayedCards[currentIndex].SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+        
+        int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
 
-        if (args.Context.ReadValue<float>() > 0)
-        {
-            currentIndex++;
-            if (currentIndex >= cards.Count)
-            {
-                currentIndex = 0;
-            }
-        }
-        else
-        {
-            currentIndex--;
-            if (currentIndex < 0)
-            {
-                currentIndex = cards.Count - 1;
-            }
-        }
+        currentIndex = (currentIndex + value) % (displayedCards.Count + 1);
+        currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
         //cards[currentIndex].Select();
-        cards[currentIndex].SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
+        displayedCards[currentIndex].SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
 
     }
 
     void Use(HitEventArgs args)
     {
-        //cards[currentIndex].PlayCard(args.Result);
-        Destroy(cards[currentIndex]); // TO CHANGE FOR: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
+        currentPlayer.GetCards().PlayCard();
+        Destroy(displayedCards[currentIndex]); // TO CHANGE FOR: 1. USE CARD 2. PLAY CARD ANIMATION 3. SWAP AT INDEX FOR EMPTY CARD
     }
     
     void Reload(HitEventArgs args)
     {
-        for(int i = 0; i < cards.Count; i++)
+        for(int i = 0; i < displayedCards.Count; i++)
         {
+            foreach (Card card in displayedCards[i])
+                Destroy(card);
+
+            foreach (Card card in currentPlayer.GetHand())
+                displayedCards.Add();
             // TO ADD: 1. REROLL ALL CARDS
+        }
+    }
+
+    public void RefreshDisplay(PlayerController player)
+    {
+        foreach(Card card in player.GetHand())
+        {
+            //displayedCards.Add(c);
         }
     }
 }

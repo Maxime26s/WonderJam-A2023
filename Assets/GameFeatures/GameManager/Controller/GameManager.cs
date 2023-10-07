@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
         yield return _waitBetweenEachRound;
 
         GameState = GameState.Playing;
-
+        //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
         StartTics();
     }
 
