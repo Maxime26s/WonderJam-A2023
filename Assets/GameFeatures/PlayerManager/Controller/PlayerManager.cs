@@ -36,7 +36,7 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerManagerData.ResetData();
         for(int i = 0; i < PlayerManagerData.TotalNbPlayer; i++)
         {
-            SpawnPlayer(i);
+            //SpawnPlayer(i);
         }
     }
 
@@ -87,7 +87,9 @@ public class PlayerManager : Singleton<PlayerManager>
                 }
                 break;
         }
+    }
+    public void MoveAllPlayerNextTurn()
+    {
 
-        //todo move people on the field after we shuffle to reflect the turn order
     }
 }

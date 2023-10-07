@@ -11,11 +11,15 @@ public class CardsManager : Singleton<CardsManager>
     PlayerController player;
 
     [SerializeField] private CardDatabase _cardDatabase = null;
+    public CardDatabase CardDatabase => _cardDatabase;
 
     private void Start()
     {
-        BeatController.Instance.FixedOnBeatEvent += Tick;
-        BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
+        if (BeatController.Instance != null) 
+        { 
+            BeatController.Instance.FixedOnBeatEvent += Tick;
+            BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
+        }
         UpdateCurrentPlayer();
     }
 
@@ -34,7 +38,13 @@ public class CardsManager : Singleton<CardsManager>
 
     void UpdateCurrentPlayer()
     {
-        player = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
+        if (PlayerManager.Instance != null)
+        {
+            if (PlayerManager.Instance.PlayerManagerData != null)
+            {
+                player = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
+            }
+        }
         //RenderCards();
     }
 
