@@ -15,6 +15,11 @@ public class Options : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        if (SceneLoader.Instance.isMuted)
+            muteButton.sprite = mutedSprite;
+        else
+            muteButton.sprite = unmutedSprite;
     }
 
     public void ButtonBack()
