@@ -16,8 +16,8 @@ public class CardsManager : Singleton<CardsManager>
     {
         if (BeatController.Instance != null)
         {
-            BeatController.Instance.FixedOnBeatEvent += Tick;
-            BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
+            //BeatController.Instance.FixedOnBeatEvent += Tick;
+            //BeatController.Instance.OnBeatEvent += UpdateCurrentPlayer;
         }
         UpdateCurrentPlayer();
     }
