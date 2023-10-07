@@ -7,6 +7,8 @@ public class BeatBar : MonoBehaviour
 {
     public event EventHandler<HitEventArgs> OnHitEvent;
 
+    public int beatToSkip = 3;
+
     public Transform spawnTransform;
     public Transform centerTransform;
 
@@ -32,17 +34,30 @@ public class BeatBar : MonoBehaviour
         beatAccuracy.OnHitEvent += OnHit;
     }
 
+    private void OnDestroy()
+    {
+        while (beats.Count != 0)
+        {
+            if (beats[0] != null)
+                Destroy(beats[0]);
+            beats.RemoveAt(0);
+        }
+
+        BeatController.Instance.OnBeatEvent -= OnBeat;
+        beatAccuracy.OnHitEvent -= OnHit;
+    }
+
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
     {
         float A = Mathf.Abs(center.y - start.y);
-        double P = 2 * BeatController.Instance.beatInterval;
+        double P = 4 * BeatController.Instance.beatInterval;
         double f = 1 / P;
 
         return (t) =>
         {
             Vector2 position = Vector2.zero;
 
-            position.x = Mathf.Lerp(start.x, start.x + 2 * (center.x - start.x), (float)(t / (BeatController.Instance.beatInterval)));
+            position.x = Mathf.Lerp(start.x, start.x + 2 * (center.x - start.x), (float)(t / (BeatController.Instance.beatInterval * 2)));
             position.y = -A * Mathf.Sin(2 * Mathf.PI * (float)(f * t));
 
             return position;
@@ -51,6 +66,12 @@ public class BeatBar : MonoBehaviour
 
     private void OnBeat()
     {
+        if(beatToSkip > 0)
+        {
+            beatToSkip--;
+            return;
+        }
+
         var go = Instantiate(beatPrefab, spawnTransform.position, Quaternion.identity, null);
         go.GetComponent<Beat>().Init(sineFunction);
 
@@ -81,17 +102,17 @@ public class BeatBar : MonoBehaviour
 
         float score = 1.0f - distance / startCenterDistance;
 
-        if (score > 0.95f)
+        if (score > 0.975f)
         {
             print("Perfect!");
             OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Perfect));
         }
-        else if (score > 0.90f)
+        else if (score > 0.925f)
         {
             print("Good!");
             OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Good));
         }
-        else if (score > 0.825f)
+        else if (score > 0.85f)
         {
             print("Bad!");
             OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Bad));

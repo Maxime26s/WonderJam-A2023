@@ -10,7 +10,6 @@ public class CardsManager : Singleton<CardsManager>
     int selectedCard = -1;
     PlayerController player;
 
-
     [SerializeField] private CardDatabase _cardDatabase = null;
 
     private void Start()

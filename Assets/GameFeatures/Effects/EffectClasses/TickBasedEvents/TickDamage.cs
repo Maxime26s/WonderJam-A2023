@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Tick Damage", menuName = "Effect/Tick Damage")]
 public class TickDamage : TickBasedEffect
 {
     [SerializeField]
