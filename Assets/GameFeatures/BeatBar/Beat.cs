@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Beat : MonoBehaviour
 {
-    public float startTime;
+    public double startTime;
     public SineFunction positionFunction;
 
     private float centerX;
@@ -14,20 +14,22 @@ public class Beat : MonoBehaviour
     public void Init(SineFunction positionFunction)
     {
         this.positionFunction = positionFunction;
-        startTime = Time.time;
-        centerX = positionFunction(BeatController.Instance.beatInterval).x;
-        diffX = Mathf.Abs(positionFunction(0).x - centerX);
+        startTime = BeatController.Instance.lastBeatTime;
+        centerX = positionFunction(BeatController.Instance.beatInterval/2).x;
+        diffX = Mathf.Abs(centerX - positionFunction(0).x);
         gameObject.SetActive(true);
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Vector2 position = positionFunction(Time.time - startTime);
-        transform.position = position;
-        transform.localScale = Vector3.one * Mathf.Clamp01(1.5f - Mathf.Abs(position.x - centerX)/diffX);
+        double timeDiff = AudioSettings.dspTime - startTime;
 
-        if(position.x > 10)
+        Vector2 position = positionFunction(timeDiff);
+        transform.position = position;
+        transform.localScale = Vector3.one * Mathf.Clamp01(1.5f - Mathf.Clamp01(Mathf.Abs(centerX - position.x) / diffX));
+
+        if (position.x > centerX + diffX)
         {
             Destroy(gameObject);
         }

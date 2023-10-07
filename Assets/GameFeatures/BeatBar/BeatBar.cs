@@ -35,15 +35,15 @@ public class BeatBar : MonoBehaviour
     private static SineFunction ExtractSineFunction(Vector2 start, Vector2 center)
     {
         float A = Mathf.Abs(center.y - start.y);
-        float P = 4 * BeatController.Instance.beatInterval;
-        float f = 1 / P;
+        double P = 2 * BeatController.Instance.beatInterval;
+        double f = 1 / P;
 
         return (t) =>
         {
             Vector2 position = Vector2.zero;
 
-            position.x = start.x + (center.x - start.x) / BeatController.Instance.beatInterval * t;
-            position.y = -A * Mathf.Sin(2 * Mathf.PI * f * t);
+            position.x = Mathf.Lerp(start.x, start.x + 2 * (center.x - start.x), (float)(t / (BeatController.Instance.beatInterval)));
+            position.y = -A * Mathf.Sin(2 * Mathf.PI * (float)(f * t));
 
             return position;
         };
@@ -74,7 +74,7 @@ public class BeatBar : MonoBehaviour
 
         float distance = Mathf.Abs(beats[0].transform.position.x - centerPos.x);
 
-        if(distance > startCenterDistance / 2.0f)
+        if (distance > startCenterDistance / 2.0f)
         {
             return;
         }
@@ -91,7 +91,7 @@ public class BeatBar : MonoBehaviour
             print("Good!");
             OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Good));
         }
-        else if (score > 0.85f)
+        else if (score > 0.825f)
         {
             print("Bad!");
             OnHitEvent?.Invoke(this, new HitEventArgs(HitResult.Bad));
@@ -107,7 +107,7 @@ public class BeatBar : MonoBehaviour
     }
 }
 
-public delegate Vector2 SineFunction(float x);
+public delegate Vector2 SineFunction(double x);
 
 public enum HitResult
 {

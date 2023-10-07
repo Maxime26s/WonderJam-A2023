@@ -27,8 +27,8 @@ public class SpinningRays : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreground.transform.Rotate(0, 0, -foregroundSpeed);
-        background.transform.Rotate(0, 0, -backgroundSpeed);
+        foreground.transform.Rotate(0, 0, -foregroundSpeed * Time.deltaTime);
+        background.transform.Rotate(0, 0, -backgroundSpeed * Time.deltaTime);
 
         for (int i = 0; i < foregroundList.Count; i++)
         {
