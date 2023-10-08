@@ -51,10 +51,7 @@ public class GameManager : Singleton<GameManager>
 
         yield return _waitBeforeStartGame;
 
-        //StartTics();
-        
-        //yield return WaitForTick(3);
-
+        CardSelection.Instance.ResetDiplay();
         StartCoroutine(StartNextRound());
 
         Ball.Instance.RenderActionPoint();
@@ -79,6 +76,8 @@ public class GameManager : Singleton<GameManager>
 
         yield return _playerManager.MoveAllPlayerNextPosition();
 
+        CardSelection.Instance.ResetDiplay();
+
         StartCoroutine(StartNextRound());
     }
 
@@ -99,6 +98,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         countDownText.gameObject.SetActive(false);
+        WaitForTick(2);
         GameState = GameState.Playing;
         //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
     }

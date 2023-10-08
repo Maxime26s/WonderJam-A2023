@@ -36,13 +36,6 @@ public class BeatBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        while (beats.Count != 0)
-        {
-            if (beats[0] != null)
-                Destroy(beats[0]);
-            beats.RemoveAt(0);
-        }
-
         BeatController.Instance.OnBeatEvent -= OnBeat;
         beatAccuracy.OnHitEvent -= OnHit;
     }

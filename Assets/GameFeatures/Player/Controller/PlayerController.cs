@@ -101,6 +101,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Mulligan()
     {
-        PlayerData.cards.Mulligan();
+        PlayerData.cards.DrawHand();
     }
 }

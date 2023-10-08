@@ -6,7 +6,8 @@ public enum CardType
 {
     Healing,
     Damage,
-    Reverse
+    Reverse,
+    Blank
 }
 
 [CreateAssetMenu(fileName = "Card", menuName = "Card", order = 1)]

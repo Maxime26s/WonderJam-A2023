@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,7 +20,7 @@ public class CardSelection : Singleton<CardSelection>
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = displayedCards.Count / 2;
+        currentIndex = 2;
         beatBar.OnHitEvent += OnHit;
         RefreshDisplay();
     }
@@ -38,65 +39,92 @@ public class CardSelection : Singleton<CardSelection>
             return;
         }
 
-        if (args.Context.action.name == "Use")
+        else if (GameManager.Instance.GameState == GameState.Playing)
         {
-            Use(args);
+            if (args.Context.action.name == "Use")
+            {
+                Use(args);
+            }
+            else if (args.Context.action.name == "Move")
+            {
+                Move(args);
+            }
+            else if (args.Context.action.name == "Reload")
+            {
+                Reload(args);
+            }
         }
-        else if (args.Context.action.name == "Move")
-        {
-            Move(args);
-        }
-        else if (args.Context.action.name == "Reload")
-        {
-            Reload(args);
-        }
-
+        
         RefreshDisplay();
     }
 
     void Move(HitEventArgs args)
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        //cards[currentIndex].Unselect();
-        displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+        displayedCards[currentIndex].StopHover();
 
         int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
-        // TODO: PLAY CARD UNHOVER ANIMATION
-
-        currentIndex = (currentIndex + value) % (displayedCards.Count + 1);
+        currentIndex = (currentIndex + value + 5) % (displayedCards.Count);
         currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
-        //cards[currentIndex].Select();
-        displayedCards[currentIndex].gameObject.SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
-        // TODO: PLAY CARD HOVER ANIMATION
+        displayedCards[currentIndex].BeginHover();
     }
 
     void Use(HitEventArgs args)
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        currentPlayer.GetCards().PlayCard();
-        displayedCards[currentIndex].SetupCardUI(blankCard);
-
+        if (currentPlayer)
+        {
+            currentPlayer.GetCards().PlayCard();
+            displayedCards[currentIndex].SetupCardUI(blankCard);
+        }
         // TO CHANGE FOR: PLAY CARD ANIMATION
     }
 
     void Reload(HitEventArgs args)
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        currentPlayer.Mulligan();
-        foreach (CardInHandUI card in displayedCards)
+        if (currentPlayer)
         {
-            int index = 0;
-            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            currentPlayer.Mulligan();
+            foreach (CardInHandUI card in displayedCards)
+            {
+                int index = 0;
+                card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            }
         }
     }
+
+    public void ResetDiplay()
+    {
+        print("refresh");
+        currentIndex = 2;
+        displayedCards.ForEach(c => c.StopHover());
+        displayedCards[currentIndex].BeginHover();
+        RefreshDisplay();
+    }
+
     void RefreshDisplay()
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
+        int index = 0;
+        if (currentPlayer)
+        {
+            print("en plus");
+            foreach (CardInHandUI card in displayedCards)
+            {
+                card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            }
+        }
+        
+    }
+
+    void ResetSelf()
+    {
         foreach (CardInHandUI card in displayedCards)
         {
-            int index = 0;
-            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            card.StopHover();
         }
+        displayedCards[2].BeginHover();
     }
 }
