@@ -161,17 +161,18 @@ public class BeatController : MonoBehaviour
         ResetAudioSource();
     }
 
-    public void FadeOutMelody(float duration)
+    public void FadeOutMelody(float end, float duration)
     {
         IEnumerator FadeOutCoroutine()
         {
             DisableBeatSpawn();
 
             float startTime = Time.time;
+            float currentVolume = melodyAudioSource.volume;
 
             while (Time.time - startTime < duration)
             {
-                melodyAudioSource.volume = Mathf.Lerp(1.0f, 0.0f, (Time.time - startTime) / duration);
+                melodyAudioSource.volume = Mathf.Lerp(currentVolume, end, (Time.time - startTime) / duration);
                 yield return null;
             }
 
@@ -180,17 +181,18 @@ public class BeatController : MonoBehaviour
         StartCoroutine(FadeOutCoroutine());
     }
 
-    public void FadeInMelody(float duration)
+    public void FadeInMelody(float end, float duration)
     {
         IEnumerator FadeInCoroutine()
         {
             EnableBeatSpawn();
 
             float startTime = Time.time;
+            float currentVolume = melodyAudioSource.volume;
 
             while (Time.time - startTime < duration)
             {
-                melodyAudioSource.volume = Mathf.Lerp(0.0f, 1.0f, (Time.time - startTime) / duration);
+                melodyAudioSource.volume = Mathf.Lerp(currentVolume, end, (Time.time - startTime) / duration);
                 yield return null;
             }
 

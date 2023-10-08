@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
                 //This is the current player
                 if (PlayerData.PlayerDeviceId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
                 {
+                    Animator.SetTrigger("Move");
+
                     StartCoroutine(GameManager.Instance.TurnOver());
                 }
             }

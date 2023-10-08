@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Nuke
-  _cardImage: {fileID: 21300000, guid: 6b9d0173b68c5974eacaa6085d60cbe7, type: 3}
+  _cardImage: {fileID: 21300000, guid: c02674f83e742254f8a21a4bfa5ca7e8, type: 3}
   _description: <color=#FF7070>50 dommage</color> dans 25 temps
   cardEffects:
   - {fileID: 11400000, guid: 014e9632c94036a41aedfe412c2bd37d, type: 2}
