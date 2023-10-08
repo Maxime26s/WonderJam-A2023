@@ -13,9 +13,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     float _timeToMoveToNewPosition = 2f;
 
-    void Start()
-    {
-    }
+    Coroutine _checkWinCoroutine = null;
 
     public void Init()
     {
@@ -119,5 +117,47 @@ public class PlayerManager : Singleton<PlayerManager>
         yield return new WaitForSeconds(_timeToMoveToNewPosition);
 
         PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
+    }
+
+    public void CheckPlayerWin()
+    {
+        PlayerController winningPlayer = null;
+        bool win = false;
+
+        foreach(PlayerController player in PlayerManagerData.PlayersList)
+        {
+            if (player.PlayerData.IsAlive)
+            {
+                if(winningPlayer != null)
+                {
+                    win = false;
+                    break;
+                }
+                else
+                {
+                    winningPlayer = player;
+                    win = true;
+                }
+            }
+        }
+
+        if (win && _checkWinCoroutine == null)
+        {
+            _checkWinCoroutine = StartCoroutine(WaitAFrameToConfirmWin(winningPlayer));
+        }
+    }
+
+    IEnumerator WaitAFrameToConfirmWin(PlayerController winner)
+    {
+        yield return null;
+
+        ShowWinner(winner);
+    }
+
+    void ShowWinner(PlayerController winner)
+    {
+        //Do something here
+
+        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerId);
     }
 }

@@ -18,11 +18,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Slider _slider;
 
+    [SerializeField]
+    float _timeToWaitPlayerDeathAnim = 3f;
+    WaitForSeconds _waitForSecondPlayerDeathAnim;
+
     private ControllerActions controllerActions;
 
     private void Awake()
     {
         controllerActions = new ControllerActions();
+
+        _waitForSecondPlayerDeathAnim = new WaitForSeconds(_timeToWaitPlayerDeathAnim);
 
         controllerActions.Gameplay.SkipTurn.performed += OnSkipPerformed;
     }
@@ -86,13 +92,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool CheckPlayerDies()
+    public void CheckPlayerDies()
     {
         float hpPercent = PlayerData.CurrentHealth / PlayerData.MaxHealth;
         if (_slider)
+        {
             _slider.value = hpPercent;
-        return PlayerData.CurrentHealth > 0;
+        }
+
+        if(hpPercent <= 0)
+        {
+            PlayerDies();
+        }
     }
+
+    void PlayerDies()
+    {
+        PlayerData.IsAlive = false;
+        Animator.SetTrigger("Death");
+
+        if (PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId() == PlayerData.PlayerId)
+        {
+            BeatController.Instance.StopPlaying();
+
+            StartCoroutine(PlayerDiesWaitForAnimationCoroutine());
+        }
+    }
+
+    IEnumerator PlayerDiesWaitForAnimationCoroutine()
+    {
+        yield return _waitForSecondPlayerDeathAnim;
+
+        GameManager.Instance.TurnOver();
+    }
+
 
     public PlayerCards GetCards()
     {
