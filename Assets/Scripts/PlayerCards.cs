@@ -15,13 +15,15 @@ public class PlayerCards
     public PlayerCards()
     {
         deckList = new List<Card>();
-        for (int index = 1; index < CardsManager.Instance.CardDatabase.Cards.Count; index++)
-            foreach (Card card in CardsManager.Instance.CardDatabase.Cards)
+        foreach (Card card in CardsManager.Instance.CardDatabase.Cards)
+        {
+            if (card.CardType != CardType.Blank)
             {
                 deckList.Add(card);
                 deckList.Add(card);
                 deckList.Add(card);
             }
+        }
         deck = new List<Card>(deckList);
         Shuffle();
         DrawHand();

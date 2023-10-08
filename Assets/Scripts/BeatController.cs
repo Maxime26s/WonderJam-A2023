@@ -104,7 +104,6 @@ public class BeatController : MonoBehaviour
     {
         // You can still have other logic here if needed
         lastBeatTime = AudioSettings.dspTime + track.GetOffset();
-        print("Beat! " + AudioSettings.dspTime);
 
         // Invoke the event
         EarlyOnBeatEvent?.Invoke();
