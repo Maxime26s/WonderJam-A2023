@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Inferno
-  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
+  _cardImage: {fileID: 21300000, guid: 7595cfb93a9c8b040a9a22849cdd2078, type: 3}
   _description: <color=#FF7070>5 dommage</color> pendant 10 temps
   cardEffects:
   - {fileID: 11400000, guid: c0c20eac4eb452846967accde8bec5e9, type: 2}
