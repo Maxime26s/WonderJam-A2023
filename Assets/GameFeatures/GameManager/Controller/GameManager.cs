@@ -27,6 +27,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     public TextMeshProUGUI countDownText;
 
+	[SerializeField]
+	public int winnerPlayer = -1;
+
     int tickCount = 0;
     string mainSceneName = "MainBattleScene";
 
