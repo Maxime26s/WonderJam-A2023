@@ -39,6 +39,8 @@ public class PlayerSelect : MonoBehaviour
 	public void ButtonContinue()
     {
         SceneLoader.Instance.LoadLevel(nextSceneName);
+
+		GameManager.Instance.StartCoroutine(GameManager.Instance.StartGameWhenSceneLoaded());
     }
 
 	public void OnSelect(InputAction.CallbackContext context)
