@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 0
   _cardName: Nettoyeur d'orbe
-  _cardImage: {fileID: 21300000, guid: 396f437543bcca64da302ac0fd0f59af, type: 3}
+  _cardImage: {fileID: 21300000, guid: 6bd80feb26915834bad286f0e083ff90, type: 3}
   _description: Retire <color=#39c663>10 dommage</color>, ajoute <color=#FF7070>3
     soin</color>
   cardEffects:
