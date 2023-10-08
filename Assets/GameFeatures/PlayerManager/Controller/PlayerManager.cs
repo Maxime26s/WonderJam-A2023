@@ -15,22 +15,6 @@ public class PlayerManager : Singleton<PlayerManager>
 
     WaitForSeconds _waitForSecondsMoveToNewPosition;
 
-
-    #region
-    BattleGroundManager _battleGroundManager;
-    BattleGroundManager BattleGroundManager 
-    { 
-        get
-        {
-            if(_battleGroundManager == null)
-            {
-                _battleGroundManager = (BattleGroundManager)BattleGroundManager.Instance;
-            }
-            return _battleGroundManager;
-        } 
-    }
-    #endregion
-
     void Start()
     {
         _waitForSecondsMoveToNewPosition = new WaitForSeconds(_timeToMoveToNewPosition);
@@ -69,9 +53,13 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (_playerPrefab != null)
         {
+<<<<<<< Updated upstream
             BattleGroundController bgController = BattleGroundManager.GetCurrentBattleGround();
             List<Transform> transformList = bgController.GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer);
             GameObject newPlayer = Instantiate(_playerPrefab, transformList[playerId].transform);
+=======
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
+>>>>>>> Stashed changes
             
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
@@ -124,7 +112,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
             player.Animator.SetTrigger("Move");
 
-            Transform endPosition = BattleGroundManager.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
+            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
 
             StartCoroutine(MoveToPositionCoroutine(endPosition, player));
         }

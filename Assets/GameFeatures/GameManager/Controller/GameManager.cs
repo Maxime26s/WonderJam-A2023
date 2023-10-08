@@ -27,7 +27,7 @@ public class GameManager : Singleton<GameManager>
 
     int tickCount = 0;
 
-    public void Awake()
+    void Init()
     {
         ResetData();
 
@@ -38,6 +38,11 @@ public class GameManager : Singleton<GameManager>
     //Bind this on the start game after player selection
     public IEnumerator StartGame()
     {
+        if(_waitBeforeStartGame == null)
+        {
+            Init();
+        }
+
         GameState = GameState.GameBegin;
 
         _playerManager.Init();
