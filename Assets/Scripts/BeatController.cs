@@ -18,6 +18,7 @@ public class BeatController : MonoBehaviour
     private bool shouldChangeSpeed = false;
 
     private double nextBeatTime;
+    public int beatCount = 0;
 
     // Event to subscribe to
     public delegate void BeatAction();
@@ -88,6 +89,7 @@ public class BeatController : MonoBehaviour
 
     public void StartPlaying()
     {
+        beatCount = 0;
         double scheduledStartTime = AudioSettings.dspTime + track.GetAudioLeadInTime();
         audioSource.PlayScheduled(scheduledStartTime);
         nextBeatTime = scheduledStartTime;
@@ -108,7 +110,8 @@ public class BeatController : MonoBehaviour
         EarlyOnBeatEvent?.Invoke();
         // Invoke the event
         OnBeatEvent?.Invoke();
-
+        
+        beatCount++;
     }
 
     // External function to modify speed

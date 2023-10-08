@@ -10,9 +10,6 @@ public class CardSelection : Singleton<CardSelection>
     public List<CardInHandUI> displayedCards;
 
     [SerializeField]
-    private PlayerController currentPlayer;
-
-    [SerializeField]
     private Card blankCard;
 
     [SerializeField]
@@ -57,6 +54,7 @@ public class CardSelection : Singleton<CardSelection>
 
     void Move(HitEventArgs args)
     {
+        PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         //cards[currentIndex].Unselect();
         displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
 
@@ -73,6 +71,7 @@ public class CardSelection : Singleton<CardSelection>
 
     void Use(HitEventArgs args)
     {
+        PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         currentPlayer.GetCards().PlayCard();
         displayedCards[currentIndex].SetupCardUI(blankCard);
 
@@ -81,6 +80,7 @@ public class CardSelection : Singleton<CardSelection>
 
     void Reload(HitEventArgs args)
     {
+        PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         currentPlayer.Mulligan();
         foreach (CardInHandUI card in displayedCards)
         {
@@ -90,6 +90,7 @@ public class CardSelection : Singleton<CardSelection>
     }
     void RefreshDisplay()
     {
+        PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         foreach (CardInHandUI card in displayedCards)
         {
             int index = 0;

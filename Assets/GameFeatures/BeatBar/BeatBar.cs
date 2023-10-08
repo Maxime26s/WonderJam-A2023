@@ -79,6 +79,10 @@ public class BeatBar : MonoBehaviour
 
     private void OnBeat()
     {
+        if(BeatController.Instance.beatCount == 0)
+        {
+            beatToSkip = 3;
+        }
         if (beatToSkip > 0)
         {
             beatToSkip--;
