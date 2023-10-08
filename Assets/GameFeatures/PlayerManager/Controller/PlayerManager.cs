@@ -58,7 +58,7 @@ public class PlayerManager : Singleton<PlayerManager>
             playerController.PlayerData.PlayerDeviceId = playerDeviceId;
             playerController.PlayerData.PlayerIndex = playerIndex;
             playerController.SpriteRenderer.color = _playerColors[playerIndex];
-            playerController.Mulligan();
+            playerController.DrawHand();
 
             PlayerManagerData.PlayersList.Add(playerController);
         }
