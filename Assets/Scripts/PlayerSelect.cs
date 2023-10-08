@@ -38,6 +38,7 @@ public class PlayerSelect : MonoBehaviour
 
 	public void ButtonContinue()
     {
+        playersToSpawn.RemoveAll(i => i == -1);
 		PlayerManager.Instance.PlayerManagerData.PlayersToSpawn = playersToSpawn;
 
 		SceneLoader.Instance.LoadLevel(nextSceneName);
@@ -102,7 +103,8 @@ public class PlayerSelect : MonoBehaviour
 	{
 		controllerActions.Gameplay.Return.performed -= OnReturn;
 		controllerActions.Gameplay.Use.performed -= OnSelect;
-	}
+        BeatController.Instance.OnBeatEvent -= OnBeat;
+    }
 
 	private void OnEnable()
     {

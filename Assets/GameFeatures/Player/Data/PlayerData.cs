@@ -15,7 +15,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField]
     List<Card> _hand;
     bool _isAlive = true;
+    int _playerIndex = 0;
 
+    public int PlayerIndex { get { return _playerIndex; } set { _playerIndex = value; } }
     public int PlayerId { get { return _playerId; } set { _playerId = value; } }
     public float MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
