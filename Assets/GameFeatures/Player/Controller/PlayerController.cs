@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
                 //This is the current player
                 if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
                 {
-                    GameManager.Instance.TurnOver();
+                    StartCoroutine(GameManager.Instance.TurnOver());
                 }
             }
         }

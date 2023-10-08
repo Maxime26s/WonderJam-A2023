@@ -52,9 +52,10 @@ public class GameManager : Singleton<GameManager>
         yield return _waitBeforeStartGame;
 
         CardSelection.Instance.ResetDiplay();
+        Ball.Instance.ResetActions();
         StartCoroutine(StartNextRound());
 
-        Ball.Instance.RenderActionPoint();
+        Ball.Instance.ResetActions();
     }
 
     public void StartGameNOW()
@@ -63,8 +64,9 @@ public class GameManager : Singleton<GameManager>
     }
 
     //Bind this on running out of actions and skipping turn
-    public void TurnOver()
+    public IEnumerator TurnOver()
     {
+        yield return WaitForTick(1);
         _beatController.StopPlaying();
 
         StartCoroutine(ChangeTurn());
@@ -74,10 +76,10 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameState.ChangingTurn;
 
-        print("Changing turn");
         yield return _playerManager.MoveAllPlayerNextPosition();
 
         CardSelection.Instance.ResetDiplay();
+        Ball.Instance.ResetActions();
 
         StartCoroutine(StartNextRound());
     }
@@ -99,7 +101,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         countDownText.gameObject.SetActive(false);
-        WaitForTick(2);
+        //yield return WaitForTick(1);
         GameState = GameState.Playing;
         //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
     }

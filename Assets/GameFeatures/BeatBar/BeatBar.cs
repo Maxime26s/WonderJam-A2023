@@ -8,7 +8,10 @@ public class BeatBar : MonoBehaviour
 {
     public event EventHandler<HitEventArgs> OnHitEvent;
 
-    public int beatToSkip = 3;
+    [SerializeField]
+    public int baseBeatToSkip = 6;
+
+    public int beatToSkip;
 
     public Transform spawnTransform;
     public Transform centerTransform;
@@ -21,6 +24,8 @@ public class BeatBar : MonoBehaviour
     private float startCenterDistance;
 
     private SineFunction sineFunction;
+
+    int beatsInstantiated;
 
 
     // Start is called before the first frame update
@@ -74,7 +79,8 @@ public class BeatBar : MonoBehaviour
     {
         if(BeatController.Instance.beatCount == 0)
         {
-            beatToSkip = 3;
+            beatToSkip = baseBeatToSkip;
+            beatsInstantiated = 0;
         }
         if (beatToSkip > 0)
         {
@@ -82,10 +88,13 @@ public class BeatBar : MonoBehaviour
             return;
         }
 
+        if (beatsInstantiated >= Ball.Instance.baseActionPoints) return;
+
         var go = Instantiate(beatPrefab, spawnTransform.position, Quaternion.identity, transform);
         go.GetComponent<Beat>().Init(sineFunction);
 
         beats.Add(go);
+        beatsInstantiated++;
     }
 
     private void OnHit(object sender, InputAction.CallbackContext context)
@@ -104,22 +113,18 @@ public class BeatBar : MonoBehaviour
 
         if (score > 0.975f)
         {
-            print("Perfect!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Perfect));
         }
         else if (score > 0.925f)
         {
-            print("Good!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Good));
         }
         else if (score > 0.85f)
         {
-            print("Bad!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Bad));
         }
         else
         {
-            print("Miss!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Miss));
         }
 
