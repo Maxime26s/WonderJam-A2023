@@ -195,6 +195,17 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8840d1e9-ee1d-48cc-897f-92764a3171c3"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""49ab241a-190a-4e35-b52d-4c46e12dc352"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -228,6 +239,17 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dc695304-7fa8-4ca6-a4d4-5757c48fe077"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""76c6e288-6407-47e6-bfda-2f76f660ebee"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -239,8 +261,8 @@ public partial class @ControllerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""41f6800b-ea85-4ed9-9386-9562e18e2dce"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""3cec0d15-d4bb-4ffd-8d8b-91ef863e701b"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
