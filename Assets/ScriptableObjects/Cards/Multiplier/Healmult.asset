@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Huile Sur Le Feu 1
+  m_Name: Healmult
   m_EditorClassIdentifier: 
   _cardType: 1
-  _cardName: Huile Sur Le Feu
+  _cardName: Healmult
   _cardImage: {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
-  _description: Multiplies damage by 1.5 for 50 beats!
+  _description: Multiplies healing over time by 1.5 for 50 beats!
   cardEffects:
-  - {fileID: 11400000, guid: 81042853c33eae04e913bf842a8899e6, type: 2}
+  - {fileID: 11400000, guid: 7ffbd25825fe6244e853c8b0343ef9b9, type: 2}
