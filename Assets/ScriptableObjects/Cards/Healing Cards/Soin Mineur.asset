@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Magma Ball
+  m_Name: Soin Mineur
   m_EditorClassIdentifier: 
-  _cardType: 1
-  _cardName: Magma Ball
-  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
-  _description: <color=#FF7070>25 dommage</color> dans 5 temps
+  _cardType: 0
+  _cardName: Soin Mineur
+  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
+  _description: <color=#39c663>Soigne de 3</color>
   cardEffects:
-  - {fileID: 11400000, guid: 34c9305411c898b448f0675edc89154c, type: 2}
+  - {fileID: 11400000, guid: 809c3ae4bdc14bc47b83e82b93c15818, type: 2}

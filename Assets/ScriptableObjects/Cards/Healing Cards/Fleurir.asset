@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Inferno
+  m_Name: Fleurir
   m_EditorClassIdentifier: 
-  _cardType: 1
-  _cardName: Inferno
-  _cardImage: {fileID: 21300000, guid: 7595cfb93a9c8b040a9a22849cdd2078, type: 3}
-  _description: <color=#FF7070>5 dommage</color> pendant 10 temps
+  _cardType: 0
+  _cardName: Fleurir
+  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
+  _description: <color=#39c663>Soigne de 1</color> pendant 100 tours
   cardEffects:
-  - {fileID: 11400000, guid: c0c20eac4eb452846967accde8bec5e9, type: 2}
+  - {fileID: 11400000, guid: 9ae5b1995068ec84384cec22c68e9513, type: 2}
