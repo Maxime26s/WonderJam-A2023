@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Ball : Singleton<Ball>
 {
-    public List<BaseEffect> BaseEffectsForTesting = new List<BaseEffect>();
     public List<BaseEffect> effects = new List<BaseEffect>();
     [SerializeField]
     public int baseActionPoints = 4;
@@ -26,10 +25,6 @@ public class Ball : Singleton<Ball>
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
-        foreach (BaseEffect effect in BaseEffectsForTesting) 
-        {
-            effects.Add(Instantiate(effect));
-        }
     }
 
     public void AddEffect(BaseEffect effect)
@@ -63,6 +58,10 @@ public class Ball : Singleton<Ball>
                 effect.Tick();
             }
 
+            //Take idle damage
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(1);
+
+            //Effects
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage * damageMultiplier);
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing * healingMultiplier);
 

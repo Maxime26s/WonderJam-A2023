@@ -85,6 +85,9 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(1);
         _beatController.StopPlaying();
 
+        // Take damage for every action you did not perform
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(Ball.Instance.actionPoints);
+
         StartCoroutine(ChangeTurn());
     }
 
