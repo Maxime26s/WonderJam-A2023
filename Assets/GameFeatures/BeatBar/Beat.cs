@@ -11,6 +11,10 @@ public class Beat : MonoBehaviour
     private float centerX;
     public float diffX;
 
+    public bool isHit = false;
+
+    public GameObject particles;
+
     public void Init(SineFunction positionFunction)
     {
         this.positionFunction = positionFunction;
@@ -33,5 +37,11 @@ public class Beat : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (isHit)
+            Instantiate(particles, transform.position, Quaternion.identity);
     }
 }

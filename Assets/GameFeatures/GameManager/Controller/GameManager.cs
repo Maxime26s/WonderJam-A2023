@@ -95,7 +95,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(1);
 
         if (_beatController.track.HasMelody())
-            _beatController.FadeOutMelody(0.8f, (float)(_beatController.track.GetBeatInterval() * 3.0d));
+            _beatController.FadeOutMelody(1.0f, (float)(_beatController.track.GetBeatInterval() * 3.0d));
         else
             _beatController.StopPlaying();
 

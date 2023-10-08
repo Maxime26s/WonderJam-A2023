@@ -143,6 +143,7 @@ public class BeatBar : MonoBehaviour
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Miss));
         }
 
+        beats[0].GetComponent<Beat>().isHit = true;
         Destroy(beats[0]);
         beats.RemoveAt(0);
     }

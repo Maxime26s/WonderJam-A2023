@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTime: 0
   diffX: 0
+  particles: {fileID: 4315350326651853957, guid: 7aad0268d9487eb44b15c0da791fccee, type: 3}
