@@ -18,6 +18,10 @@ public class Ball : Singleton<Ball>
     [SerializeField]
     public List<EffectsInfoUI> EffectsListUI = new List<EffectsInfoUI>();
 
+    public float pendingDamage = 0f;
+    public float pendingHealing = 0f;
+    public float damageMultiplier = 1f;
+    public float healingMultiplier = 1f;
 
     private void Start()
     {
@@ -44,6 +48,9 @@ public class Ball : Singleton<Ball>
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
+            pendingDamage = 0f;
+            pendingHealing = 0f;
+
             actionPoints--;
             if (actionPoints <= 0)
             {
@@ -51,13 +58,19 @@ public class Ball : Singleton<Ball>
             }
             ActionLabel.text = Mathf.Max(actionPoints, 0).ToString();
 
-            foreach (BaseEffect e in effects)
+            foreach (BaseEffect effect in effects)
             {
-                e.Tick();
+                //TickDamage tickDamage = effect as TickDamage;
+                //if (tickDamage)
+                //tickDamage.Tick();
+                effect.Tick();
             }
 
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage * damageMultiplier);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing * healingMultiplier);
+
             // Delete all effects that are over
-            effects.RemoveAll(e => e.isOver);
+            effects.RemoveAll(effect => effect.isOver);
         }
 
         UpdateEffectsList();
@@ -65,18 +78,18 @@ public class Ball : Singleton<Ball>
 
     void UpdateEffectsList()
     {
-        foreach (var go in EffectsListUI)
+        foreach (EffectsInfoUI effectUI in EffectsListUI)
         {
-            go.gameObject.SetActive(false);
+            effectUI.gameObject.SetActive(false);
         }
 
         print(effects.Count);
 
         int i = 0;
-        foreach (var e in effects)
+        foreach (BaseEffect effect in effects)
         {
             EffectsListUI[i].gameObject.SetActive(true);
-            EffectsListUI[i].SetInfo(e.GetInfo());
+            EffectsListUI[i].SetInfo(effect.GetInfo());
         }
     }
 

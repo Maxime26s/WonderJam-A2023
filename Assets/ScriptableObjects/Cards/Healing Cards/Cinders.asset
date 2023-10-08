@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 0
   _cardName: Cinders
   _cardImage: {fileID: 21300000, guid: 5310880b830c6e94598629d5f5c1ed17, type: 3}
-  _description: (nonfunctional) Removes <color=#39c663>3 healing</color> from orb
+  _description: Removes <color=#39c663>3 healing</color> from orb
   cardEffects:
   - {fileID: 11400000, guid: a8fb987ff73ca364884ace0cc519e7d4, type: 2}
