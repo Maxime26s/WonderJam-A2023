@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Cinders
+  m_Name: Pluie
   m_EditorClassIdentifier: 
-  _cardType: 0
-  _cardName: Cinders
-  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
-  _description: Removes <color=#39c663>3 healing</color> from orb
+  _cardType: 1
+  _cardName: Healmult
+  _cardImage: {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  _description: Multiplies healing over time by 1.5 for 50 beats!
   cardEffects:
-  - {fileID: 11400000, guid: a8fb987ff73ca364884ace0cc519e7d4, type: 2}
+  - {fileID: 11400000, guid: 7ffbd25825fe6244e853c8b0343ef9b9, type: 2}

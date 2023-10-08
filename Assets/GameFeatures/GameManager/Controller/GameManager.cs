@@ -27,6 +27,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     public TextMeshProUGUI countDownText;
 
+	[SerializeField]
+	public int winnerPlayer = -1;
+
     int tickCount = 0;
     string mainSceneName = "MainBattleScene";
 
@@ -85,6 +88,9 @@ public class GameManager : Singleton<GameManager>
             _beatController.FadeOutMelody(1);
         else
             _beatController.StopPlaying();
+
+        // Take damage for every action you did not perform
+        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(Ball.Instance.actionPoints);
 
         StartCoroutine(ChangeTurn());
     }

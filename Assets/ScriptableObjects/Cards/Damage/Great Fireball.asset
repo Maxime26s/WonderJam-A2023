@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Great Fireball
-  _cardImage: {fileID: 21300000, guid: 6b9d0173b68c5974eacaa6085d60cbe7, type: 3}
-  _description: Deals <color=#FF7070>3 damage</color> on the next beat
+  _cardImage: {fileID: 21300000, guid: acb7cb1c4cf8f784494ea7af7f941a90, type: 3}
+  _description: Deals <color=#FF7070>3 damage</color> in 5 beat
   cardEffects:
-  - {fileID: 11400000, guid: 894e0341ae580a042842cd5950950bad, type: 2}
+  - {fileID: 11400000, guid: 1845a89aae846a2418cab458822ba18f, type: 2}
