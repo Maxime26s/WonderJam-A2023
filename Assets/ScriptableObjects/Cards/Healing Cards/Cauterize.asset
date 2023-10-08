@@ -18,5 +18,5 @@ MonoBehaviour:
   _description: <color=#FF7070>Damages you</color> and removes <color=#39c663>damage</color>
     over time
   cardEffects:
-  - {fileID: 11400000, guid: 894e0341ae580a042842cd5950950bad, type: 2}
+  - {fileID: 11400000, guid: 95bb8b8396d187941977c49a2be9973a, type: 2}
   - {fileID: 11400000, guid: 8767acf5692b17642afb06a1667f620c, type: 2}
