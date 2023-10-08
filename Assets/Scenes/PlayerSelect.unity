@@ -545,6 +545,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.34509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.34117648
+      objectReference: {fileID: 0}
     - target: {fileID: 7153247989709442873, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
       propertyPath: nextSceneName
       value: MainBattleScene
