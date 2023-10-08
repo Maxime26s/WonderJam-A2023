@@ -105,7 +105,8 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             PlayerController player = PlayerManagerData.GetPlayerByIndex(PlayerManagerData.PlayerTurnOrderList[i]);
 
-            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersToSpawn.Count, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
+            int index = i - 1 >= 0 ? i - 1 : PlayerManagerData.PlayerTurnOrderList.Count - 1;
+            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersToSpawn.Count, PlayerManagerData.PlayerTurnOrderList[(index) % PlayerManagerData.PlayerTurnOrderList.Count]);
 
 
             PlayerHolder ph = player.transform.parent.parent.parent.GetComponent<PlayerHolder>();
