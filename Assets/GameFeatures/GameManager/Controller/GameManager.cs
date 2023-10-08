@@ -57,6 +57,9 @@ public class GameManager : Singleton<GameManager>
     //Bind this on the start game after player selection
     public IEnumerator StartGame()
     {
+        if (BeatController.Instance.track.HasMelody())
+            BeatController.Instance.StartPlaying(false);
+
         if (_waitBeforeStartGame == null)
         {
             Init();
@@ -88,7 +91,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(1);
 
         if (_beatController.track.HasMelody())
-            _beatController.FadeOutMelody(0.66f, 0.3f);
+            _beatController.FadeOutMelody(0.8f, (float)(_beatController.track.GetBeatInterval() * 3.0d));
         else
             _beatController.StopPlaying();
 
@@ -106,7 +109,7 @@ public class GameManager : Singleton<GameManager>
             turn = 0;
             acte++;
 
-            acte = Mathf.Min(acte, 8);
+            acte = Mathf.Min(acte, 6);
 
             BeatController.Instance.SetSpeed(1.00 + acte * 0.20);
         }
@@ -127,7 +130,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(3);
         int tick0 = tickCount;
 
-        _beatController.FadeInMelody(1.0f, (float)(_beatController.track.GetBeatInterval() * 3));
+        _beatController.FadeInMelody(1.0f, (float)(_beatController.track.GetBeatInterval() * 3.0d));
 
         foreach (CardInHandUI card in CardSelection.Instance.displayedCards)
         {
@@ -152,10 +155,10 @@ public class GameManager : Singleton<GameManager>
 
     void StartTics()
     {
-        if (_beatController.track.HasMelody() && tickCount != 0)
+        if (_beatController.track.HasMelody())
             _beatController.EnableBeatSpawn();
         else
-            _beatController.StartPlaying();
+            _beatController.StartPlaying(true);
     }
 
     public void EndGame()
