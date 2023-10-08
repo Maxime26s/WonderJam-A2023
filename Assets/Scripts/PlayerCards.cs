@@ -7,6 +7,8 @@ public class PlayerCards
 {
     //4 cards in hand. When a card is played, a card is drawn. If a card would be drawn, all cards except the 3 in hand are placed back in the deck.
     //5 cards in hand. One is selected. Playing a card gives a blank card instead of it. 
+
+    [SerializeField]
     private List<Card> deckList;
     private List<Card> deck;
     private Card[] hand = new Card[3];
