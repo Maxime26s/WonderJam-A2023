@@ -55,8 +55,9 @@ public class Ball : Singleton<Ball>
 
             foreach (BaseEffect effect in effects)
             {
-                if ((TickDamage) effect)
-                    effect.Tick();
+                TickDamage tickDamage = effect as TickDamage;
+                if (tickDamage)
+                    tickDamage.Tick();
             }
 
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
