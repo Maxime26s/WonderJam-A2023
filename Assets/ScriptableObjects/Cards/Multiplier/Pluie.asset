@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Healmult
-  _cardImage: {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  _cardImage: {fileID: 21300000, guid: 326436920e39ef1418038ecc4b4b25ba, type: 3}
   _description: Multiplies healing over time by 1.5 for 50 beats!
   cardEffects:
   - {fileID: 11400000, guid: 7ffbd25825fe6244e853c8b0343ef9b9, type: 2}
