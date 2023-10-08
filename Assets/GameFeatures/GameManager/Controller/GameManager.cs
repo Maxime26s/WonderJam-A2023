@@ -88,6 +88,8 @@ public class GameManager : Singleton<GameManager>
     //Bind this on running out of actions and skipping turn
     public IEnumerator TurnOver()
     {
+        GameState = GameState.ChangingTurn;
+
         yield return WaitForTick(1);
 
         if (_beatController.track.HasMelody())
@@ -103,6 +105,8 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator ChangeTurn()
     {
+        GameState = GameState.ChangingTurn;
+
         turn++;
         if (turn >= 4)
         {
@@ -113,8 +117,6 @@ public class GameManager : Singleton<GameManager>
 
             BeatController.Instance.SetSpeed(1.00 + acte * 0.20);
         }
-
-        GameState = GameState.ChangingTurn;
 
         yield return _playerManager.MoveAllPlayerNextPosition();
 
