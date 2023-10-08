@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardInHandUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardInHandUI : MonoBehaviour
 {
     [SerializeField] public TextMeshProUGUI _cardName = null;
     [SerializeField] public Image _cardImage = null;
@@ -48,13 +48,13 @@ public class CardInHandUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         _cardVisualParent.position = Vector3.Lerp(_cardVisualParent.position, targetPosition, lerpSpeed * Time.deltaTime);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void BeginHover()
     {
         isHovering = true;
         _cardOutline.SetActive(true);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void StopHover()
     {
         isHovering = false;
         _cardOutline.SetActive(false);
