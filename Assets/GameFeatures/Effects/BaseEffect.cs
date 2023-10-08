@@ -17,6 +17,12 @@ public enum TimeEffectType
     Instant
 }
 
+public enum MultiplierType
+{
+    Damage,
+    Healing
+}
+
 public class EffectInfo
 {
     public EffectType effectType = EffectType.Healing;
@@ -24,9 +30,16 @@ public class EffectInfo
     public TimeEffectType timeEffectType = TimeEffectType.Tick;
     public int duration = 0;
 
+    public MultiplierType multiplierType = MultiplierType.Damage;
+
     public EffectInfo(EffectType _effectType, float _mainNumber, TimeEffectType _timeEffectType, int _duration) 
     { 
         effectType = _effectType; mainNumber = _mainNumber; timeEffectType = _timeEffectType; duration = _duration;
+    }
+
+    public EffectInfo(EffectType _effectType, float _mainNumber, TimeEffectType _timeEffectType, int _duration, MultiplierType _multiplierType)
+    {
+        effectType = _effectType; mainNumber = _mainNumber; timeEffectType = _timeEffectType; duration = _duration; multiplierType = _multiplierType;
     }
 }
 

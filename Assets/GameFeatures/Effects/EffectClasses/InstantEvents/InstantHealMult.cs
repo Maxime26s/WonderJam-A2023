@@ -33,6 +33,6 @@ public class InstantHealMult : MultiplierEffect
 
     public override EffectInfo GetInfo()
     {
-        return new EffectInfo(EffectType.Multiplier, healingMult, TimeEffectType.Tick, tickCountdown);
+        return new EffectInfo(EffectType.Multiplier, healingMult, TimeEffectType.Tick, tickCountdown, MultiplierType.Healing);
     }
 }
