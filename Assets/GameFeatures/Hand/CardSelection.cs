@@ -38,19 +38,22 @@ public class CardSelection : Singleton<CardSelection>
             return;
         }
 
-        if (args.Context.action.name == "Use")
+        else if (GameManager.Instance.GameState == GameState.Playing)
         {
-            Use(args);
+            if (args.Context.action.name == "Use")
+            {
+                Use(args);
+            }
+            else if (args.Context.action.name == "Move")
+            {
+                Move(args);
+            }
+            else if (args.Context.action.name == "Reload")
+            {
+                Reload(args);
+            }
         }
-        else if (args.Context.action.name == "Move")
-        {
-            Move(args);
-        }
-        else if (args.Context.action.name == "Reload")
-        {
-            Reload(args);
-        }
-
+        
         RefreshDisplay();
     }
 
