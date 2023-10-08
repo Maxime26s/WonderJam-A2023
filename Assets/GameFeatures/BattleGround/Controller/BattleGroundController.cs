@@ -22,9 +22,7 @@ public class BattleGroundController : MonoBehaviour
 
     public void Awake()
     {
-        BattleGroundManager bgManager = BattleGroundManager.Instance;
-
-        bgManager.SetCurrentBattleground(this);
+        BattleGroundManager.Instance.SetCurrentBattleground(this);
     }
 
     public List<Transform> GetAllPlayerPositions(int numberOfPlayers)

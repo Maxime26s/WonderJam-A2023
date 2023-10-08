@@ -50,6 +50,8 @@ public class CardSelection : Singleton<CardSelection>
         {
             Reload(args);
         }
+
+        RefreshDisplay();
     }
 
     void Move(HitEventArgs args)

@@ -1022,22 +1022,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1628706296}
     m_Modifications:
-    - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
-      propertyPath: startingBPM
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
-      propertyPath: initialSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
-      propertyPath: shouldStartOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2931995443048160767, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3964916740942024819, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.04
