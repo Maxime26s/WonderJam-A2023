@@ -43,13 +43,14 @@ public class PlayerCards
     }
 
     /// <summary>
-    /// Sets a card to a blank card. Doesn't actually play the card yet.
+    /// Sets a card to a blank card.
     /// </summary>
     /// <returns>The card removed from hand.</returns>
     public Card PlayCard()
     {
         Card selectedCard = hand[selectedIndex];
         hand[selectedIndex] = CardsManager.Instance.CardDatabase.Cards[0];
+        selectedCard.PlayCard();
         return selectedCard;
     }
 

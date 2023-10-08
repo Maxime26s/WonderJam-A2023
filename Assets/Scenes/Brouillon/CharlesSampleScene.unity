@@ -2584,6 +2584,10 @@ PrefabInstance:
       propertyPath: baseActionPoints
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8673183751693030047, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
+      propertyPath: BaseEffectsForTesting.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 343932465142831199, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
