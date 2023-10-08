@@ -159,6 +159,17 @@ Transform:
   - {fileID: 1731932759}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &414329882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5331295827859259175, guid: 965fa0ae8af54b947a126d19c02f3878, type: 3}
+  m_PrefabInstance: {fileID: 1048347896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &780252199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785790699811443225, guid: 965fa0ae8af54b947a126d19c02f3878, type: 3}
@@ -220,6 +231,10 @@ PrefabInstance:
       propertyPath: ActionBoard
       value: 
       objectReference: {fileID: 1048347897}
+    - target: {fileID: 8673183751693030047, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
+      propertyPath: ActionLabel
+      value: 
+      objectReference: {fileID: 414329882}
     - target: {fileID: 8673183751693030047, guid: 8a7706b2c78144143988624dbeb25b80, type: 3}
       propertyPath: actionPoints
       value: 10
