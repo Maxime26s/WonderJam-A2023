@@ -53,13 +53,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (_playerPrefab != null)
         {
-<<<<<<< Updated upstream
-            BattleGroundController bgController = BattleGroundManager.GetCurrentBattleGround();
-            List<Transform> transformList = bgController.GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer);
-            GameObject newPlayer = Instantiate(_playerPrefab, transformList[playerId].transform);
-=======
             GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
->>>>>>> Stashed changes
             
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
