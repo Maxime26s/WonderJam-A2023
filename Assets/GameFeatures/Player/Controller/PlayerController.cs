@@ -89,7 +89,8 @@ public class PlayerController : MonoBehaviour
     public bool CheckPlayerDies()
     {
         float hpPercent = PlayerData.CurrentHealth / PlayerData.MaxHealth;
-        _slider.value = hpPercent;
+        if (_slider)
+            _slider.value = hpPercent;
         return PlayerData.CurrentHealth > 0;
     }
 
