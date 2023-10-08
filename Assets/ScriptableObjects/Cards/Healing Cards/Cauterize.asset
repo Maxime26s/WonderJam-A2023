@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 0
   _cardName: Cauterize
-  _cardImage: {fileID: 21300000, guid: 5310880b830c6e94598629d5f5c1ed17, type: 3}
+  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
   _description: <color=#FF7070>Damages you</color> and removes <color=#39c663>damage</color>
     over time
   cardEffects:

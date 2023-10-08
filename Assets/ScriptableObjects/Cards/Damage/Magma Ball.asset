@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Magma Ball
-  _cardImage: {fileID: 0}
+  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
   _description: Deals <color=#FF7070>5 damage</color> in 5 beat
   cardEffects:
   - {fileID: 11400000, guid: 8d79ccc81f6ef7a41b60b26d30579722, type: 2}
