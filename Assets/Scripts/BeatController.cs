@@ -13,12 +13,15 @@ public class BeatController : MonoBehaviour
     public double newSpeed = 1.0d;
 
     public bool shouldStartOnAwake = false;
+    public bool hasMelody = false;
 
-    private AudioSource audioSource;
+    public AudioSource beatAudioSource;
+    public AudioSource melodyAudioSource;
     private bool shouldChangeSpeed = false;
 
     private double nextBeatTime;
     public int beatCount = 0;
+    public bool shouldSpawnBeat = false;
 
     // Event to subscribe to
     public delegate void BeatAction();
@@ -42,7 +45,6 @@ public class BeatController : MonoBehaviour
 
         track.Speed = newSpeed;
 
-        audioSource = GetComponent<AudioSource>();
         SetupAudioSource();
     }
 
@@ -61,7 +63,7 @@ public class BeatController : MonoBehaviour
 
     private void Update()
     {
-        if (audioSource.isPlaying)
+        if (beatAudioSource.isPlaying)
         {
             if (AudioSettings.dspTime >= nextBeatTime - track.GetBeatInterval() / 2)
             {
@@ -71,7 +73,8 @@ public class BeatController : MonoBehaviour
                 {
                     shouldChangeSpeed = false;
                     track.Speed = newSpeed;
-                    audioSource.pitch = (float)track.Speed;
+                    beatAudioSource.pitch = (float)track.Speed;
+                    melodyAudioSource.pitch = (float)track.Speed;
                 }
 
                 // Calculate the next beat time.
@@ -82,22 +85,28 @@ public class BeatController : MonoBehaviour
 
     public void SetupAudioSource()
     {
-        audioSource.clip = track.clip;
-        audioSource.pitch = (float)track.Speed;
-        audioSource.time = 0.0f;
+        beatAudioSource.clip = track.beatClip;
+        beatAudioSource.pitch = (float)track.Speed;
+        beatAudioSource.time = 0.0f;
+
+        melodyAudioSource.clip = track.melodyClip;
+        melodyAudioSource.pitch = (float)track.Speed;
+        melodyAudioSource.time = 0.0f;
     }
 
     public void StartPlaying()
     {
         beatCount = 0;
         double scheduledStartTime = AudioSettings.dspTime + track.GetAudioLeadInTime();
-        audioSource.PlayScheduled(scheduledStartTime);
+        beatAudioSource.PlayScheduled(scheduledStartTime);
+        melodyAudioSource.PlayScheduled(scheduledStartTime);
         nextBeatTime = scheduledStartTime;
     }
 
     public void StopPlaying()
     {
-        audioSource.Stop();
+        beatAudioSource.Stop();
+        melodyAudioSource.Stop();
     }
 
     private void OnBeat()
@@ -123,7 +132,8 @@ public class BeatController : MonoBehaviour
     // Reset the coroutine
     public void ResetAudioSource()
     {
-        audioSource.Stop();
+        beatAudioSource.Stop();
+        melodyAudioSource.Stop();
         SetupAudioSource();
     }
 
@@ -131,9 +141,10 @@ public class BeatController : MonoBehaviour
     public void ChangeTrack(MusicData newTrack)
     {
         // Stop the currently playing audio and the associated coroutine
-        if (audioSource.isPlaying)
+        if (beatAudioSource.isPlaying)
         {
-            audioSource.Stop();
+            beatAudioSource.Stop();
+            melodyAudioSource.Stop();
         }
 
         // Set the new audio clip
@@ -141,5 +152,50 @@ public class BeatController : MonoBehaviour
 
         // Restart the rhythm
         ResetAudioSource();
+    }
+
+    public void FadeOutMelody(float duration)
+    {
+        IEnumerator FadeOutCoroutine()
+        {
+            float startTime = Time.time;
+
+            while (Time.time - startTime < duration)
+            {
+                melodyAudioSource.volume = Mathf.Lerp(1.0f, 0.0f, (Time.time - startTime) / duration);
+                yield return null;
+            }
+
+            melodyAudioSource.volume = 0;
+        }
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    public void FadeInMelody(float duration)
+    {
+        IEnumerator FadeInCoroutine()
+        {
+            float startVolume = beatAudioSource.volume;
+            float startTime = Time.time;
+
+            while (Time.time - startTime < duration)
+            {
+                melodyAudioSource.volume = Mathf.Lerp(0.0f, 1.0f, (Time.time - startTime) / duration);
+                yield return null;
+            }
+
+            melodyAudioSource.volume = 1;
+        }
+        StartCoroutine(FadeInCoroutine());
+    }
+
+    public void EnableBeatSpawn()
+    {
+        shouldSpawnBeat = true;
+    }
+
+    public void DisableBeatSpawn()
+    {
+        shouldSpawnBeat = false;
     }
 }
