@@ -162,8 +162,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void ShowWinner(PlayerController winner)
     {
-        //Do something here
+		GameManager.Instance.winnerPlayer = winner.PlayerData.PlayerIndex;
 
-        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerDeviceId);
+		SceneLoader.Instance.LoadLevel("WinScreen");
     }
 }
