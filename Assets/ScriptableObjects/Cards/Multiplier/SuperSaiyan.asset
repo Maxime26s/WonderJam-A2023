@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
+  m_Name: SuperSaiyan
+  m_EditorClassIdentifier: 
+  _cardType: 1
+  _cardName: Super Saiyan
+  _cardImage: {fileID: 0}
+  _description: Multiplies damage and healing over time by 3 for 10 beats
+  cardEffects:
+  - {fileID: 11400000, guid: 49ee8acda2af20745a0a4c5f64080a07, type: 2}
+  - {fileID: 11400000, guid: f2cd3699866631f4fa61f22934411808, type: 2}
