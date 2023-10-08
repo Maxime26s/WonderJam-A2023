@@ -173,14 +173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 429e19160c92bc64db7208c7e4c75fa5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 022e637620811b0428592c2fbc5d06ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -511,8 +511,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Retour
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
+  m_sharedMaterial: {fileID: 4349255082134613526, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -822,7 +822,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -109, y: -100}
-  m_SizeDelta: {x: 1500, y: 829.554}
+  m_SizeDelta: {x: 1500, y: 306.059}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1685447106
 MonoBehaviour:
@@ -844,18 +844,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Orbius,
-
-
-    A world of sight and sound,
-
-
-    Sword Art Online...
-
-
-    GoodBye.
-
-'
+  m_text: "Vous \xEAtes un sorcier de l'Orbius. Votre but est d'\xEAtre le dernier
+    joueur qui succombe aux pouvoirs de l'Orbius.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
   m_sharedMaterial: {fileID: 4349255082134613526, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
@@ -967,8 +957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 84.17883}
-  m_SizeDelta: {x: 1920, y: 911.6425}
+  m_AnchoredPosition: {x: 0, y: 297.28296}
+  m_SizeDelta: {x: 1920, y: 485.4343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043131690
 MonoBehaviour:
