@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Fleurir
+  m_Name: Tabula Rasa
   m_EditorClassIdentifier: 
   _cardType: 0
-  _cardName: Fleurir
-  _cardImage: {fileID: 21300000, guid: 07da6712425313842ac2ba42d978b2fe, type: 3}
-  _description: <color=#39c663>Soigne de 1</color> pendant 100 tours
-  cardEffects:
-  - {fileID: 11400000, guid: 9ae5b1995068ec84384cec22c68e9513, type: 2}
+  _cardName: Tabula Rasa
+  _cardImage: {fileID: 21300000, guid: c29ad6c9ab774e146ab35566d424d590, type: 3}
+  _description: Retire tout les effets de l'orbe
+  cardEffects: []
