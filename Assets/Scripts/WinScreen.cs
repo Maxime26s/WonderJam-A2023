@@ -19,7 +19,6 @@ public class WinScreen : MonoBehaviour
 
 	private void Start()
 	{
-		controllerActions.Gameplay.Return.performed += OnReturn;
 		BeatController.Instance.OnBeatEvent += OnBeat;
 
 		int winnerId = GameManager.Instance.winnerPlayer;
@@ -49,16 +48,10 @@ public class WinScreen : MonoBehaviour
 		}
 	}
 
-	private void OnReturn(InputAction.CallbackContext context)
+	public void ReturnToMainMenu()
 	{
 		SceneLoader.Instance.LoadLevel("MainMenu");
 	}
-
-	private void OnDestroy()
-	{
-        BeatController.Instance.OnBeatEvent -= OnBeat;
-		controllerActions.Gameplay.Return.performed -= OnReturn;
-    }
 
 	private void OnEnable()
     {
