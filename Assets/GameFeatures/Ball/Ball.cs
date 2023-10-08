@@ -25,6 +25,8 @@ public class Ball : Singleton<Ball>
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
+
+        BeatController.Instance.EarlyOnBeatEvent += UpdateEffectsList;
     }
 
     public void AddEffect(BaseEffect effect)
@@ -69,7 +71,6 @@ public class Ball : Singleton<Ball>
             effects.RemoveAll(effect => effect.isOver);
         }
 
-        UpdateEffectsList();
     }
 
     void UpdateEffectsList()
@@ -86,6 +87,7 @@ public class Ball : Singleton<Ball>
         {
             EffectsListUI[i].gameObject.SetActive(true);
             EffectsListUI[i].SetInfo(effect.GetInfo());
+            i++;
         }
     }
 
