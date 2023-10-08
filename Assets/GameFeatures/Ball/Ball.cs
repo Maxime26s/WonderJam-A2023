@@ -21,7 +21,6 @@ public class Ball : Singleton<Ball>
     public float pendingDamage = 0f;
     public float pendingHealing = 0f;
 
-
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
@@ -54,17 +53,17 @@ public class Ball : Singleton<Ball>
             }
             ActionLabel.text = Mathf.Max(actionPoints, 0).ToString();
 
-            foreach (BaseEffect e in effects)
+            foreach (BaseEffect effect in effects)
             {
-                if ((TickDamage) e)
-                e.Tick();
+                if ((TickDamage) effect)
+                    effect.Tick();
             }
 
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing);
 
             // Delete all effects that are over
-            effects.RemoveAll(e => e.isOver);
+            effects.RemoveAll(effect => effect.isOver);
         }
 
         UpdateEffectsList();
@@ -72,18 +71,18 @@ public class Ball : Singleton<Ball>
 
     void UpdateEffectsList()
     {
-        foreach (var go in EffectsListUI)
+        foreach (EffectsInfoUI effectUI in EffectsListUI)
         {
-            go.gameObject.SetActive(false);
+            effectUI.gameObject.SetActive(false);
         }
 
         print(effects.Count);
 
         int i = 0;
-        foreach (var e in effects)
+        foreach (BaseEffect effect in effects)
         {
             EffectsListUI[i].gameObject.SetActive(true);
-            EffectsListUI[i].SetInfo(e.GetInfo());
+            EffectsListUI[i].SetInfo(effect.GetInfo());
         }
     }
 
