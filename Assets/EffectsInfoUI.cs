@@ -41,6 +41,13 @@ public class EffectsInfoUI : MonoBehaviour
                 break;
         }
 
-        number.text = info.mainNumber.ToString();
+        if (info.effectType == EffectType.Multiplier)
+        {
+            number.text = $"x{info.mainNumber}";
+        }
+        else
+        {
+            number.text = info.mainNumber.ToString();
+        }
     }
 }
