@@ -33,6 +33,9 @@ public class GameManager : Singleton<GameManager>
     int tickCount = 0;
     string mainSceneName = "MainBattleScene";
 
+    int acte = 0;
+    int turn = 0;
+
     void Init()
     {
         ResetData();
@@ -85,7 +88,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(1);
 
         if (_beatController.track.HasMelody())
-            _beatController.FadeOutMelody(0.3f);
+            _beatController.FadeOutMelody(0.66f, 0.3f);
         else
             _beatController.StopPlaying();
 
@@ -97,6 +100,17 @@ public class GameManager : Singleton<GameManager>
 
     IEnumerator ChangeTurn()
     {
+        turn++;
+        if (turn >= 4)
+        {
+            turn = 0;
+            acte++;
+
+            acte = Mathf.Min(acte, 8);
+
+            BeatController.Instance.SetSpeed(1.00 + acte * 0.20);
+        }
+
         GameState = GameState.ChangingTurn;
 
         yield return _playerManager.MoveAllPlayerNextPosition();
@@ -113,7 +127,7 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(3);
         int tick0 = tickCount;
 
-        _beatController.FadeInMelody((float)(_beatController.track.GetBeatInterval() * 3));
+        _beatController.FadeInMelody(1.0f, (float)(_beatController.track.GetBeatInterval() * 3));
 
         foreach (CardInHandUI card in CardSelection.Instance.displayedCards)
         {

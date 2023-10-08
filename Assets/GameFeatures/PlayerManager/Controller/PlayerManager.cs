@@ -130,11 +130,11 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerController winningPlayer = null;
         bool win = false;
 
-        foreach(PlayerController player in PlayerManagerData.PlayersList)
+        foreach (PlayerController player in PlayerManagerData.PlayersList)
         {
             if (player.PlayerData.IsAlive)
             {
-                if(winningPlayer != null)
+                if (winningPlayer != null)
                 {
                     win = false;
                     break;
@@ -153,6 +153,20 @@ public class PlayerManager : Singleton<PlayerManager>
         }
     }
 
+    public int AlivePlayerCount()
+    {
+        int count = 0;
+        foreach (PlayerController player in PlayerManagerData.PlayersList)
+        {
+            if (player.PlayerData.IsAlive)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     IEnumerator WaitAFrameToConfirmWin(PlayerController winner)
     {
         yield return null;
@@ -162,8 +176,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void ShowWinner(PlayerController winner)
     {
-		GameManager.Instance.winnerPlayer = winner.PlayerData.PlayerIndex;
+        GameManager.Instance.winnerPlayer = winner.PlayerData.PlayerIndex;
 
-		SceneLoader.Instance.LoadLevel("WinScreen");
+        SceneLoader.Instance.LoadLevel("WinScreen");
     }
 }
