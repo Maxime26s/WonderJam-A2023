@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1275200521334567097}
   - component: {fileID: 2725928978419615112}
   - component: {fileID: 1978584638385339409}
+  - component: {fileID: 4219706347794690801}
   - component: {fileID: 7484201956809243184}
-  - component: {fileID: 7449231384643908787}
   - component: {fileID: 8538736747541045134}
+  - component: {fileID: 7932366385147080555}
   m_Layer: 5
   m_Name: CardViewerUI
   m_TagString: Untagged
@@ -87,6 +88,20 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &4219706347794690801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320111998105187705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79e85a38acebd749a69a4685887e19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardUIPrefab: {fileID: 7813268991129523406, guid: b88922d5d5d20cc4e8589f5796006878, type: 3}
+  _cardUIParent: {fileID: 3033743786630183030}
 --- !u!114 &7484201956809243184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,20 +119,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7449231384643908787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320111998105187705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79e85a38acebd749a69a4685887e19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardUIPrefab: {fileID: 7813268991129523406, guid: b88922d5d5d20cc4e8589f5796006878, type: 3}
-  _cardUIParent: {fileID: 3033743786630183030}
 --- !u!114 &8538736747541045134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55235cb9977f26140bbcfcfff534ea80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7932366385147080555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320111998105187705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260adf615b7637d47a13fc448d2aeb9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 1000
+  contentRectTransform: {fileID: 3033743786630183030}
 --- !u!1 &1001826425393277989
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -342,14 +357,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.007843138}
+  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1366a79688457e34a8843ac32bb452d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 022e637620811b0428592c2fbc5d06ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -378,7 +393,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1969165949205475845}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -425,8 +440,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82, y: -65}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 44.6246}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8749140651008508155
 CanvasRenderer:
@@ -456,9 +471,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: c68b1058548cad34793ee71872184af3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -510,8 +525,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 8538736747541045134}
+        m_TargetAssemblyTypeName: DeckChecker, Assembly-CSharp
         m_MethodName: ButtonBack
         m_Mode: 1
         m_Arguments:
@@ -589,8 +604,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
+  m_sharedMaterial: {fileID: 4349255082134613526, guid: b9fd9cd20474d184b82021a43613d73c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

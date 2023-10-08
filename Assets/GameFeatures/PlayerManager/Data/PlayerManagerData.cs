@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerManagerData : MonoBehaviour
 {
-    [SerializeField]
-    int _totalNbPlayer = 4;
-    public int TotalNbPlayer { get => _totalNbPlayer; set => _totalNbPlayer = value; }
-
     List<PlayerController> _playersList = new List<PlayerController>();
     int _currentPlayerId;
     List<int> _playerTurnOrderList = new List<int>();
@@ -36,7 +32,7 @@ public class PlayerManagerData : MonoBehaviour
     {
         for (int i = 0; i < PlayersList.Count; i++)
         {
-            if (PlayersList[i].PlayerData.PlayerId == id)
+            if (PlayersList[i].PlayerData.PlayerDeviceId == id)
             {
                 return PlayersList[i];
             }
@@ -44,6 +40,11 @@ public class PlayerManagerData : MonoBehaviour
 
         Debug.Log("Couldn't get the player with the id : " + id);
         return null;
+    }
+
+    public PlayerController GetPlayerByIndex(int index)
+    {
+        return PlayersList[index];
     }
     public PlayerController GetCurrentPlayer()
     {
@@ -58,19 +59,19 @@ public class PlayerManagerData : MonoBehaviour
     {
         PlayerController player = GetCurrentPlayer();
 
-        int playerIndex = 0;
+        int playerIndex = player.PlayerData.PlayerIndex;
 
-        for (int i = 0; i < PlayerTurnOrderList.Count; i++)
-        {
-            if (PlayerTurnOrderList[i] == _currentPlayerId)
-            {
-                playerIndex = i;
-            }
-        }
+        //for (int i = 0; i < PlayerTurnOrderList.Count; i++)
+        //{
+        //    if (PlayerTurnOrderList[i] == _currentPlayerId)
+        //    {
+        //        playerIndex = i;
+        //    }
+        //}
 
         for (int i = 1; i < PlayerTurnOrderList.Count; i++)
         {
-            player = GetPlayer(PlayerTurnOrderList[(playerIndex + 1) % PlayerTurnOrderList.Count]);
+            player = GetPlayerByIndex(PlayerTurnOrderList[(playerIndex + 1) % PlayerTurnOrderList.Count]);
 
             if (player.PlayerData.IsAlive)
             {

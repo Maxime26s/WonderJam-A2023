@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Ball : Singleton<Ball>
 {
-    public List<BaseEffect> BaseEffectsForTesting;
-    public List<BaseEffect> effects;
+    public List<BaseEffect> BaseEffectsForTesting = new List<BaseEffect>();
+    public List<BaseEffect> effects = new List<BaseEffect>();
     [SerializeField]
     public int baseActionPoints = 4;
     [SerializeField]
@@ -15,20 +15,26 @@ public class Ball : Singleton<Ball>
 
     [SerializeField]
     public TextMeshProUGUI ActionLabel;
+    [SerializeField]
+    public List<EffectsInfoUI> EffectsListUI = new List<EffectsInfoUI>();
 
+    public float pendingDamage = 0f;
+    public float pendingHealing = 0f;
+    private float damageMultiplier = 1f;
+    private float healingMultiplier = 1f;
 
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
-        foreach (var e in BaseEffectsForTesting) 
+        foreach (BaseEffect effect in BaseEffectsForTesting) 
         {
-            effects.Add(Instantiate(e));
+            effects.Add(Instantiate(effect));
         }
     }
 
-    public void AddEffect(BaseEffect e)
+    public void AddEffect(BaseEffect effect)
     {
-        effects.Add(e);
+        effects.Add(effect);
     }
 
 
@@ -42,6 +48,10 @@ public class Ball : Singleton<Ball>
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
+            pendingDamage = 0;
+            pendingHealing = 0;
+
+
             actionPoints--;
             if (actionPoints <= 0)
             {
@@ -49,13 +59,35 @@ public class Ball : Singleton<Ball>
             }
             ActionLabel.text = Mathf.Max(actionPoints, 0).ToString();
 
-            foreach (BaseEffect e in effects)
+            foreach (BaseEffect effect in effects)
             {
-                e.Tick();
+                effect.Tick();
             }
 
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing);
+
             // Delete all effects that are over
-            effects.RemoveAll(e => e.isOver);
+            effects.RemoveAll(effect => effect.isOver);
+        }
+
+        UpdateEffectsList();
+    }
+
+    void UpdateEffectsList()
+    {
+        foreach (EffectsInfoUI effectUI in EffectsListUI)
+        {
+            effectUI.gameObject.SetActive(false);
+        }
+
+        print(effects.Count);
+
+        int i = 0;
+        foreach (BaseEffect effect in effects)
+        {
+            EffectsListUI[i].gameObject.SetActive(true);
+            EffectsListUI[i].SetInfo(effect.GetInfo());
         }
     }
 

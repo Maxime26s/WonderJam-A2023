@@ -12,11 +12,16 @@ public class TickHealing : TickBasedEffect
     public override void Tick()
     {
         TickDuration--;
-        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(Healing);
+        Ball.Instance.pendingHealing += Healing;
 
         if (TickDuration <= 0 )
         {
             isOver = true;
         }
+    }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Healing, Healing, TimeEffectType.Tick, TickDuration);
     }
 }

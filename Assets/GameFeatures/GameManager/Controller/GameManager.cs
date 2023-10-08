@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : Singleton<GameManager>
 {
@@ -26,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     public TextMeshProUGUI countDownText;
 
     int tickCount = 0;
+    string mainSceneName = "MainBattleScene";
 
     void Init()
     {
@@ -35,6 +38,16 @@ public class GameManager : Singleton<GameManager>
         _waitBetweenEachRound = new WaitForSeconds(_timeBetweenEachTurn);
     }
 
+
+    public IEnumerator StartGameWhenSceneLoaded()
+    {
+        while (!SceneManager.GetSceneByName(mainSceneName).isLoaded)
+        {
+            yield return null;
+        }
+
+        StartCoroutine(StartGame());
+    }
     //Bind this on the start game after player selection
     public IEnumerator StartGame()
     {

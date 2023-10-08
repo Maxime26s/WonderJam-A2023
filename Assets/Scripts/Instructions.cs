@@ -10,7 +10,7 @@ public class Instructions : MonoBehaviour
 	private void Awake()
 	{
 		controllerActions = new ControllerActions();
-		controllerActions.Gameplay.Return.performed += OnReturn;
+		controllerActions.Gameplay.Return.performed	 += OnReturn;
 	}
 
 	public void ButtonBack()

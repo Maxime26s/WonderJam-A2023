@@ -17,5 +17,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainBattleScene.unity
     guid: 5014dfbcdc342f247a2263d68f1997f8
+  - enabled: 1
+    path: Assets/Scenes/PlayerSelect.unity
+    guid: 415f881f0820ca8498a3961dd987c1b1
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 2d7718a4436190f489d1f4994d375023
+  - enabled: 1
+    path: Assets/Scenes/DeckChecker.unity
+    guid: 8e7f4798d207a424785ed3d636bb56b0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 47183263344493241ab184c35b578d84, type: 2}

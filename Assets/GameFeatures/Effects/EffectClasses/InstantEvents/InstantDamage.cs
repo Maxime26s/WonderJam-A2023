@@ -16,8 +16,13 @@ public class InstantDamage : InstantEffect
 
         if (tickCountdown <= 0)
         {
-            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
+            Ball.Instance.pendingDamage += damage;
             isOver = true;
         }
+    }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Damage, damage, TimeEffectType.Instant, tickCountdown);
     }
 }

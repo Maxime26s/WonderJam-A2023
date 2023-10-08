@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements.Experimental;
 
 [CreateAssetMenu(fileName = "Instant Healing", menuName = "Effect/Instant Healing")]
 public class InstantHealing : InstantEffect
@@ -14,8 +15,13 @@ public class InstantHealing : InstantEffect
         
         if (tickCountdown <= 0)
         {
-            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(healing);
+            Ball.Instance.pendingHealing += healing;
             isOver = true;
         }
+    }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Healing, healing, TimeEffectType.Instant, tickCountdown);
     }
 }

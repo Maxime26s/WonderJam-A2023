@@ -545,6 +545,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.36078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.34509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704917874507760520, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.34117648
+      objectReference: {fileID: 0}
     - target: {fileID: 7153247989709442873, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
       propertyPath: nextSceneName
       value: MainBattleScene
@@ -578,7 +598,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2353689814178221526, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+    - {fileID: 9166852365735239761, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+    - {fileID: 2258560419128010153, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
+    - {fileID: 8481068583227379108, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bfe796a8dae1bf40ad503674690324b, type: 3}

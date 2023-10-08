@@ -15,21 +15,24 @@ public class PlayerManager : Singleton<PlayerManager>
 
     Coroutine _checkWinCoroutine = null;
 
+    [SerializeField]
+    Color[] _playerColors;
+
     public void Init()
     {
         SpawnAllPlayers();
         DetermineTurnOrder();
-        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.PlayerTurnOrderList[0]);
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.PlayersList[PlayerManagerData.PlayerTurnOrderList[0]].PlayerData.PlayerDeviceId);
     }
 
     public void SpawnAllPlayers()
     {
 
-        if (PlayerManagerData.PlayersToSpawn != null && PlayerManagerData.PlayersToSpawn.Count > 2)
+        if (PlayerManagerData.PlayersToSpawn != null && PlayerManagerData.PlayersToSpawn.Count >= 2)
         {
             for (int i = 0; i < PlayerManagerData.PlayersToSpawn.Count; i++)
             {
-                SpawnPlayer(PlayerManagerData.PlayersToSpawn[i]);
+                SpawnPlayer(PlayerManagerData.PlayersToSpawn[i], i);
             }
         }
         else
@@ -38,21 +41,23 @@ public class PlayerManager : Singleton<PlayerManager>
             Debug.Log("Player to spawn not set");
             for (int i = 0; i < 4; i++)
             {
-                SpawnPlayer(i);
+                SpawnPlayer(i, i);
             }
         }
 
     }
 
-    public void SpawnPlayer(int playerId)
+    public void SpawnPlayer(int playerDeviceId, int playerIndex)
     {
         if (_playerPrefab != null)
         {
-            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.TotalNbPlayer)[playerId].transform);
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.PlayersToSpawn.Count)[playerIndex].transform);
 
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
-            playerController.PlayerData.PlayerId = playerId;
+            playerController.PlayerData.PlayerDeviceId = playerDeviceId;
+            playerController.PlayerData.PlayerIndex = playerIndex;
+            playerController.SpriteRenderer.color = _playerColors[playerIndex];
             playerController.Mulligan();
 
             PlayerManagerData.PlayersList.Add(playerController);
@@ -69,26 +74,26 @@ public class PlayerManager : Singleton<PlayerManager>
 
                 for (int i = 0; i < PlayerManagerData.PlayersList.Count; i++)
                 {
-                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerId);
+                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerIndex);
                 }
                 break;
             case PlayerManagerData.PlayerTurnOrderEnum.Descending:
                 for (int i = PlayerManagerData.PlayersList.Count - 1; i >= 0; i--)
                 {
-                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerId);
+                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerIndex);
                 }
                 break;
             case PlayerManagerData.PlayerTurnOrderEnum.Random:
                 for (int i = 0; i < PlayerManagerData.PlayersList.Count; i++)
                 {
-                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerId);
+                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerIndex);
                 }
                 PlayerManagerData.PlayerTurnOrderList.Shuffle();
                 break;
             default:
                 for (int i = 0; i < PlayerManagerData.PlayersList.Count; i++)
                 {
-                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerId);
+                    PlayerManagerData.PlayerTurnOrderList.Add(PlayerManagerData.PlayersList[i].PlayerData.PlayerIndex);
                 }
                 break;
         }
@@ -98,9 +103,10 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         for (int i = 0; i < PlayerManagerData.PlayerTurnOrderList.Count; i++)
         {
-            PlayerController player = PlayerManagerData.GetPlayer(PlayerManagerData.PlayerTurnOrderList[i]);
+            PlayerController player = PlayerManagerData.GetPlayerByIndex(PlayerManagerData.PlayerTurnOrderList[i]);
 
-            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.TotalNbPlayer, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
+            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersToSpawn.Count, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
+
 
             PlayerHolder ph = player.transform.parent.parent.parent.GetComponent<PlayerHolder>();
             ph.SetTarget(endPosition.position, endPosition.localScale, _timeToMoveToNewPosition);
@@ -108,7 +114,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
         for (int i = 0; i < PlayerManagerData.PlayerTurnOrderList.Count; i++)
         {
-            PlayerController player = PlayerManagerData.GetPlayer(PlayerManagerData.PlayerTurnOrderList[i]);
+            PlayerController player = PlayerManagerData.GetPlayerByIndex(PlayerManagerData.PlayerTurnOrderList[i]);
 
             PlayerHolder ph = player.transform.parent.parent.parent.GetComponent<PlayerHolder>();
             ph.Move();
@@ -116,7 +122,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
         yield return new WaitForSeconds(_timeToMoveToNewPosition);
 
-        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerDeviceId);
     }
 
     public void CheckPlayerWin()
@@ -158,6 +164,6 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         //Do something here
 
-        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerId);
+        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerDeviceId);
     }
 }

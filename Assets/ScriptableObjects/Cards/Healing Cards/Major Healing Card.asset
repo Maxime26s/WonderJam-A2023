@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 0
   _cardName: Major Healing
   _cardImage: {fileID: 21300000, guid: 5310880b830c6e94598629d5f5c1ed17, type: 3}
-  _description: Heals 5 HP.
+  _description: <color=#39c663>Heals 5</color> on the next beat
   cardEffects:
   - {fileID: 11400000, guid: 8767acf5692b17642afb06a1667f620c, type: 2}

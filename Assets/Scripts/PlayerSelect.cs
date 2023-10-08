@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class PlayerSelect : MonoBehaviour
 	private List<int> playersToSpawn;
 	[SerializeField]
 	private List<GameObject> playerSprites;
+
+	[SerializeField] private Button _continueButton = null;
 
 	private void Awake()
 	{
@@ -38,16 +41,21 @@ public class PlayerSelect : MonoBehaviour
 
 	public void ButtonContinue()
     {
-        SceneLoader.Instance.LoadLevel(nextSceneName);
+        playersToSpawn.RemoveAll(i => i == -1);
+		PlayerManager.Instance.PlayerManagerData.PlayersToSpawn = playersToSpawn;
+
+		SceneLoader.Instance.LoadLevel(nextSceneName);
+
+		GameManager.Instance.StartCoroutine(GameManager.Instance.StartGameWhenSceneLoaded());
     }
 
 	public void OnSelect(InputAction.CallbackContext context)
 	{
 		InputDevice device = context.control.device;
 		
-		if(GetNbPlayers() < maxPlayers)
+		if (GetNbPlayers() < maxPlayers)
 		{
-			if(!playersToSpawn.Contains(device.deviceId))
+            if (!playersToSpawn.Contains(device.deviceId))
 			{
 				int index = playersToSpawn.FindIndex(x => x == -1);
 				playersToSpawn[index] = device.deviceId;
@@ -55,14 +63,24 @@ public class PlayerSelect : MonoBehaviour
 				Image image = playerSprites[index].GetComponent<Image>();
 				image.enabled = true;
 			}
-			else if(GetNbPlayers() >= 2)
+			else if (GetNbPlayers() >= 2)
+			{
 				ButtonContinue();
-		}
+			}
+
+            SetContinueInteractable(GetNbPlayers() >= 2);
+        }
+
 
 		PlayerManager.Instance.PlayerManagerData.PlayersToSpawn = playersToSpawn;
 	}
 
-	public void OnReturn(InputAction.CallbackContext context)
+    private void SetContinueInteractable(bool isInteractable)
+    {
+		_continueButton.interactable = isInteractable;
+    }
+
+    public void OnReturn(InputAction.CallbackContext context)
 	{
 		InputDevice device = context.control.device;
 
@@ -81,7 +99,9 @@ public class PlayerSelect : MonoBehaviour
 		}
 		else
 			ButtonBack();
-	}
+
+        SetContinueInteractable(GetNbPlayers() >= 2);
+    }
 
 	private void OnBeat()
 	{
@@ -98,7 +118,8 @@ public class PlayerSelect : MonoBehaviour
 	{
 		controllerActions.Gameplay.Return.performed -= OnReturn;
 		controllerActions.Gameplay.Use.performed -= OnSelect;
-	}
+        BeatController.Instance.OnBeatEvent -= OnBeat;
+    }
 
 	private void OnEnable()
     {

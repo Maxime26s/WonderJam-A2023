@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerId: 0
-  _baseMaxHealth: 100
+  _baseMaxHealth: 10
   _currentMaxHealth: 0
   _currentHealth: 0
   _hand: []
@@ -696,7 +696,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 82780746099075125}
   _animator: {fileID: 7493219954591218889}
+  _spriteRenderer: {fileID: 4365841774899719658}
   _slider: {fileID: 4388783098067820040}
+  _timeToWaitPlayerDeathAnim: 3
 --- !u!1 &7661429293324022748
 GameObject:
   m_ObjectHideFlags: 0
