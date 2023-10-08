@@ -44,23 +44,30 @@ public class BeatAccuracy : MonoBehaviour
 
     private void OnButtonPerformed(InputAction.CallbackContext context)
     {
-        OnHitEvent?.Invoke(this, context);
+        if (context.control.device.deviceId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
+        {
+            OnHitEvent?.Invoke(this, context);
+        }
     }
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
-        float moveValue = context.ReadValue<float>();
-
-        if (canSelect && Mathf.Abs(moveValue) > thresholdTriggerMove)
+        if (context.control.device.deviceId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
         {
-            canSelect = false;
+            float moveValue = context.ReadValue<float>();
 
-            OnHitEvent?.Invoke(this, context);
-        }
+            if (canSelect && Mathf.Abs(moveValue) > thresholdTriggerMove)
+            {
+                canSelect = false;
 
-        if (!canSelect && Mathf.Abs(moveValue) < thresholdResetMove) // Reset detection when joystick is near neutral
-        {
-            canSelect = true;
+                OnHitEvent?.Invoke(this, context);
+            }
+
+            if (!canSelect && Mathf.Abs(moveValue) < thresholdResetMove) // Reset detection when joystick is near neutral
+            {
+                canSelect = true;
+            }
         }
+        
     }
 }
