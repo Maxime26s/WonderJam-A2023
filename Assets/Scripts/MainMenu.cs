@@ -12,7 +12,17 @@ public class MainMenu : MonoBehaviour
 
     public void ButtonStart()
     {
-        SceneLoader.Instance.LoadLevel("BattleScene");
+        SceneLoader.Instance.LoadLevel("PlayerSelect");
+    }
+
+	public void ButtonInstructions()
+    {
+        SceneLoader.Instance.LoadLevel("Instructions");
+    }
+
+	public void ButtonDeck()
+    {
+        SceneLoader.Instance.LoadLevel("DeckChecker");
     }
 
     public void ButtonOptions()
