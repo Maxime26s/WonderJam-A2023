@@ -13,7 +13,6 @@ public class BeatController : MonoBehaviour
     public double newSpeed = 1.0d;
 
     public bool shouldStartOnAwake = false;
-    public bool hasMelody = false;
 
     public AudioSource beatAudioSource;
     public AudioSource melodyAudioSource;
@@ -56,7 +55,7 @@ public class BeatController : MonoBehaviour
         IEnumerator DelayStart()
         {
             yield return new WaitForSeconds(0.5f); // Wait for half a second
-            StartPlaying();
+            StartPlaying(true);
         }
         StartCoroutine(DelayStart());
     }
@@ -94,10 +93,18 @@ public class BeatController : MonoBehaviour
         melodyAudioSource.time = 0.0f;
     }
 
-    public void StartPlaying()
+    public void StartPlaying(bool shouldEnableBeat = false)
     {
         print("start playing");
-        EnableBeatSpawn();
+        if (shouldEnableBeat)
+        {
+            EnableBeatSpawn();
+        }
+        else
+        {
+            DisableBeatSpawn();
+        }
+
         beatCount = 0;
         double scheduledStartTime = AudioSettings.dspTime + track.GetAudioLeadInTime();
         beatAudioSource.PlayScheduled(scheduledStartTime);

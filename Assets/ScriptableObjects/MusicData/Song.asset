@@ -16,4 +16,4 @@ MonoBehaviour:
   offset: 0
   audioLeadInTime: 0
   beatClip: {fileID: 8300000, guid: bc6c1fc9e85c9564bbe75d2c3390673c, type: 3}
-  melodyClip: {fileID: 8300000, guid: 0a6b475fcc26d234f8f5a7ae1b3020b9, type: 3}
+  melodyClip: {fileID: 8300000, guid: 93ce4cccf51ae08429a6c10228b7cb17, type: 3}
