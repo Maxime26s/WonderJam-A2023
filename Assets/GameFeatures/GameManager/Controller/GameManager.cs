@@ -18,8 +18,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     BeatController _beatController;
 
-    float _timeBeforeStartGame = 3f;
-    float _timeBetweenEachTurn = 3f;
+    float _timeBeforeStartGame = 1f;
+    float _timeBetweenEachTurn = 1f;
 
     WaitForSeconds _waitBeforeStartGame;
     WaitForSeconds _waitBetweenEachRound;
@@ -92,7 +92,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameState.ChangingTurn;
 
-        yield return WaitForTick(1);
+        yield return WaitForTick(0);
 
         if (_beatController.track.HasMelody())
             _beatController.FadeOutMelody(0.8f, (float)(_beatController.track.GetBeatInterval() * 3.0d));
@@ -134,7 +134,7 @@ public class GameManager : Singleton<GameManager>
     IEnumerator StartNextRound()
     {
         StartTics();
-        yield return WaitForTick(3);
+        yield return WaitForTick(1);
         int tick0 = tickCount;
 
         _beatController.FadeInMelody(1.0f, (float)(_beatController.track.GetBeatInterval() * 3.0d));

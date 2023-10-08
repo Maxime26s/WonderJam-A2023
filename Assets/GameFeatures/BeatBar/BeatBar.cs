@@ -9,7 +9,7 @@ public class BeatBar : MonoBehaviour
     public event EventHandler<HitEventArgs> OnHitEvent;
 
     [SerializeField]
-    public int baseBeatToSkip = 6;
+    public int baseBeatToSkip = 3;
 
     public int beatToSkip;
 
