@@ -14,7 +14,6 @@ public class TickDamage : TickBasedEffect
     {
         TickDuration--;
         Ball.Instance.pendingDamage += damage;
-
         if (TickDuration <= 0)
         {
             isOver = true;

@@ -20,7 +20,8 @@ public class Ball : Singleton<Ball>
 
     public float pendingDamage = 0f;
     public float pendingHealing = 0f;
-
+    private float damageMultiplier = 1f;
+    private float healingMultiplier = 1f;
 
     private void Start()
     {
@@ -60,7 +61,6 @@ public class Ball : Singleton<Ball>
 
             foreach (BaseEffect e in effects)
             {
-                if ((TickDamage) e)
                 e.Tick();
             }
 
