@@ -18,7 +18,7 @@ public class PlayerData : MonoBehaviour
     int _playerIndex = 0;
 
     public int PlayerIndex { get { return _playerIndex; } set { _playerIndex = value; } }
-    public int PlayerId { get { return _playerId; } set { _playerId = value; } }
+    public int PlayerDeviceId { get { return _playerId; } set { _playerId = value; } }
     public float MaxHealth { get { return _currentMaxHealth; } set { _currentMaxHealth = value; } }
     public float CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }

@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     public Animator Animator { get => _animator; set => _animator = value; }
 
     [SerializeField]
+    SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer { get => _spriteRenderer; set => _spriteRenderer = value; }
+
+
+    [SerializeField]
     Slider _slider;
 
     [SerializeField]
@@ -53,10 +58,10 @@ public class PlayerController : MonoBehaviour
         if (GameManager.Instance.GameState == GameState.Playing)
         {
             //This player Clicked
-            if (PlayerData.PlayerId == context.control.device.deviceId)
+            if (PlayerData.PlayerDeviceId == context.control.device.deviceId)
             {
                 //This is the current player
-                if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
+                if (PlayerData.PlayerDeviceId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
                 {
                     StartCoroutine(GameManager.Instance.TurnOver());
                 }
@@ -111,7 +116,9 @@ public class PlayerController : MonoBehaviour
         PlayerData.IsAlive = false;
         Animator.SetTrigger("Death");
 
-        if (PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId() == PlayerData.PlayerId)
+        PlayerManager.Instance.CheckPlayerWin();
+
+        if (PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId() == PlayerData.PlayerDeviceId)
         {
             BeatController.Instance.StopPlaying();
 

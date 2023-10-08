@@ -15,6 +15,8 @@ public class Ball : Singleton<Ball>
 
     [SerializeField]
     public TextMeshProUGUI ActionLabel;
+    [SerializeField]
+    public List<EffectsInfoUI> EffectsListUI = new List<EffectsInfoUI>();
 
 
     private void Start()
@@ -56,6 +58,25 @@ public class Ball : Singleton<Ball>
 
             // Delete all effects that are over
             effects.RemoveAll(e => e.isOver);
+        }
+
+        UpdateEffectsList();
+    }
+
+    void UpdateEffectsList()
+    {
+        foreach (var go in EffectsListUI)
+        {
+            go.gameObject.SetActive(false);
+        }
+
+        print(effects.Count);
+
+        int i = 0;
+        foreach (var e in effects)
+        {
+            EffectsListUI[i].gameObject.SetActive(true);
+            EffectsListUI[i].SetInfo(e.GetInfo());
         }
     }
 
