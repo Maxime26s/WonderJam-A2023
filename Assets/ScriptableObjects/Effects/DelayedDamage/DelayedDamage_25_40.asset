@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f81416b94dbd734081ff7cd97e21626, type: 3}
-  m_Name: DelayedDamage_25_50
+  m_Name: DelayedDamage_25_40
   m_EditorClassIdentifier: 
   isOver: 0
   _tickCountdown: 25
-  _damage: 50
+  _damage: 40
