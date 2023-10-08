@@ -32,6 +32,6 @@ public class InstantDamageMult : InstantEffect
 
     public override EffectInfo GetInfo()
     {
-        return new EffectInfo(EffectType.Multiplier, damageMult, TimeEffectType.Tick, tickCountdown);
+        return new EffectInfo(EffectType.Multiplier, damageMult, TimeEffectType.Tick, tickCountdown, MultiplierType.Damage);
     }
 }

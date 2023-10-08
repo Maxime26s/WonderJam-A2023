@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Cauterize
+  m_Name: Fleurir
   m_EditorClassIdentifier: 
   _cardType: 0
-  _cardName: Cauterize
+  _cardName: Fleurir
   _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
-  _description: <color=#FF7070>Damages you</color> and removes <color=#39c663>damage</color>
-    over time
+  _description: <color=#39c663>Soigne de 1</color> pendant 100 tours
   cardEffects:
-  - {fileID: 11400000, guid: 95bb8b8396d187941977c49a2be9973a, type: 2}
-  - {fileID: 11400000, guid: 8767acf5692b17642afb06a1667f620c, type: 2}
+  - {fileID: 11400000, guid: 9ae5b1995068ec84384cec22c68e9513, type: 2}

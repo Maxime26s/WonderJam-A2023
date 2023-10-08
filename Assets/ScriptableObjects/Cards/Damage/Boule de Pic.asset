@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Spike Ball
+  m_Name: Boule de Pic
   m_EditorClassIdentifier: 
   _cardType: 1
-  _cardName: Spike Ball
+  _cardName: Boule de Pic
   _cardImage: {fileID: 21300000, guid: aa0cbd523dadb1c43b9c8706ce377b26, type: 3}
-  _description: Deals <color=#FF7070>1 damage</color> for 50 beats!
+  _description: <color=#FF7070>1 dommage</color> pendant 50 tours
   cardEffects:
   - {fileID: 11400000, guid: 3c832e3cedbe89c4896da1e35832069a, type: 2}

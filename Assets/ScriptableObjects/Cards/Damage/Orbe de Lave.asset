@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Major Healing Card
+  m_Name: Orbe de Lave
   m_EditorClassIdentifier: 
-  _cardType: 0
-  _cardName: Major Healing
-  _cardImage: {fileID: 21300000, guid: 326436920e39ef1418038ecc4b4b25ba, type: 3}
-  _description: <color=#39c663>Heals 5</color> on the next beat
+  _cardType: 1
+  _cardName: Orbe de Lave
+  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
+  _description: <color=#FF7070>25 dommage</color> dans 5 temps
   cardEffects:
-  - {fileID: 11400000, guid: 8767acf5692b17642afb06a1667f620c, type: 2}
+  - {fileID: 11400000, guid: 34c9305411c898b448f0675edc89154c, type: 2}

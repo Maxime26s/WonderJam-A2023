@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Inferno
+  m_Name: Mode Leafcat
   m_EditorClassIdentifier: 
   _cardType: 1
-  _cardName: Inferno
-  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
-  _description: Deals <color=#FF7070>5 damage</color> for 10 beats!
+  _cardName: Mode Leafcat
+  _cardImage: {fileID: 21300000, guid: e6ff85c37791fc247aa752bb63d4dc33, type: 3}
+  _description: Double le dommage et soin pendant 10 tours
   cardEffects:
-  - {fileID: 11400000, guid: c0c20eac4eb452846967accde8bec5e9, type: 2}
+  - {fileID: 11400000, guid: ed0784599c8984e4aa9fb922bdc5b4dc, type: 2}
+  - {fileID: 11400000, guid: 6d73e16d8419684428b8bf35e3cafcdd, type: 2}
