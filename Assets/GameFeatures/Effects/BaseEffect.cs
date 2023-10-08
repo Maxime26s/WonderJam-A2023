@@ -31,7 +31,7 @@ public class EffectInfo
 
 public abstract class BaseEffect : ScriptableObject
 {
-    [SerializeField] public bool isOver = false;
+    public bool isOver = false;
     
     public abstract void Tick();
     public abstract EffectInfo GetInfo();

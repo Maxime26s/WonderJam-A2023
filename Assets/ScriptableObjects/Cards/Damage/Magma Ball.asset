@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Cinders
+  m_Name: Magma Ball
   m_EditorClassIdentifier: 
-  _cardType: 0
-  _cardName: Cinders
-  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
-  _description: Removes <color=#39c663>3 healing</color> from orb
+  _cardType: 1
+  _cardName: Magma Ball
+  _cardImage: {fileID: 21300000, guid: 484f6b746f6d0fe42b9d4e84f61d1ad5, type: 3}
+  _description: Deals <color=#FF7070>5 damage</color> in 5 beat
   cardEffects:
-  - {fileID: 11400000, guid: a8fb987ff73ca364884ace0cc519e7d4, type: 2}
+  - {fileID: 11400000, guid: 8d79ccc81f6ef7a41b60b26d30579722, type: 2}

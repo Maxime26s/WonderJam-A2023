@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 0
   _cardName: Flourish
-  _cardImage: {fileID: 21300000, guid: 5310880b830c6e94598629d5f5c1ed17, type: 3}
+  _cardImage: {fileID: 21300000, guid: e6ff85c37791fc247aa752bb63d4dc33, type: 3}
   _description: <color=#39c663>Heals 100</color> very slowly
   cardEffects:
   - {fileID: 11400000, guid: 9ae5b1995068ec84384cec22c68e9513, type: 2}
