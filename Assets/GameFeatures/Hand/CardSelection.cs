@@ -93,14 +93,28 @@ public class CardSelection : Singleton<CardSelection>
             }
         }
     }
+
+    public void ResetDiplay()
+    {
+        print("refresh");
+        currentIndex = 2;
+        displayedCards.ForEach(c => c.StopHover());
+        displayedCards[currentIndex].BeginHover();
+        RefreshDisplay();
+    }
+
     void RefreshDisplay()
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         int index = 0;
         if (currentPlayer)
-        foreach (CardInHandUI card in displayedCards)
         {
-            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            print("en plus");
+            foreach (CardInHandUI card in displayedCards)
+            {
+                card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            }
         }
+        
     }
 }
