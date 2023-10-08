@@ -24,6 +24,7 @@ public class PlayerCards
             }
         deck = new List<Card>(deckList);
         Shuffle();
+        DrawHand();
     }
 
     /// <summary>
@@ -100,7 +101,7 @@ public class PlayerCards
         Shuffle();
     }
 
-    public void Mulligan()
+    public void DrawHand()
     {
         int indexBackup = selectedIndex;
         for (int index = 0; index < 5; index++)
