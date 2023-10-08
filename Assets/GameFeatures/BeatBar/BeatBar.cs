@@ -104,22 +104,18 @@ public class BeatBar : MonoBehaviour
 
         if (score > 0.975f)
         {
-            print("Perfect!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Perfect));
         }
         else if (score > 0.925f)
         {
-            print("Good!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Good));
         }
         else if (score > 0.85f)
         {
-            print("Bad!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Bad));
         }
         else
         {
-            print("Miss!");
             OnHitEvent?.Invoke(this, new HitEventArgs(context, HitResult.Miss));
         }
 

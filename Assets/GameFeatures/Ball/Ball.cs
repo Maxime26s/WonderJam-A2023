@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class Ball : Singleton<Ball>
     public int actionPoints = 4;
 
     [SerializeField]
-    public GameObject ActionBoard;
+    public TextMeshProUGUI ActionLabel;
 
 
     private void Start()
@@ -30,30 +31,24 @@ public class Ball : Singleton<Ball>
         effects.Add(e);
     }
 
-    public void RenderActionPoint()
+
+    public void ResetActions()
     {
-        Transform grid = ActionBoard.transform.GetChild(1);
-        int i = 0;
-        foreach (Transform child in grid)
-        {
-            child.gameObject.SetActive(i < actionPoints);
-            i++;
-        }
+        actionPoints = baseActionPoints;
+        ActionLabel.text = actionPoints.ToString();
     }
 
     void Tick()
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
+            print("ball");
             actionPoints--;
-
             if (actionPoints <= 0)
             {
-                GameManager.Instance.TurnOver();
-                actionPoints = baseActionPoints;
+                StartCoroutine(GameManager.Instance.TurnOver());
             }
-
-            RenderActionPoint();
+            ActionLabel.text = Mathf.Max(actionPoints, 0).ToString();
 
             foreach (BaseEffect e in effects)
             {

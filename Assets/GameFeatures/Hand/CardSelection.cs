@@ -41,6 +41,7 @@ public class CardSelection : Singleton<CardSelection>
 
         else if (GameManager.Instance.GameState == GameState.Playing)
         {
+            print("onhit");
             if (args.Context.action.name == "Use")
             {
                 Use(args);
@@ -97,7 +98,6 @@ public class CardSelection : Singleton<CardSelection>
 
     public void ResetDiplay()
     {
-        print("refresh");
         currentIndex = 2;
         displayedCards.ForEach(c => c.StopHover());
         displayedCards[currentIndex].BeginHover();
@@ -110,7 +110,6 @@ public class CardSelection : Singleton<CardSelection>
         int index = 0;
         if (currentPlayer)
         {
-            print("en plus");
             foreach (CardInHandUI card in displayedCards)
             {
                 card.SetupCardUI(currentPlayer.GetHand()[index++]);
