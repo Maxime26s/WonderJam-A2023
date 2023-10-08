@@ -76,6 +76,9 @@ public class PlayerController : MonoBehaviour
         {
             PlayerData.CurrentHealth += healing;
 
+            if (PlayerData.MaxHealth < PlayerData.CurrentHealth)
+                PlayerData.CurrentHealth = PlayerData.MaxHealth;
+
             CheckPlayerDies();
         }
         else
