@@ -113,6 +113,11 @@ public class BeatController : MonoBehaviour
 
     private void OnBeat()
     {
+        if(shouldSpawnBeat == false)
+        {
+            return;
+        }
+
         // You can still have other logic here if needed
         lastBeatTime = AudioSettings.dspTime + track.GetOffset();
 
@@ -202,5 +207,6 @@ public class BeatController : MonoBehaviour
     public void DisableBeatSpawn()
     {
         shouldSpawnBeat = false;
+        beatCount = 0;
     }
 }
