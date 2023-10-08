@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1275200521334567097}
   - component: {fileID: 2725928978419615112}
   - component: {fileID: 1978584638385339409}
+  - component: {fileID: 4219706347794690801}
   - component: {fileID: 7484201956809243184}
-  - component: {fileID: 7449231384643908787}
   - component: {fileID: 8538736747541045134}
   - component: {fileID: 7932366385147080555}
   m_Layer: 5
@@ -88,6 +88,20 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!114 &4219706347794690801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320111998105187705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79e85a38acebd749a69a4685887e19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardUIPrefab: {fileID: 7813268991129523406, guid: b88922d5d5d20cc4e8589f5796006878, type: 3}
+  _cardUIParent: {fileID: 3033743786630183030}
 --- !u!114 &7484201956809243184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,20 +119,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7449231384643908787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320111998105187705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79e85a38acebd749a69a4685887e19a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardUIPrefab: {fileID: 7813268991129523406, guid: b88922d5d5d20cc4e8589f5796006878, type: 3}
-  _cardUIParent: {fileID: 3033743786630183030}
 --- !u!114 &8538736747541045134
 MonoBehaviour:
   m_ObjectHideFlags: 0
