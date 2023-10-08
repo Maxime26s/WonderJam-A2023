@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 1
   _cardName: Poison Orb
   _cardImage: {fileID: 21300000, guid: 61dd4371d0ac138479300c6df586fd57, type: 3}
-  _description: Deals <color=#FF7070>2 damage</color> for 20 beats!
+  _description: <color=#FF7070>2 dommage</color> pendant 20 temps
   cardEffects:
   - {fileID: 11400000, guid: eff6bbfd225241c4997e8aabba38c693, type: 2}
