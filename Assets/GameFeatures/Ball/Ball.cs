@@ -60,9 +60,6 @@ public class Ball : Singleton<Ball>
 
             foreach (BaseEffect effect in effects)
             {
-                //TickDamage tickDamage = effect as TickDamage;
-                //if (tickDamage)
-                //tickDamage.Tick();
                 effect.Tick();
             }
 
