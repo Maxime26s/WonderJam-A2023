@@ -19,7 +19,7 @@ public class CardSelection : Singleton<CardSelection>
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = displayedCards.Count / 2;
+        currentIndex = 2;
         beatBar.OnHitEvent += OnHit;
         RefreshDisplay();
     }
