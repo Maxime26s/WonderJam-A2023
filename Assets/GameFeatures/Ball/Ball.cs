@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Ball : Singleton<Ball>
 {
-    public List<BaseEffect> BaseEffectsForTesting;
-    public List<BaseEffect> effects;
+    public List<BaseEffect> BaseEffectsForTesting = new List<BaseEffect>();
+    public List<BaseEffect> effects = new List<BaseEffect>();
     [SerializeField]
     public int baseActionPoints = 4;
     [SerializeField]
@@ -20,15 +20,15 @@ public class Ball : Singleton<Ball>
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
-        foreach (var e in BaseEffectsForTesting) 
+        foreach (BaseEffect effect in BaseEffectsForTesting) 
         {
-            effects.Add(Instantiate(e));
+            effects.Add(Instantiate(effect));
         }
     }
 
-    public void AddEffect(BaseEffect e)
+    public void AddEffect(BaseEffect effect)
     {
-        effects.Add(e);
+        effects.Add(effect);
     }
 
 
