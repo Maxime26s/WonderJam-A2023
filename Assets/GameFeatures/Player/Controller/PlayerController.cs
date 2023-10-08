@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// This throws away all cards in hand and draws 5 new ones.
     /// </summary>
-    public void Mulligan()
+    public void DrawHand()
     {
         PlayerData.cards.DrawHand();
     }

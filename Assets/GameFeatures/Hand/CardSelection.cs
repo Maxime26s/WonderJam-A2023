@@ -86,7 +86,7 @@ public class CardSelection : Singleton<CardSelection>
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         if (currentPlayer)
         {
-            currentPlayer.Mulligan();
+            currentPlayer.DrawHand();
             foreach (CardInHandUI card in displayedCards)
             {
                 int index = 0;
