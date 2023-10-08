@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tick Damage_50_-10
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickDuration: 50
-  _damage: -10
+  _tickDuration: 10
+  _damage: -2

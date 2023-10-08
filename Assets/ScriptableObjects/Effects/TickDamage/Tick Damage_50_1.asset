@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0ff18082360c7944bf12587889984f1, type: 3}
-  m_Name: Tick Damage_2_10
+  m_Name: Tick Damage_50_1
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickDuration: 10
-  _damage: 2
+  _tickDuration: 50
+  _damage: 1
