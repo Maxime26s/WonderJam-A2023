@@ -96,6 +96,8 @@ public class BeatController : MonoBehaviour
 
     public void StartPlaying()
     {
+        print("start playing");
+        EnableBeatSpawn();
         beatCount = 0;
         double scheduledStartTime = AudioSettings.dspTime + track.GetAudioLeadInTime();
         beatAudioSource.PlayScheduled(scheduledStartTime);
@@ -158,6 +160,8 @@ public class BeatController : MonoBehaviour
     {
         IEnumerator FadeOutCoroutine()
         {
+            DisableBeatSpawn();
+
             float startTime = Time.time;
 
             while (Time.time - startTime < duration)
@@ -175,7 +179,8 @@ public class BeatController : MonoBehaviour
     {
         IEnumerator FadeInCoroutine()
         {
-            float startVolume = beatAudioSource.volume;
+            EnableBeatSpawn();
+
             float startTime = Time.time;
 
             while (Time.time - startTime < duration)

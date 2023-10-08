@@ -80,7 +80,11 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator TurnOver()
     {
         yield return WaitForTick(1);
-        _beatController.StopPlaying();
+
+        if (_beatController.track.HasMelody())
+            _beatController.FadeOutMelody(1);
+        else
+            _beatController.StopPlaying();
 
         StartCoroutine(ChangeTurn());
     }
@@ -121,7 +125,10 @@ public class GameManager : Singleton<GameManager>
 
     void StartTics()
     {
-        _beatController.StartPlaying();
+        if (_beatController.track.HasMelody())
+            _beatController.FadeInMelody(1);
+        else
+            _beatController.StartPlaying();
     }
 
     public void EndGame()
