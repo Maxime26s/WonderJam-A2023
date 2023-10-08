@@ -179,6 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 375662648}
+  - component: {fileID: 375662649}
   m_Layer: 0
   m_Name: s4
   m_TagString: Untagged
@@ -201,6 +202,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1322367479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &375662649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375662647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f608d91c2866254ba3e35a8cebd26b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  targetPosition: {x: 0, y: 0}
+  targetScale: {x: 0, y: 0}
+  duration: 0
+  timeElapsed: 0
+  startTime: 0
 --- !u!1 &568814880
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 710275771}
+  - component: {fileID: 710275772}
   m_Layer: 0
   m_Name: s2
   m_TagString: Untagged
@@ -264,6 +284,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1322367479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &710275772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710275770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f608d91c2866254ba3e35a8cebd26b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  targetPosition: {x: 0, y: 0}
+  targetScale: {x: 0, y: 0}
+  duration: 0
+  timeElapsed: 0
+  startTime: 0
 --- !u!1 &752046023
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1049033745}
+  - component: {fileID: 1049033746}
   m_Layer: 0
   m_Name: s3
   m_TagString: Untagged
@@ -426,6 +465,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1322367479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049033746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049033744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f608d91c2866254ba3e35a8cebd26b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  targetPosition: {x: 0, y: 0}
+  targetScale: {x: 0, y: 0}
+  duration: 0
+  timeElapsed: 0
+  startTime: 0
 --- !u!1 &1159014628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1770577936}
+  - component: {fileID: 1770577937}
   m_Layer: 0
   m_Name: s1
   m_TagString: Untagged
@@ -2300,6 +2358,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1322367479}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770577937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770577935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f608d91c2866254ba3e35a8cebd26b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  targetPosition: {x: 0, y: 0}
+  targetScale: {x: 0, y: 0}
+  duration: 0
+  timeElapsed: 0
+  startTime: 0
 --- !u!1001 &1920360970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2531,6 +2607,14 @@ PrefabInstance:
     - target: {fileID: 5807738753122899029, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107140704739935021, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
+      propertyPath: beatToSkip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107140704739935021, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
+      propertyPath: baseBeatToSkip
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6431855085923236866, guid: 2bda9514df5cdcf4687bcb9cfd01ef03, type: 3}
       propertyPath: m_SortingLayer

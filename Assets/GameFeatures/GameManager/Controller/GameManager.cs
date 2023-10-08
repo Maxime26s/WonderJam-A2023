@@ -76,7 +76,6 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameState.ChangingTurn;
 
-        print("Changing turn");
         yield return _playerManager.MoveAllPlayerNextPosition();
 
         CardSelection.Instance.ResetDiplay();
@@ -102,7 +101,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         countDownText.gameObject.SetActive(false);
-        WaitForTick(2);
+        //yield return WaitForTick(1);
         GameState = GameState.Playing;
         //CardSelection.Instance.ChangePlayer(PlayerManager.Instance.ACTIVEPLAYER???)
     }

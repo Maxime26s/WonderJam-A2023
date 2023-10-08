@@ -8,7 +8,10 @@ public class BeatBar : MonoBehaviour
 {
     public event EventHandler<HitEventArgs> OnHitEvent;
 
-    public int beatToSkip = 3;
+    [SerializeField]
+    public int baseBeatToSkip = 6;
+
+    public int beatToSkip;
 
     public Transform spawnTransform;
     public Transform centerTransform;
@@ -21,6 +24,8 @@ public class BeatBar : MonoBehaviour
     private float startCenterDistance;
 
     private SineFunction sineFunction;
+
+    int beatsInstantiated;
 
 
     // Start is called before the first frame update
@@ -74,7 +79,8 @@ public class BeatBar : MonoBehaviour
     {
         if(BeatController.Instance.beatCount == 0)
         {
-            beatToSkip = 3;
+            beatToSkip = baseBeatToSkip;
+            beatsInstantiated = 0;
         }
         if (beatToSkip > 0)
         {
@@ -82,10 +88,13 @@ public class BeatBar : MonoBehaviour
             return;
         }
 
+        if (beatsInstantiated >= Ball.Instance.baseActionPoints) return;
+
         var go = Instantiate(beatPrefab, spawnTransform.position, Quaternion.identity, transform);
         go.GetComponent<Beat>().Init(sineFunction);
 
         beats.Add(go);
+        beatsInstantiated++;
     }
 
     private void OnHit(object sender, InputAction.CallbackContext context)

@@ -21,7 +21,6 @@ public class PopupController : MonoBehaviour
     {
         if (GameManager.Instance.GameState != GameState.Playing) return;
 
-        print("popup");
         var go = Instantiate(textPrefab, transform);
         var text = go.GetComponent<TextMeshProUGUI>();
         text.text = args.Result.ToString() + "!";

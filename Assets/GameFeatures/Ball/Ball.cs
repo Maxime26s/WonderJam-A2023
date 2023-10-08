@@ -42,7 +42,6 @@ public class Ball : Singleton<Ball>
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
-            print("ball");
             actionPoints--;
             if (actionPoints <= 0)
             {

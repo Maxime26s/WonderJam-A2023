@@ -41,7 +41,6 @@ public class CardSelection : Singleton<CardSelection>
 
         else if (GameManager.Instance.GameState == GameState.Playing)
         {
-            print("onhit");
             if (args.Context.action.name == "Use")
             {
                 Use(args);
