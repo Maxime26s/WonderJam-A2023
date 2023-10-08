@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc7248092ad5ff478752e957f486c5e, type: 3}
   m_Name: 5_Heal
   m_EditorClassIdentifier: 
-  _isOver: 0
+  isOver: 0
   _tickCountdown: 0
   _healing: 5

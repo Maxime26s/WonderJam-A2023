@@ -25,6 +25,8 @@ public class Ball : Singleton<Ball>
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
+
+        BeatController.Instance.EarlyOnBeatEvent += UpdateEffectsList;
     }
 
     public void AddEffect(BaseEffect effect)
