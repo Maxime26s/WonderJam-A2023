@@ -126,7 +126,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
             float t = timer / _timeToMoveToNewPosition;
             t = t * t * (3f - 2f * t);
-            transform.position = Vector3.Lerp(player.transform.position, endPosition.position, t);
+            player.transform.position = Vector3.Lerp(player.transform.position, endPosition.position, t);
 
             yield return null;
         }
