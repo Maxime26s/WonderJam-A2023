@@ -18,4 +18,9 @@ public class InstantHealing : InstantEffect
             isOver = true;
         }
     }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Healing, healing, TimeEffectType.Instant, tickCountdown);
+    }
 }
