@@ -89,6 +89,7 @@ public class Ball : Singleton<Ball>
         {
             EffectsListUI[i].gameObject.SetActive(true);
             EffectsListUI[i].SetInfo(effect.GetInfo());
+            i++;
         }
     }
 
