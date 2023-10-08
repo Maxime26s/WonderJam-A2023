@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeckChecker.unity
     guid: 8e7f4798d207a424785ed3d636bb56b0
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 7575f56973412b248b41aba7739dd0ca
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 47183263344493241ab184c35b578d84, type: 2}
