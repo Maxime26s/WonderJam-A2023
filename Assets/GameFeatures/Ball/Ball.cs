@@ -20,6 +20,8 @@ public class Ball : Singleton<Ball>
 
     public float pendingDamage = 0f;
     public float pendingHealing = 0f;
+    public float damageMultiplier = 1f;
+    public float healingMultiplier = 1f;
 
     private void Start()
     {
@@ -60,8 +62,8 @@ public class Ball : Singleton<Ball>
                     tickDamage.Tick();
             }
 
-            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
-            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage * damageMultiplier);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing * healingMultiplier);
 
             // Delete all effects that are over
             effects.RemoveAll(effect => effect.isOver);
