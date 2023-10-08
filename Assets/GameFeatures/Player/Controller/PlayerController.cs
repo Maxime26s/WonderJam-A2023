@@ -50,14 +50,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnSkipPerformed(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
+        print("huh1");
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
+            print("huh2");
             //This player Clicked
-            if(PlayerData.PlayerId == context.control.device.deviceId)
+            if (PlayerData.PlayerId == context.control.device.deviceId)
             {
+                print("huh3");
+                print(PlayerData.PlayerId);
+                print(PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId());
                 //This is the current player
                 if (PlayerData.PlayerId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
                 {
+                    print("huh4");
                     StartCoroutine(GameManager.Instance.TurnOver());
                 }
             }

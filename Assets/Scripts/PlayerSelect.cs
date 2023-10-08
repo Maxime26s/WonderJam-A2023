@@ -16,18 +16,22 @@ public class PlayerSelect : MonoBehaviour
 
 	private void Awake()
 	{
-		controllerActions = new ControllerActions();
-		controllerActions.Gameplay.Return.performed += OnReturn;
-		controllerActions.Gameplay.Use.performed += OnSelect;
-		BeatController.Instance.OnBeatEvent += OnBeat;
+        controllerActions = new ControllerActions();
+    }
 
-		playersToSpawn = new List<int>(4);
+    private void Start()
+    {
+        controllerActions.Gameplay.Return.performed += OnReturn;
+        controllerActions.Gameplay.Use.performed += OnSelect;
+        BeatController.Instance.OnBeatEvent += OnBeat;
 
-		for(int i = 0; i < 4; i++)
-			playersToSpawn.Add(-1);
-	}
+        playersToSpawn = new List<int>(4);
 
-	public void ButtonBack()
+        for (int i = 0; i < 4; i++)
+            playersToSpawn.Add(-1);
+    }
+
+    public void ButtonBack()
     {
         SceneLoader.Instance.LoadLevel("MainMenu");
     }
