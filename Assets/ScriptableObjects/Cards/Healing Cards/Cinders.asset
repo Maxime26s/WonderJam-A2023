@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Nuke
+  m_Name: Cinders
   m_EditorClassIdentifier: 
-  _cardType: 1
-  _cardName: Nuke
-  _cardImage: {fileID: 21300000, guid: 6b9d0173b68c5974eacaa6085d60cbe7, type: 3}
-  _description: Deals <color=#FF7070>10 damage</color> on the next beat.
+  _cardType: 0
+  _cardName: Cinders
+  _cardImage: {fileID: 21300000, guid: 5310880b830c6e94598629d5f5c1ed17, type: 3}
+  _description: (nonfunctional) Removes <color=#39c663>3 healing</color> from orb
   cardEffects:
-  - {fileID: 11400000, guid: 95bb8b8396d187941977c49a2be9973a, type: 2}
+  - {fileID: 11400000, guid: a8fb987ff73ca364884ace0cc519e7d4, type: 2}

@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Blank
+  m_Script: {fileID: 11500000, guid: 2de45f5b83f270e4d856d01af2ae5ae5, type: 3}
+  m_Name: Tick Healing_100_1
   m_EditorClassIdentifier: 
-  _cardType: 3
-  _cardName: Blank Card
-  _cardImage: {fileID: 21300000, guid: 88984d172f6bc364d9604d3b7b86c62e, type: 3}
-  _description: Blank
-  cardEffects: []
+  _isOver: 0
+  _tickDuration: 100
+  _healing: 1

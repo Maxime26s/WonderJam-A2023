@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReceiveHealing(float healing)
     {
-        if (PlayerData.IsAlive)
+        if (PlayerData.IsAlive && healing >= 0)
         {
             PlayerData.CurrentHealth += healing;
 
