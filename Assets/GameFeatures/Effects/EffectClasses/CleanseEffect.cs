@@ -14,21 +14,9 @@ public class CleanseEffect : InstantEffect
 
         if (tickCountdown <= 0)
         {
-            if (_effectType == EffectType.Cleanse)
-            {
-                Ball.Instance.effects.Clear();
-            }
-            else
-            {
-                for (int i = Ball.Instance.effects.Count - 1; i >= 0; i--)
-                {
-                    BaseEffect effect = Ball.Instance.effects[i];
-                    if (effect.GetInfo().effectType == _effectType)
-                    {
-                        Ball.Instance.effects.RemoveAt(i);
-                    }
-                }
-            }
+            Ball.PendingCleanse pendingCleanse = new Ball.PendingCleanse();
+            pendingCleanse.effectToCleanse = _effectType;
+            Ball.Instance.PendingCleansesList.Add(pendingCleanse);
             isOver = true;
         }
     }

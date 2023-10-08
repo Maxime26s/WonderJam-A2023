@@ -26,11 +26,60 @@ public class Card : ScriptableObject
     public Sprite CardImage { get => _cardImage; set => _cardImage = value; }
     public string Description { get => _description; set => _description = value; }
 
-    public void PlayCard()
+    public void PlayCard(HitEventArgs? h = null)
     {
         foreach (BaseEffect effect in cardEffects)
         {
-            Ball.Instance.AddEffect(Instantiate(effect));
+            if (h != null)
+            {
+                if (h.Result == HitResult.Perfect)
+                {
+                    if (effect is InstantHealing)
+                    {
+                        InstantHealing i = (InstantHealing)Instantiate(effect);
+                        i.healing *= 1.2f;
+                        Ball.Instance.AddEffect(i);
+                    }
+                    else if (effect is InstantDamage)
+                    {
+                        InstantDamage i = (InstantDamage)Instantiate(effect);
+                        i.damage *= 1.2f;
+                        Ball.Instance.AddEffect(i);
+                    }
+                    else
+                    {
+                        Ball.Instance.AddEffect(Instantiate(effect));
+                    }
+                    
+                }
+                else if (h.Result == HitResult.Bad)
+                {
+                    if (effect is InstantHealing)
+                    {
+                        InstantHealing i = (InstantHealing)Instantiate(effect);
+                        i.healing *= 0.8f;
+                        Ball.Instance.AddEffect(i);
+                    }
+                    else if (effect is InstantDamage)
+                    {
+                        InstantDamage i = (InstantDamage)Instantiate(effect);
+                        i.damage *= 0.8f;
+                        Ball.Instance.AddEffect(i);
+                    }
+                    else
+                    {
+                        Ball.Instance.AddEffect(Instantiate(effect));
+                    }
+                }
+                else
+                {
+                    Ball.Instance.AddEffect(Instantiate(effect));
+                }
+            }
+            else
+            {
+                Ball.Instance.AddEffect(Instantiate(effect));
+            }
         }
     }
 }
