@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17bd008201760124b8648b3c2689d0fa, type: 3}
   m_Name: BPMTestTrack
   m_EditorClassIdentifier: 
-  bpm: 120
+  bpm: 60
   offset: 0.025
   audioLeadInTime: -0.104
   clip: {fileID: 8300000, guid: da6a9e94f1e60ad46b0e9e58af7f7406, type: 3}
