@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HealMult_50_1.5
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickCountdown: 50
+  _tickCountdown: 0
   _healingMult: 1.5
