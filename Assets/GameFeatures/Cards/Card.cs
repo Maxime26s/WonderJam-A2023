@@ -30,7 +30,7 @@ public class Card : ScriptableObject
     {
         foreach (BaseEffect effect in cardEffects)
         {
-            Ball.Instance.AddEffect(effect);
+            Ball.Instance.AddEffect(Instantiate(effect));
         }
     }
 }

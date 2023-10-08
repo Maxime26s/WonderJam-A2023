@@ -638,6 +638,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -1713,6 +1714,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -1735,7 +1737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6803764039229999356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1755,10 +1757,10 @@ RectTransform:
   - {fileID: 7267447535302691175}
   m_Father: {fileID: 8710960582790130368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 39.3386}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 121.25555, y: -19.6693}
+  m_SizeDelta: {x: 242.5111, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8564901694997723701
 CanvasRenderer:
@@ -1844,6 +1846,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -2661,6 +2664,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -2792,6 +2796,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -3588,10 +3593,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6803764039229999356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 211.40887, y: -19.6693}
+  m_SizeDelta: {x: 40, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4478295812811013432
 CanvasRenderer:
@@ -3663,10 +3668,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6803764039229999356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 31, y: -19.6693}
+  m_SizeDelta: {x: 40, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2046024050629606918
 CanvasRenderer:
@@ -4118,6 +4123,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -4496,10 +4502,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6803764039229999356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 166.30666, y: -19.6693}
+  m_SizeDelta: {x: 40, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4582206507381626067
 CanvasRenderer:
@@ -5219,6 +5225,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -5254,10 +5261,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6803764039229999356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 76.10222, y: -19.6693}
+  m_SizeDelta: {x: 40, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4599652859347190793
 CanvasRenderer:
@@ -5539,10 +5546,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6803764039229999356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 121.20444, y: -19.6693}
+  m_SizeDelta: {x: 40, y: 39.3386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4824840870809784001
 CanvasRenderer:
@@ -6278,6 +6285,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -6559,6 +6567,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -7435,6 +7444,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}
@@ -7671,6 +7681,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 49fcf206d63e57a4eaa37119e98acd0a, type: 3}
   - {fileID: 21300000, guid: 85a99018bafd2ac41a8d43f4233066e5, type: 3}
   - {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
+  - {fileID: 21300000, guid: d904e4e3837dc6e499a0b04d71669f6b, type: 3}
   timeIcons:
   - {fileID: 21300000, guid: 114896412b40bef46a4625740c81c3e0, type: 3}
   - {fileID: 21300000, guid: 0fc687dbaf81e2448bb740a7b280ea0a, type: 3}

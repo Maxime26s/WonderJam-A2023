@@ -27,6 +27,9 @@ public class EffectsInfoUI : MonoBehaviour
             case EffectType.Damage:
                 effectIcon.sprite = icons[2];
                 break;
+            case EffectType.Multiplier:
+                effectIcon.sprite = icons[3];
+                break;
         }
 
         switch (info.timeEffectType)

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de45f5b83f270e4d856d01af2ae5ae5, type: 3}
   m_Name: Tick Healing_50_3
   m_EditorClassIdentifier: 
-  _isOver: 0
+  isOver: 0
   _tickDuration: 50
   _healing: 3

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ff18082360c7944bf12587889984f1, type: 3}
   m_Name: Tick Damage_2_10
   m_EditorClassIdentifier: 
-  _isOver: 0
+  isOver: 0
   _tickDuration: 10
   _damage: 2
