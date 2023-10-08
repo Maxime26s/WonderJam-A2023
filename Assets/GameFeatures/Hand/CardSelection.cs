@@ -100,10 +100,10 @@ public class CardSelection : Singleton<CardSelection>
     void RefreshDisplay()
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
+        int index = 0;
         if (currentPlayer)
         foreach (CardInHandUI card in displayedCards)
         {
-            int index = 0;
             card.SetupCardUI(currentPlayer.GetHand()[index++]);
         }
     }
