@@ -42,8 +42,8 @@ public class BattleGroundController : MonoBehaviour
     }
     public Transform GetPlayerNextPosition(int numberOfPlayers, int playerTargetPosition)
     {
-        if(playerTargetPosition < numberOfPlayers)
-        {
+        //if(playerTargetPosition < numberOfPlayers)
+        //{
             switch (numberOfPlayers)
             {
                 case 2:
@@ -56,11 +56,11 @@ public class BattleGroundController : MonoBehaviour
                     Debug.Log("Wrong number of player you suck");
                     return _playerPositions4Players[playerTargetPosition];
             }
-        }
-        else
-        {
-            Debug.Log("Number of player is wrong cant get player next position");
-            return null;
-        }
+        //}
+        //else
+        //{
+        //    Debug.Log("Number of player is wrong cant get player next position");
+        //    return null;
+        //}
     }
 }

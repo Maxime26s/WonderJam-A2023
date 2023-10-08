@@ -97,6 +97,10 @@ public class CardSelection : Singleton<CardSelection>
 
     public void ResetDiplay()
     {
+        foreach(PlayerController p in PlayerManager.Instance.PlayerManagerData.PlayersList)
+        {
+            p.GetCards().selectedIndex = 2;
+        }
         currentIndex = 2;
         displayedCards.ForEach(c => c.StopHover());
         displayedCards[currentIndex].BeginHover();
