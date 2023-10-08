@@ -58,41 +58,49 @@ public class CardSelection : Singleton<CardSelection>
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
         //cards[currentIndex].Unselect();
-        displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
+        //displayedCards[currentIndex].gameObject.SetActive(true); // TO CHANGE FOR: 1. PLAY CARD UNHOVER ANIMATION
 
         int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
         // TODO: PLAY CARD UNHOVER ANIMATION
 
-        currentIndex = (currentIndex + value) % (displayedCards.Count + 1);
+        currentIndex = (currentIndex + value + 5) % (displayedCards.Count + 1);
+
         currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
         //cards[currentIndex].Select();
-        displayedCards[currentIndex].gameObject.SetActive(false); // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
+        //displayedCards[currentIndex].gameObject.SetActive(false);
+        // TO CHANGE FOR: 1. PLAY CARD HOVER ANIMATION
         // TODO: PLAY CARD HOVER ANIMATION
     }
 
     void Use(HitEventArgs args)
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        currentPlayer.GetCards().PlayCard();
-        displayedCards[currentIndex].SetupCardUI(blankCard);
-
+        if (currentPlayer)
+        {
+            currentPlayer.GetCards().PlayCard();
+            displayedCards[currentIndex].SetupCardUI(blankCard);
+        }
         // TO CHANGE FOR: PLAY CARD ANIMATION
     }
 
     void Reload(HitEventArgs args)
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
-        currentPlayer.Mulligan();
-        foreach (CardInHandUI card in displayedCards)
+        if (currentPlayer)
         {
-            int index = 0;
-            card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            currentPlayer.Mulligan();
+            foreach (CardInHandUI card in displayedCards)
+            {
+                int index = 0;
+                card.SetupCardUI(currentPlayer.GetHand()[index++]);
+            }
         }
     }
     void RefreshDisplay()
     {
         PlayerController currentPlayer = PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer();
+        if (currentPlayer)
         foreach (CardInHandUI card in displayedCards)
         {
             int index = 0;

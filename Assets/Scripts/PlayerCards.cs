@@ -17,9 +17,13 @@ public class PlayerCards
         deckList = new List<Card>();
         for (int index = 1; index < CardsManager.Instance.CardDatabase.Cards.Count; index++)
             foreach (Card card in CardsManager.Instance.CardDatabase.Cards)
+            {
                 deckList.Add(card);
-
+                deckList.Add(card);
+                deckList.Add(card);
+            }
         deck = new List<Card>(deckList);
+        Shuffle();
     }
 
     /// <summary>
@@ -27,9 +31,6 @@ public class PlayerCards
     /// </summary>
     public void DrawCard()
     {
-        //if (hand.Count >= 4)
-        //return;
-
         if (deck.Count == 0)
             ResetDeck();
 
@@ -41,7 +42,7 @@ public class PlayerCards
     }
 
     /// <summary>
-    /// Sets a card to a blank card. Blank cards are not yet created, so it just sets it to null for now.
+    /// Sets a card to a blank card. Doesn't actually play the card yet.
     /// </summary>
     /// <returns>The card removed from hand.</returns>
     public Card PlayCard()
@@ -67,7 +68,7 @@ public class PlayerCards
 
     public void MoveSelectionLeft()
     {
-        selectedIndex = (selectedIndex - 1) % 5;
+        selectedIndex = (selectedIndex - 1 + 5) % 5;
     }
     public void MoveSelectionRight()
     {
@@ -75,7 +76,7 @@ public class PlayerCards
     }
     public void MoveSelection(bool isMovingLeft)
     {
-        selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1)) % 5;
+        selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1) + 5) % 5;
     }
 
     public void ResetDeck()
