@@ -71,7 +71,6 @@ public class Ball : Singleton<Ball>
             effects.RemoveAll(effect => effect.isOver);
         }
 
-        UpdateEffectsList();
     }
 
     void UpdateEffectsList()
