@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerManagerData : MonoBehaviour
 {
-    [SerializeField]
-    int _totalNbPlayer = 4;
-    public int TotalNbPlayer { get => _totalNbPlayer; set => _totalNbPlayer = value; }
-
     List<PlayerController> _playersList = new List<PlayerController>();
     int _currentPlayerId;
     List<int> _playerTurnOrderList = new List<int>();
