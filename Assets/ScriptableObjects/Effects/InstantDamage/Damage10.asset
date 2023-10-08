@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f81416b94dbd734081ff7cd97e21626, type: 3}
-  m_Name: 3_Delayed_Damage
+  m_Name: Damage10
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickCountdown: 5
-  _damage: 3
+  _tickCountdown: 0
+  _damage: 10

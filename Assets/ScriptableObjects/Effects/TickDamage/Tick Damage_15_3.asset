@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f81416b94dbd734081ff7cd97e21626, type: 3}
-  m_Name: 5_Delayed_Damage
+  m_Script: {fileID: 11500000, guid: f0ff18082360c7944bf12587889984f1, type: 3}
+  m_Name: Tick Damage_15_3
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickCountdown: 5
-  _damage: 5
+  _tickDuration: 15
+  _damage: 3
