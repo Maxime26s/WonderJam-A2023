@@ -8,7 +8,8 @@ public enum EffectType
     Mana,
     Damage,
     Multiplier,
-    Blank
+    Blank,
+    Cleanse
 }
 
 public enum TimeEffectType
