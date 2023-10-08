@@ -13,7 +13,7 @@ public class TickDamage : TickBasedEffect
     public override void Tick()
     {
         TickDuration--;
-        PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(damage);
+        Ball.Instance.pendingDamage += damage;
 
         if (TickDuration <= 0)
         {
