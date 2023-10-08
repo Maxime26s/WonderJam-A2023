@@ -48,7 +48,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         if (_playerPrefab != null)
         {
-            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.PlayersList.Count)[playerId].transform);
+            GameObject newPlayer = Instantiate(_playerPrefab, BattleGroundManager.Instance.GetCurrentBattleGround().GetAllPlayerPositions(PlayerManagerData.PlayersToSpawn.Count)[playerId].transform);
 
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
@@ -100,7 +100,7 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             PlayerController player = PlayerManagerData.GetPlayer(PlayerManagerData.PlayerTurnOrderList[i]);
 
-            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersList.Count, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
+            Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersToSpawn.Count, PlayerManagerData.PlayerTurnOrderList[(i + 1) % PlayerManagerData.PlayerTurnOrderList.Count]);
 
             PlayerHolder ph = player.transform.parent.parent.parent.GetComponent<PlayerHolder>();
             ph.SetTarget(endPosition.position, endPosition.localScale, _timeToMoveToNewPosition);
