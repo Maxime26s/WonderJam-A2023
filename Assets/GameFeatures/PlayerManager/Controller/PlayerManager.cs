@@ -15,11 +15,14 @@ public class PlayerManager : Singleton<PlayerManager>
 
     Coroutine _checkWinCoroutine = null;
 
+    [SerializeField]
+    Color[] _playerColors;
+
     public void Init()
     {
         SpawnAllPlayers();
         DetermineTurnOrder();
-        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.PlayersList[PlayerManagerData.PlayerTurnOrderList[0]].PlayerData.PlayerId);
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.PlayersList[PlayerManagerData.PlayerTurnOrderList[0]].PlayerData.PlayerDeviceId);
     }
 
     public void SpawnAllPlayers()
@@ -44,7 +47,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     }
 
-    public void SpawnPlayer(int playerId, int playerIndex)
+    public void SpawnPlayer(int playerDeviceId, int playerIndex)
     {
         if (_playerPrefab != null)
         {
@@ -52,8 +55,9 @@ public class PlayerManager : Singleton<PlayerManager>
 
             PlayerController playerController = newPlayer.GetComponentInChildren<PlayerController>();
             playerController.PlayerData.ResetData();
-            playerController.PlayerData.PlayerId = playerId;
+            playerController.PlayerData.PlayerDeviceId = playerDeviceId;
             playerController.PlayerData.PlayerIndex = playerIndex;
+            playerController.SpriteRenderer.color = _playerColors[playerIndex];
             playerController.Mulligan();
 
             PlayerManagerData.PlayersList.Add(playerController);
@@ -118,7 +122,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
         yield return new WaitForSeconds(_timeToMoveToNewPosition);
 
-        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerId);
+        PlayerManagerData.SetCurrentPlayer(PlayerManagerData.GetNextAlivePlayer().PlayerData.PlayerDeviceId);
     }
 
     public void CheckPlayerWin()
@@ -160,6 +164,6 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         //Do something here
 
-        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerId);
+        Debug.Log("Winning player is id : " + winner.PlayerData.PlayerDeviceId);
     }
 }

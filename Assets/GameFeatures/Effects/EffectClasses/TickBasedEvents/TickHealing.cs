@@ -19,4 +19,9 @@ public class TickHealing : TickBasedEffect
             isOver = true;
         }
     }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Healing, Healing, TimeEffectType.Tick, TickDuration);
+    }
 }

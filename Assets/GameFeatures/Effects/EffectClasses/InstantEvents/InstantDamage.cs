@@ -20,4 +20,9 @@ public class InstantDamage : InstantEffect
             isOver = true;
         }
     }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Damage, damage, TimeEffectType.Instant, tickCountdown);
+    }
 }

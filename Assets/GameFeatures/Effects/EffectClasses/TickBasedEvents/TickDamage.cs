@@ -20,4 +20,9 @@ public class TickDamage : TickBasedEffect
             isOver = true;
         }
     }
+
+    public override EffectInfo GetInfo()
+    {
+        return new EffectInfo(EffectType.Damage, damage, TimeEffectType.Tick, TickDuration);
+    }
 }
