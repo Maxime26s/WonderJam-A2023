@@ -25,6 +25,13 @@ public class Ball : Singleton<Ball>
     [SerializeField] private EffectsInfoUI _effectUIPrefab = null;
     [SerializeField] private Transform _effectUIParent = null;
 
+    public class PendingCleanse
+    {
+        public EffectType effectToCleanse = EffectType.Damage;
+    }
+
+    public List<PendingCleanse> PendingCleansesList = new List<PendingCleanse>();
+
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
@@ -77,6 +84,26 @@ public class Ball : Singleton<Ball>
 
             // Delete all effects that are over
             effects.RemoveAll(effect => effect.isOver);
+
+            foreach(PendingCleanse cleanse in PendingCleansesList)
+            {
+                if (cleanse.effectToCleanse == EffectType.Cleanse)
+                {
+                    effects.Clear();
+                }
+                else
+                {
+                    for (int i = effects.Count - 1; i >= 0; i--)
+                    {
+                        BaseEffect effect = effects[i];
+                        if (effect.GetInfo().effectType == cleanse.effectToCleanse)
+                        {
+                            effects.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            PendingCleansesList.Clear();
         }
 
     }
