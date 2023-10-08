@@ -48,6 +48,9 @@ public class Ball : Singleton<Ball>
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
+            pendingDamage = 0f;
+            pendingHealing = 0f;
+
             actionPoints--;
             if (actionPoints <= 0)
             {
