@@ -63,9 +63,8 @@ public class PlayerController : MonoBehaviour
                 //This is the current player
                 if (PlayerData.PlayerDeviceId == PlayerManager.Instance.PlayerManagerData.GetCurrentPlayerId())
                 {
-                    Animator.SetTrigger("Move");
-
-                    StartCoroutine(GameManager.Instance.TurnOver());
+                    if (GameManager.Instance.GameState == GameState.Playing)
+                        StartCoroutine(GameManager.Instance.TurnOver());
                 }
             }
         }
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour
             _slider.value = hpPercent;
         }
 
-        if(hpPercent <= 0)
+        if (hpPercent <= 0)
         {
             PlayerDies();
         }

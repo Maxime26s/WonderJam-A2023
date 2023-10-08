@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Cauterize
+  m_Name: Soin Mineur
   m_EditorClassIdentifier: 
   _cardType: 0
-  _cardName: Cauterize
-  _cardImage: {fileID: 21300000, guid: b805144ec2758ea40b836e1a3059b9a6, type: 3}
-  _description: <color=#FF7070>T'endommage de 10</color> et ajoute <color=#39c663>5
-    soins</color> pendant 5 tours
+  _cardName: Soin Mineur
+  _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
+  _description: <color=#39c663>Soigne de 5</color>
   cardEffects:
-  - {fileID: 11400000, guid: 95bb8b8396d187941977c49a2be9973a, type: 2}
-  - {fileID: 11400000, guid: 704a56b65ccc12f46ba6ce528bd71d22, type: 2}
+  - {fileID: 11400000, guid: 809c3ae4bdc14bc47b83e82b93c15818, type: 2}

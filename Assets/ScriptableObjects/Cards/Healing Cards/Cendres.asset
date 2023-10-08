@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Cinders
+  m_Name: Cendres
   m_EditorClassIdentifier: 
   _cardType: 0
   _cardName: Cinders

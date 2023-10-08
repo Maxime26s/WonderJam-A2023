@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Great Fireball
+  m_Name: Orbe de Poison
   m_EditorClassIdentifier: 
   _cardType: 1
-  _cardName: Great Fireball
-  _cardImage: {fileID: 21300000, guid: 4aa6aefef2b6b8243a194f928eb0503d, type: 3}
-  _description: <color=#FF7070>10 dommage</color> dans 5 temps
+  _cardName: Orbe de Poison
+  _cardImage: {fileID: 21300000, guid: 61dd4371d0ac138479300c6df586fd57, type: 3}
+  _description: <color=#FF7070>2 dommage</color> pendant 20 temps
   cardEffects:
-  - {fileID: 11400000, guid: 8d79ccc81f6ef7a41b60b26d30579722, type: 2}
+  - {fileID: 11400000, guid: eff6bbfd225241c4997e8aabba38c693, type: 2}

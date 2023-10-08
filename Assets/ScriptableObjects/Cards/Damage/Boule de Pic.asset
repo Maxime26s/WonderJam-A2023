@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Major Healing Card
+  m_Name: Boule de Pic
   m_EditorClassIdentifier: 
-  _cardType: 0
-  _cardName: Major Healing
-  _cardImage: {fileID: 21300000, guid: 326436920e39ef1418038ecc4b4b25ba, type: 3}
-  _description: <color=#39c663>Soigne de 5</color>
+  _cardType: 1
+  _cardName: Boule de Pic
+  _cardImage: {fileID: 21300000, guid: aa0cbd523dadb1c43b9c8706ce377b26, type: 3}
+  _description: <color=#FF7070>1 dommage</color> pendant 50 tours
   cardEffects:
-  - {fileID: 11400000, guid: 8767acf5692b17642afb06a1667f620c, type: 2}
+  - {fileID: 11400000, guid: 3c832e3cedbe89c4896da1e35832069a, type: 2}

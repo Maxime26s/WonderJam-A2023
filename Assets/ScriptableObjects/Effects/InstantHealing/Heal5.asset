@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOver: 0
   _tickCountdown: 0
-  _healing: 5
+  _healing: 3
