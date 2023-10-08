@@ -32,7 +32,7 @@ public class PlayerManagerData : MonoBehaviour
     {
         for (int i = 0; i < PlayersList.Count; i++)
         {
-            if (PlayersList[i].PlayerData.PlayerId == id)
+            if (PlayersList[i].PlayerData.PlayerDeviceId == id)
             {
                 return PlayersList[i];
             }
