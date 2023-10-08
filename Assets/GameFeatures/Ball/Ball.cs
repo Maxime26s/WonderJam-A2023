@@ -20,8 +20,6 @@ public class Ball : Singleton<Ball>
 
     public float pendingDamage = 0f;
     public float pendingHealing = 0f;
-    private float damageMultiplier = 1f;
-    private float healingMultiplier = 1f;
 
     private void Start()
     {
@@ -48,10 +46,6 @@ public class Ball : Singleton<Ball>
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
-            pendingDamage = 0;
-            pendingHealing = 0;
-
-
             actionPoints--;
             if (actionPoints <= 0)
             {
@@ -61,7 +55,8 @@ public class Ball : Singleton<Ball>
 
             foreach (BaseEffect effect in effects)
             {
-                effect.Tick();
+                if ((TickDamage) effect)
+                    effect.Tick();
             }
 
             PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
