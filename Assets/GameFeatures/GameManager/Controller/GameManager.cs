@@ -76,6 +76,7 @@ public class GameManager : Singleton<GameManager>
     {
         GameState = GameState.ChangingTurn;
 
+        print("Changing turn");
         yield return _playerManager.MoveAllPlayerNextPosition();
 
         CardSelection.Instance.ResetDiplay();

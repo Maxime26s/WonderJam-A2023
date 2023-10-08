@@ -81,7 +81,6 @@ public class PlayerSelect : MonoBehaviour
 
 	private void OnBeat()
 	{
-		
 		for(int i = 0; i < playerSprites.Count; i++)
 		{
 			Animator animator = playerSprites[i].GetComponent<Animator>();
