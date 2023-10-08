@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e004b828ca02b174f8547e805f865bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseEffectsForTesting: []
   effects: []
   baseActionPoints: 10
   actionPoints: 10
@@ -58,6 +57,8 @@ MonoBehaviour:
   pendingHealing: 0
   damageMultiplier: 1
   healingMultiplier: 1
+  _effectUIPrefab: {fileID: 7364645017445314435, guid: 0924d6e189f931a4a8e8c7b52e6b7718, type: 3}
+  _effectUIParent: {fileID: 0}
 --- !u!212 &902537042954732299
 SpriteRenderer:
   m_ObjectHideFlags: 0
