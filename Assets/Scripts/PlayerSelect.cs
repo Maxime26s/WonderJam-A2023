@@ -38,7 +38,9 @@ public class PlayerSelect : MonoBehaviour
 
 	public void ButtonContinue()
     {
-        SceneLoader.Instance.LoadLevel(nextSceneName);
+		PlayerManager.Instance.PlayerManagerData.PlayersToSpawn = playersToSpawn;
+
+		SceneLoader.Instance.LoadLevel(nextSceneName);
 
 		GameManager.Instance.StartCoroutine(GameManager.Instance.StartGameWhenSceneLoaded());
     }
