@@ -11,6 +11,17 @@ public class PlayerHolder : MonoBehaviour
     public float timeElapsed;
     public float startTime;
 
+    private void Start()
+    {
+        int sign;
+        if (Mathf.Abs(transform.localScale.x) > 1)
+            sign = -1;
+        else
+            sign = 1;
+
+        transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x) * sign, transform.localScale.y);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -34,6 +45,15 @@ public class PlayerHolder : MonoBehaviour
     {
         targetPosition = position;
         targetScale = scale;
+
+        int sign;
+        if (Mathf.Abs(targetScale.x) > 1)
+            sign = -1;
+        else
+            sign = 1;
+
+        targetScale = new Vector2(Mathf.Abs(targetScale.x) * sign, targetScale.y);
+
         this.duration = duration;
     }
 
