@@ -72,6 +72,8 @@ public class GameManager : Singleton<GameManager>
 
         CardSelection.Instance.ResetDiplay();
         Ball.Instance.ResetActions();
+        int actionslol = (int)Mathf.Round((float)(0.6 * acte + 3.8 + Mathf.Exp((float)(0.4 * (acte - 3)))));
+        Ball.Instance.baseActionPoints = actionslol;
         StartCoroutine(StartNextRound());
 
         Ball.Instance.ResetActions();
@@ -107,8 +109,12 @@ public class GameManager : Singleton<GameManager>
             acte++;
 
             acte = Mathf.Min(acte, 8);
+            
 
             BeatController.Instance.SetSpeed(1.00 + acte * 0.20);
+
+            int actionslol = (int)Mathf.Round((float)(0.6 * acte + 3.8 + Mathf.Exp((float)(0.4 * (acte - 3)))));
+            Ball.Instance.baseActionPoints = actionslol;
         }
 
         GameState = GameState.ChangingTurn;
