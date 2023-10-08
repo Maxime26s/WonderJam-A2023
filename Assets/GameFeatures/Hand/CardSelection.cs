@@ -77,7 +77,7 @@ public class CardSelection : Singleton<CardSelection>
         if (currentPlayer)
         {
             currentPlayer.Animator.SetTrigger("PlayCard");
-            currentPlayer.GetCards().PlayCard();
+            currentPlayer.GetCards().PlayCard(args);
             displayedCards[currentIndex].SetupCardUI(blankCard);
         }
     }
