@@ -27,8 +27,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     public TextMeshProUGUI countDownText;
 
-	[SerializeField]
-	public int winnerPlayer = -1;
+    [SerializeField]
+    public int winnerPlayer = -1;
 
     int tickCount = 0;
     string mainSceneName = "MainBattleScene";
@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
     //Bind this on the start game after player selection
     public IEnumerator StartGame()
     {
-        if(_waitBeforeStartGame == null)
+        if (_waitBeforeStartGame == null)
         {
             Init();
         }
@@ -83,7 +83,11 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator TurnOver()
     {
         yield return WaitForTick(1);
-        _beatController.StopPlaying();
+
+        if (_beatController.track.HasMelody())
+            _beatController.FadeOutMelody(0.3f);
+        else
+            _beatController.StopPlaying();
 
         // Take damage for every action you did not perform
         PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(Ball.Instance.actionPoints);
@@ -109,6 +113,8 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(3);
         int tick0 = tickCount;
 
+        _beatController.FadeInMelody((float)(_beatController.track.GetBeatInterval() * 3));
+
         foreach (CardInHandUI card in CardSelection.Instance.displayedCards)
         {
             card.gameObject.SetActive(true);
@@ -118,7 +124,7 @@ public class GameManager : Singleton<GameManager>
         {
             countDownText.text = (3 - (tickCount - tick0)).ToString();  // Update the TextMeshPro UI Text
             countDownText.gameObject.SetActive(true);
-            
+
             // Yield for a short duration before checking again
             // This can be set to a smaller value if you expect rapid firing of the external event
             yield return new WaitForSeconds(0.1f);
@@ -132,7 +138,10 @@ public class GameManager : Singleton<GameManager>
 
     void StartTics()
     {
-        _beatController.StartPlaying();
+        if (_beatController.track.HasMelody() && tickCount != 0)
+            _beatController.EnableBeatSpawn();
+        else
+            _beatController.StartPlaying();
     }
 
     public void EndGame()
@@ -161,4 +170,4 @@ public class GameManager : Singleton<GameManager>
         }
     }
 }
-public enum GameState { Idle, GameBegin, Playing, ChangingTurn, PlayerDeath, GameEnd}
+public enum GameState { Idle, GameBegin, Playing, ChangingTurn, PlayerDeath, GameEnd }

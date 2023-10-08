@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17bd008201760124b8648b3c2689d0fa, type: 3}
-  m_Name: BPMTestTrack
+  m_Name: Song
   m_EditorClassIdentifier: 
   bpm: 60
-  offset: 0.025
-  audioLeadInTime: -0.104
-  beatClip: {fileID: 8300000, guid: da6a9e94f1e60ad46b0e9e58af7f7406, type: 3}
-  melodyClip: {fileID: 0}
+  offset: 0
+  audioLeadInTime: 0
+  beatClip: {fileID: 8300000, guid: bc6c1fc9e85c9564bbe75d2c3390673c, type: 3}
+  melodyClip: {fileID: 8300000, guid: 0a6b475fcc26d234f8f5a7ae1b3020b9, type: 3}

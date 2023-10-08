@@ -6,7 +6,8 @@ public class MusicData : ScriptableObject
     public int bpm;
     public double offset = 0.0d;
     public double audioLeadInTime = 0.0d;
-    public AudioClip clip;
+    public AudioClip beatClip;
+    public AudioClip melodyClip;
 
     public double Speed { get; set; } = 1.0f;
 
@@ -33,5 +34,10 @@ public class MusicData : ScriptableObject
     public void SetBPM(int newBpm)
     {
         Speed = (double)newBpm / (double)bpm;
+    }
+
+    public bool HasMelody()
+    {
+        return melodyClip != null;
     }
 }
