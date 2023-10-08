@@ -14,7 +14,11 @@ public class PlayerCards
 
     public PlayerCards()
     {
-        deckList = new List<Card>(CardsManager.Instance.CardDatabase.Cards);
+        deckList = new List<Card>();
+        for (int index = 1; index < CardsManager.Instance.CardDatabase.Cards.Count; index++)
+            foreach (Card card in CardsManager.Instance.CardDatabase.Cards)
+                deckList.Add(card);
+
         deck = new List<Card>(deckList);
     }
 
@@ -43,7 +47,7 @@ public class PlayerCards
     public Card PlayCard()
     {
         Card selectedCard = hand[selectedIndex];
-        hand[selectedIndex] = null;
+        hand[selectedIndex] = CardsManager.Instance.CardDatabase.Cards[0];
         return selectedCard;
     }
 
