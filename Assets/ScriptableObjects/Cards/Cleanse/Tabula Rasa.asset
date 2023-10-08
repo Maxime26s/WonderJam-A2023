@@ -16,4 +16,5 @@ MonoBehaviour:
   _cardName: Tabula Rasa
   _cardImage: {fileID: 21300000, guid: c29ad6c9ab774e146ab35566d424d590, type: 3}
   _description: Retire tout les effets de l'orbe
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 2db9588693676fb4bb0267e247e871e3, type: 2}

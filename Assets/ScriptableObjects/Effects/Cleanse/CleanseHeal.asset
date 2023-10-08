@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dc7248092ad5ff478752e957f486c5e, type: 3}
-  m_Name: Heal5
+  m_Script: {fileID: 11500000, guid: 945dc6a1a18b92a47964f7605b4d4e00, type: 3}
+  m_Name: CleanseHeal
   m_EditorClassIdentifier: 
   isOver: 0
   _tickCountdown: 0
-  _healing: 3
+  _effectType: 0
