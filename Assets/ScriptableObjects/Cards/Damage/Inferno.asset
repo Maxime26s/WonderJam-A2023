@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fefe02f09529cb64f8cc739969a1d755, type: 3}
-  m_Name: Healmult
+  m_Name: Inferno
   m_EditorClassIdentifier: 
   _cardType: 1
-  _cardName: Healmult
-  _cardImage: {fileID: 21300000, guid: dd058b09bfa5f5340a0c5446e825010d, type: 3}
-  _description: Multiplies healing over time by 1.5 for 50 beats!
+  _cardName: Inferno
+  _cardImage: {fileID: 21300000, guid: 6b9d0173b68c5974eacaa6085d60cbe7, type: 3}
+  _description: Deals <color=#FF7070>2 damage</color> for 30 beats!
   cardEffects:
-  - {fileID: 11400000, guid: 7ffbd25825fe6244e853c8b0343ef9b9, type: 2}
+  - {fileID: 11400000, guid: c0c20eac4eb452846967accde8bec5e9, type: 2}
