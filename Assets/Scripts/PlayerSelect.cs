@@ -40,17 +40,20 @@ public class PlayerSelect : MonoBehaviour
 	public void OnSelect(InputAction.CallbackContext context)
 	{
 		InputDevice device = context.control.device;
-
-		if(!playersToSpawn.Contains(device.deviceId))
+		
+		if(GetNbPlayers() < maxPlayers)
 		{
-			int index = playersToSpawn.FindIndex(x => x == -1);
-			playersToSpawn[index] = device.deviceId;
+			if(!playersToSpawn.Contains(device.deviceId))
+			{
+				int index = playersToSpawn.FindIndex(x => x == -1);
+				playersToSpawn[index] = device.deviceId;
 
-			Image image = playerSprites[index].GetComponent<Image>();
-			image.enabled = true;
+				Image image = playerSprites[index].GetComponent<Image>();
+				image.enabled = true;
+			}
+			else if(GetNbPlayers() >= 2)
+				ButtonContinue();
 		}
-		else
-			ButtonContinue();
 
 		PlayerManager.Instance.PlayerManagerData.PlayersToSpawn = playersToSpawn;
 	}
@@ -82,8 +85,8 @@ public class PlayerSelect : MonoBehaviour
 		for(int i = 0; i < playerSprites.Count; i++)
 		{
 			Animator animator = playerSprites[i].GetComponent<Animator>();
-
-			//animator.speed = BeatController.Instance.currentBPM / 60;
+			
+			animator.speed = (float)BeatController.Instance.track.GetBPM() / 120f;
 			animator.Play("PlayerSelectDance");
 		}
 	}
@@ -103,4 +106,16 @@ public class PlayerSelect : MonoBehaviour
     {
         controllerActions.Disable();
     }
+
+	private int GetNbPlayers()
+	{
+		int playerCount = 0;
+		for(int i = 0; i < playersToSpawn.Count; i++)
+		{
+			if(playersToSpawn[i] != -1)
+				playerCount++;
+		}
+
+		return playerCount;
+	}
 }

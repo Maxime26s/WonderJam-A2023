@@ -1032,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2781205957332838720, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
       propertyPath: shouldStartOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2931995443048160767, guid: 9b4a9325481fa8f4691a25091696d8ef, type: 3}
       propertyPath: Loop
