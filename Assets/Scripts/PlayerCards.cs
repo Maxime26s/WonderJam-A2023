@@ -7,10 +7,12 @@ public class PlayerCards
 {
     //4 cards in hand. When a card is played, a card is drawn. If a card would be drawn, all cards except the 3 in hand are placed back in the deck.
     //5 cards in hand. One is selected. Playing a card gives a blank card instead of it. 
+
+    [SerializeField]
     private List<Card> deckList;
     private List<Card> deck;
-    private Card[] hand = new Card[5];
-    public int selectedIndex = 2;
+    private Card[] hand = new Card[3];
+    public int selectedIndex = 1;
 
     public PlayerCards()
     {
@@ -72,15 +74,15 @@ public class PlayerCards
 
     public void MoveSelectionLeft()
     {
-        selectedIndex = (selectedIndex - 1 + 5) % 5;
+        selectedIndex = (selectedIndex - 1 + 3) % 3;
     }
     public void MoveSelectionRight()
     {
-        selectedIndex = (selectedIndex + 1) % 5;
+        selectedIndex = (selectedIndex + 1) % 3;
     }
     public void MoveSelection(bool isMovingLeft)
     {
-        selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1) + 5) % 5;
+        selectedIndex = (selectedIndex + (isMovingLeft ? -1 : 1) + 3) % 3;
     }
 
     public void ResetDeck()
@@ -107,7 +109,7 @@ public class PlayerCards
     public void DrawHand()
     {
         int indexBackup = selectedIndex;
-        for (int index = 0; index < 5; index++)
+        for (int index = 0; index < 3; index++)
         {
             selectedIndex = index;
             DrawCard();

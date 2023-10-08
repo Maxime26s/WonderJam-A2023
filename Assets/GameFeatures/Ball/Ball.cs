@@ -22,6 +22,9 @@ public class Ball : Singleton<Ball>
     public float damageMultiplier = 1f;
     public float healingMultiplier = 1f;
 
+    [SerializeField] private EffectsInfoUI _effectUIPrefab = null;
+    [SerializeField] private Transform _effectUIParent = null;
+
     private void Start()
     {
         BeatController.Instance.OnBeatEvent += Tick;
@@ -73,21 +76,24 @@ public class Ball : Singleton<Ball>
 
     }
 
-    void UpdateEffectsList()
+    private void DestroyAndClearEffectListUIs()
     {
         foreach (EffectsInfoUI effectUI in EffectsListUI)
         {
-            effectUI.gameObject.SetActive(false);
+            Destroy(effectUI.gameObject);
         }
+        EffectsListUI.Clear();
+    }
 
-        print(effects.Count);
+    void UpdateEffectsList()
+    {
+        DestroyAndClearEffectListUIs();
 
-        int i = 0;
         foreach (BaseEffect effect in effects)
         {
-            EffectsListUI[i].gameObject.SetActive(true);
-            EffectsListUI[i].SetInfo(effect.GetInfo());
-            i++;
+            EffectsInfoUI effectInfoUI = (Instantiate(_effectUIPrefab, _effectUIParent));
+            effectInfoUI.SetInfo(effect.GetInfo());
+            EffectsListUI.Add(effectInfoUI);
         }
     }
 

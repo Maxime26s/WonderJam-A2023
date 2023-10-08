@@ -15,5 +15,6 @@ MonoBehaviour:
   _cardType: 3
   _cardName: Blank Card
   _cardImage: {fileID: 21300000, guid: 88984d172f6bc364d9604d3b7b86c62e, type: 3}
-  _description: Press X to refresh hand
-  cardEffects: []
+  _description: Use this or press X to draw new cards
+  cardEffects:
+  - {fileID: 11400000, guid: afeb9a0e695588743a27bb734f6757c3, type: 2}

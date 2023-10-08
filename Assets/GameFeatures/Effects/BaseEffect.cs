@@ -7,7 +7,8 @@ public enum EffectType
     Healing,
     Mana,
     Damage,
-    Multiplier
+    Multiplier,
+    Blank
 }
 
 public enum TimeEffectType

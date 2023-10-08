@@ -20,7 +20,7 @@ public class CardSelection : Singleton<CardSelection>
     // Start is called before the first frame update
     void Start()
     {
-        currentIndex = 2;
+        currentIndex = 1;
         beatBar.OnHitEvent += OnHit;
         RefreshDisplay();
     }
@@ -64,7 +64,7 @@ public class CardSelection : Singleton<CardSelection>
         displayedCards[currentIndex].StopHover();
 
         int value = args.Context.ReadValue<float>() > 0 ? 1 : -1;
-        currentIndex = (currentIndex + value + 5) % (displayedCards.Count);
+        currentIndex = (currentIndex + value + displayedCards.Count) % (displayedCards.Count);
         currentPlayer.GetCards().MoveSelection(value == 1 ? false : true);
 
         displayedCards[currentIndex].BeginHover();
@@ -99,9 +99,9 @@ public class CardSelection : Singleton<CardSelection>
     {
         foreach(PlayerController p in PlayerManager.Instance.PlayerManagerData.PlayersList)
         {
-            p.GetCards().selectedIndex = 2;
+            p.GetCards().selectedIndex = 1;
         }
-        currentIndex = 2;
+        currentIndex = 1;
         displayedCards.ForEach(c => c.StopHover());
         displayedCards[currentIndex].BeginHover();
         RefreshDisplay();
@@ -127,6 +127,6 @@ public class CardSelection : Singleton<CardSelection>
         {
             card.StopHover();
         }
-        displayedCards[2].BeginHover();
+        displayedCards[1].BeginHover();
     }
 }

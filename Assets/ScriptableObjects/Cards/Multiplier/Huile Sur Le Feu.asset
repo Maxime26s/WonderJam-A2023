@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 1
   _cardName: Huile Sur Le Feu
   _cardImage: {fileID: 21300000, guid: 458eae30c18aa2d4ab857c28c98ea600, type: 3}
-  _description: Multiplies damage by 1.5 for 50 beats!
+  _description: <color=#FF7070>Multiplies damage</color> by 1.5 for 50 beats!
   cardEffects:
   - {fileID: 11400000, guid: 81042853c33eae04e913bf842a8899e6, type: 2}
