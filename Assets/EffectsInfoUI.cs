@@ -27,7 +27,14 @@ public class EffectsInfoUI : MonoBehaviour
                 effectIcon.sprite = icons[2];
                 break;
             case EffectType.Multiplier:
-                effectIcon.sprite = icons[3];
+                if (info.multiplierType == MultiplierType.Damage)
+                {
+                    effectIcon.sprite = icons[2];
+                }
+                if (info.multiplierType == MultiplierType.Healing)
+                {
+                    effectIcon.sprite = icons[0];
+                }
                 break;
         }
 
