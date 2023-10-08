@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 1
   _cardName: Spike Ball
-  _cardImage: {fileID: 0}
-  _description: Deals <color=#FF7070>1 damage</color> for 50 beats!
+  _cardImage: {fileID: 21300000, guid: aa0cbd523dadb1c43b9c8706ce377b26, type: 3}
+  _description: <color=#FF7070>1 dommage</color> pendant 50 tours
   cardEffects:
   - {fileID: 11400000, guid: 3c832e3cedbe89c4896da1e35832069a, type: 2}

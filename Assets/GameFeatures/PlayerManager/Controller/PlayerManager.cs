@@ -105,6 +105,8 @@ public class PlayerManager : Singleton<PlayerManager>
         {
             PlayerController player = PlayerManagerData.GetPlayerByIndex(PlayerManagerData.PlayerTurnOrderList[i]);
 
+            player.Animator.SetTrigger("Move");
+
             int index = i - 1 >= 0 ? i - 1 : PlayerManagerData.PlayerTurnOrderList.Count - 1;
             Transform endPosition = BattleGroundManager.Instance.GetCurrentBattleGround().GetPlayerNextPosition(PlayerManagerData.PlayersToSpawn.Count, PlayerManagerData.PlayerTurnOrderList[(index) % PlayerManagerData.PlayerTurnOrderList.Count]);
 
@@ -131,11 +133,11 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerController winningPlayer = null;
         bool win = false;
 
-        foreach(PlayerController player in PlayerManagerData.PlayersList)
+        foreach (PlayerController player in PlayerManagerData.PlayersList)
         {
             if (player.PlayerData.IsAlive)
             {
-                if(winningPlayer != null)
+                if (winningPlayer != null)
                 {
                     win = false;
                     break;
@@ -154,6 +156,20 @@ public class PlayerManager : Singleton<PlayerManager>
         }
     }
 
+    public int AlivePlayerCount()
+    {
+        int count = 0;
+        foreach (PlayerController player in PlayerManagerData.PlayersList)
+        {
+            if (player.PlayerData.IsAlive)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     IEnumerator WaitAFrameToConfirmWin(PlayerController winner)
     {
         yield return null;
@@ -163,8 +179,8 @@ public class PlayerManager : Singleton<PlayerManager>
 
     void ShowWinner(PlayerController winner)
     {
-		GameManager.Instance.winnerPlayer = winner.PlayerData.PlayerIndex;
+        GameManager.Instance.winnerPlayer = winner.PlayerData.PlayerIndex;
 
-		SceneLoader.Instance.LoadLevel("WinScreen");
+        SceneLoader.Instance.LoadLevel("WinScreen");
     }
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 1
   _cardName: Great Fireball
   _cardImage: {fileID: 21300000, guid: acb7cb1c4cf8f784494ea7af7f941a90, type: 3}
-  _description: Deals <color=#FF7070>10 damage</color> in 5 beat
+  _description: <color=#FF7070>10 dommage</color> dans 5 temps
   cardEffects:
   - {fileID: 11400000, guid: 8d79ccc81f6ef7a41b60b26d30579722, type: 2}

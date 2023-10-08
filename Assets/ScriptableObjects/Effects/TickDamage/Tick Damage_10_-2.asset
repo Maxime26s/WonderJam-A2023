@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a0aba53ab62a04b83bf5f3348c38c7, type: 3}
-  m_Name: HealMult_50_1.5
+  m_Script: {fileID: 11500000, guid: f0ff18082360c7944bf12587889984f1, type: 3}
+  m_Name: Tick Damage_10_-2
   m_EditorClassIdentifier: 
   isOver: 0
-  _tickCountdown: 50
-  _healingMult: 1.5
+  _tickDuration: 10
+  _damage: -2
