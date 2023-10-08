@@ -18,6 +18,9 @@ public class Ball : Singleton<Ball>
     [SerializeField]
     public List<EffectsInfoUI> EffectsListUI = new List<EffectsInfoUI>();
 
+    public float pendingDamage = 0f;
+    public float pendingHealing = 0f;
+
 
     private void Start()
     {
@@ -53,8 +56,12 @@ public class Ball : Singleton<Ball>
 
             foreach (BaseEffect e in effects)
             {
+                if ((TickDamage) e)
                 e.Tick();
             }
+
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().TakeDamage(pendingDamage);
+            PlayerManager.Instance.PlayerManagerData.GetCurrentPlayer().ReceiveHealing(pendingHealing);
 
             // Delete all effects that are over
             effects.RemoveAll(e => e.isOver);
