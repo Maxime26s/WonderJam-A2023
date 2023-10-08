@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 0
   _cardName: Soin Mineur
   _cardImage: {fileID: 21300000, guid: 5e9d7b37e2a83de4e8779569ec9a1238, type: 3}
-  _description: <color=#39c663>Soigne de 3</color>
+  _description: <color=#39c663>Soigne de 5</color>
   cardEffects:
   - {fileID: 11400000, guid: 809c3ae4bdc14bc47b83e82b93c15818, type: 2}
