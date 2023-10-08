@@ -9,7 +9,6 @@ public class EffectsInfoUI : MonoBehaviour
     [SerializeField] public TextMeshProUGUI number;
     [SerializeField] public Image effectIcon;
     [SerializeField] public TextMeshProUGUI duration;
-    [SerializeField] public Image timeIcon;
 
     [SerializeField] public List<Sprite> icons;
     [SerializeField] public List<Sprite> timeIcons;
@@ -28,21 +27,34 @@ public class EffectsInfoUI : MonoBehaviour
                 effectIcon.sprite = icons[2];
                 break;
             case EffectType.Multiplier:
-                effectIcon.sprite = icons[3];
+                if (info.multiplierType == MultiplierType.Damage)
+                {
+                    effectIcon.sprite = icons[2];
+                }
+                if (info.multiplierType == MultiplierType.Healing)
+                {
+                    effectIcon.sprite = icons[0];
+                }
                 break;
         }
 
         switch (info.timeEffectType)
         {
             case TimeEffectType.Instant:
-                timeIcon.sprite = timeIcons[0];
+                duration.text = $"dans {info.duration}";
                 break;
             case TimeEffectType.Tick:
-                timeIcon.sprite = timeIcons[1];
+                duration.text = $"pendant {info.duration}";
                 break;
         }
 
-        number.text = info.mainNumber.ToString();
-        duration.text = info.duration.ToString();
+        if (info.effectType == EffectType.Multiplier)
+        {
+            number.text = $"x{info.mainNumber}";
+        }
+        else
+        {
+            number.text = info.mainNumber.ToString();
+        }
     }
 }

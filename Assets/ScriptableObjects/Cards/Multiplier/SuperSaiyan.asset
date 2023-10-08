@@ -15,7 +15,7 @@ MonoBehaviour:
   _cardType: 1
   _cardName: Super Saiyan
   _cardImage: {fileID: 21300000, guid: 218d3d601595ca64f957b99788f30805, type: 3}
-  _description: Multiplies damage and healing over time by 3 for 10 beats
+  _description: Multiplie le dommage et soins par 3 pendant 10 tours
   cardEffects:
   - {fileID: 11400000, guid: 49ee8acda2af20745a0a4c5f64080a07, type: 2}
   - {fileID: 11400000, guid: f2cd3699866631f4fa61f22934411808, type: 2}
