@@ -15,6 +15,6 @@ MonoBehaviour:
   _cardType: 0
   _cardName: Fleurir
   _cardImage: {fileID: 21300000, guid: 07da6712425313842ac2ba42d978b2fe, type: 3}
-  _description: <color=#39c663>Soigne de 1</color> pendant 100 tours
+  _description: <color=#39c663>Soigne de 1</color> pendant 20 tours
   cardEffects:
   - {fileID: 11400000, guid: 9ae5b1995068ec84384cec22c68e9513, type: 2}
