@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -116,5 +117,14 @@ public class CardSelection : Singleton<CardSelection>
             }
         }
         
+    }
+
+    void ResetSelf()
+    {
+        foreach (CardInHandUI card in displayedCards)
+        {
+            card.StopHover();
+        }
+        displayedCards[2].BeginHover();
     }
 }
