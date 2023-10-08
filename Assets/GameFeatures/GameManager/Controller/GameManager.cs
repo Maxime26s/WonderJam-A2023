@@ -109,6 +109,11 @@ public class GameManager : Singleton<GameManager>
         yield return WaitForTick(3);
         int tick0 = tickCount;
 
+        foreach (CardInHandUI card in CardSelection.Instance.displayedCards)
+        {
+            card.gameObject.SetActive(true);
+        }
+
         while (tickCount < tick0 + 3)  // Wait until tickCounter increments by 3 from its initial value
         {
             countDownText.text = (3 - (tickCount - tick0)).ToString();  // Update the TextMeshPro UI Text
