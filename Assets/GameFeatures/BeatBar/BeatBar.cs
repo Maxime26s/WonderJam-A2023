@@ -47,13 +47,28 @@ public class BeatBar : MonoBehaviour
 
     void Update()
     {
-        if(beats.Count != 0)
+        if (beats.Count != 0)
         {
-            if (beats[0]?.transform.position.x - centerTransform.position.x >= startCenterDistance / 3.0f)
+            if (GameManager.Instance.GameState != GameState.Playing)
+            {
+                ClearBeats();
+            }
+
+            if (beats.Count != 0 && beats[0]?.transform.position.x - centerTransform.position.x >= startCenterDistance / 3.0f)
             {
                 beats.RemoveAt(0);
                 OnHitEvent?.Invoke(this, new HitEventArgs(new InputAction.CallbackContext(), HitResult.Miss));
             }
+        }
+    }
+
+    public void ClearBeats()
+    {
+        while (beats.Count > 0)
+        {
+            if (beats[0]?.transform.position.x - centerTransform.position.x <= 0)
+                Destroy(beats[0]);
+            beats.RemoveAt(0);
         }
     }
 
@@ -77,7 +92,7 @@ public class BeatBar : MonoBehaviour
 
     private void OnBeat()
     {
-        if(BeatController.Instance.beatCount == 0)
+        if (BeatController.Instance.beatCount == 0)
         {
             beatToSkip = baseBeatToSkip;
             beatsInstantiated = 0;
